@@ -34,6 +34,8 @@ CREATE TABLE tblIngredient(
 CREATE TABLE tblRecipe(
 	RecipeID			INT IDENTITY(1,1) PRIMARY KEY 	NOT NULL,
 	RecipeName			NVARCHAR (40)					NOT NULL,
+	RecipeType			NVARCHAR (40)					NOT NULL,
+	NoPeople			INT								NOT NULL,
 	RecipeDescription	NVARCHAR (1000)					NOT NULL,
 	CreationDate		DATETIME						NOT NULL,
 	UserID INT FOREIGN KEY REFERENCES tblUser(UserID)	NOT NULL,
