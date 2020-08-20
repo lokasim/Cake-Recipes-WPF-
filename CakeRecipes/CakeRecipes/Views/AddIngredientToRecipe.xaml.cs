@@ -9,10 +9,10 @@ namespace CakeRecipes.Views
     /// </summary>
     public partial class AddIngredientToRecipe : Window
     {
-        public AddIngredientToRecipe()
+        public AddIngredientToRecipe(int RecipeID)
         {
             InitializeComponent();
-            this.DataContext = new AddIngredientToRecipeViewModel(this);
+            this.DataContext = new AddIngredientToRecipeViewModel(this, RecipeID);
             this.Language = XmlLanguage.GetLanguage("sr-SR");
         }
     }

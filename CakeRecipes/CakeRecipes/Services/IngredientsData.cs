@@ -62,5 +62,35 @@ namespace CakeRecipes.Services
                 return null;
             }
         }
+
+        /// <summary>
+        /// Search if ingredient with that ID exists in the ingredient table
+        /// </summary>
+        /// <param name="id">Takes the id that we want to search for</param>
+        /// <returns>The ingredient</returns>
+        public tblIngredient FindIngredient(int id)
+        {
+            try
+            {
+                using (CakeRecipesDBEntities context = new CakeRecipesDBEntities())
+                {
+                    tblIngredient result = (from x in context.tblIngredients where x.IngredientID == id select x).FirstOrDefault();
+
+                    if (result != null)
+                    {
+                        return result;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception " + ex.Message.ToString());
+                return null;
+            }
+        }
     }
 }

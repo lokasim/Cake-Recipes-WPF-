@@ -87,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper\IngredientNameConverter.cs" />
     <Compile Include="Models\CakeRecipesDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -130,14 +131,22 @@
       <DependentUpon>CakeRecipesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\IngredientsData.cs" />
+    <Compile Include="Services\RecipeData.cs" />
     <Compile Include="ViewModel\AddIngredientToRecipeViewModel.cs" />
     <Compile Include="ViewModel\AddIngredientViewModel.cs" />
+    <Compile Include="ViewModel\AddRecipeViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Views\AddIngredient.xaml.cs">
       <DependentUpon>AddIngredient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddIngredientAmountToRecipe.xaml.cs">
+      <DependentUpon>AddIngredientAmountToRecipe.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddIngredientToRecipe.xaml.cs">
       <DependentUpon>AddIngredientToRecipe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddRecipe.xaml.cs">
+      <DependentUpon>AddRecipe.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -156,7 +165,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddIngredientAmountToRecipe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddIngredientToRecipe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AddRecipe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

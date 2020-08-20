@@ -18,7 +18,8 @@ namespace CakeRecipes.ViewModel
         /// <summary>
         /// Opens the Add ingredient window
         /// </summary>
-        /// <param name="addIngrediwntOpen">Window that we open</param>
+        /// <param name="addIngredientOpen">Window that we open</param>
+        /// <param name="recipeID">recipe id</param>
         public AddIngredientViewModel(AddIngredient addIngredientOpen)
         {
             ingredient = new tblIngredient();
@@ -83,7 +84,7 @@ namespace CakeRecipes.ViewModel
             {
                 ingrediantsData.AddIngredient(Ingredient);
                 isUpdateIngredient = true;
-                AddIngredientToRecipe test = new AddIngredientToRecipe();
+                AddRecipe test = new AddRecipe();
                 addIngredient.Close();
 
                 test.Show();
