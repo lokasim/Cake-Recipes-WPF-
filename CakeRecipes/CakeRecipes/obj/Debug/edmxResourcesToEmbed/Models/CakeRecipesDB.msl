@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CookDBModelStoreContainer" CdmEntityContainer="CakeRecipesDBEntities">
+    <EntitySetMapping Name="tblIngredients">
+      <EntityTypeMapping TypeName="CookDBModel.tblIngredient">
+        <MappingFragment StoreEntitySet="tblIngredient">
+          <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+          <ScalarProperty Name="IngredientName" ColumnName="IngredientName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblIngredientAmounts">
+      <EntityTypeMapping TypeName="CookDBModel.tblIngredientAmount">
+        <MappingFragment StoreEntitySet="tblIngredientAmount">
+          <ScalarProperty Name="IngredientAmountID" ColumnName="IngredientAmountID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
+          <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblIngredientStorages">
+      <EntityTypeMapping TypeName="CookDBModel.tblIngredientStorage">
+        <MappingFragment StoreEntitySet="tblIngredientStorage">
+          <ScalarProperty Name="IngredientStorageID" ColumnName="IngredientStorageID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRecipes">
+      <EntityTypeMapping TypeName="CookDBModel.tblRecipe">
+        <MappingFragment StoreEntitySet="tblRecipe">
+          <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
+          <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+          <ScalarProperty Name="RecipeType" ColumnName="RecipeType" />
+          <ScalarProperty Name="NoPeople" ColumnName="NoPeople" />
+          <ScalarProperty Name="RecipeDescription" ColumnName="RecipeDescription" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Changed" ColumnName="Changed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblShoppingBaskets">
+      <EntityTypeMapping TypeName="CookDBModel.tblShoppingBasket">
+        <MappingFragment StoreEntitySet="tblShoppingBasket">
+          <ScalarProperty Name="ShoppingBasketID" ColumnName="ShoppingBasketID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="CookDBModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstLastName" ColumnName="FirstLastName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwIngredientStorages">
+      <EntityTypeMapping TypeName="CookDBModel.vwIngredientStorage">
+        <MappingFragment StoreEntitySet="vwIngredientStorage">
+          <ScalarProperty Name="IngredientStorageID" ColumnName="IngredientStorageID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="IngredientName" ColumnName="IngredientName" />
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="FirstLastName" ColumnName="FirstLastName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwRecipes">
+      <EntityTypeMapping TypeName="CookDBModel.vwRecipe">
+        <MappingFragment StoreEntitySet="vwRecipe">
+          <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
+          <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+          <ScalarProperty Name="RecipeType" ColumnName="RecipeType" />
+          <ScalarProperty Name="NoPeople" ColumnName="NoPeople" />
+          <ScalarProperty Name="RecipeDescription" ColumnName="RecipeDescription" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Changed" ColumnName="Changed" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="FirstLastName" ColumnName="FirstLastName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+          <ScalarProperty Name="IngredientName" ColumnName="IngredientName" />
+          <ScalarProperty Name="IngredientAmountID" ColumnName="IngredientAmountID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="Expr3" ColumnName="Expr3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwShoppingBaskets">
+      <EntityTypeMapping TypeName="CookDBModel.vwShoppingBasket">
+        <MappingFragment StoreEntitySet="vwShoppingBasket">
+          <ScalarProperty Name="ShoppingBasketID" ColumnName="ShoppingBasketID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="IngredientName" ColumnName="IngredientName" />
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="FirstLastName" ColumnName="FirstLastName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

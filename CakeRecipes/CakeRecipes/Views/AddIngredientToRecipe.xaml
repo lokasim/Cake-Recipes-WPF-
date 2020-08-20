@@ -1,0 +1,140 @@
+﻿<Window x:Class="CakeRecipes.Views.AddIngredientToRecipe"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CakeRecipes.Views"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Title="Dodaj sastojak"
+        Height="700"
+        MinWidth="700">
+    <Border BorderBrush="White"
+            BorderThickness="1">
+        <Border BorderBrush="#2196F3"
+                BorderThickness="4">
+            <Grid Margin="-2 0 -2 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Background="#2196F3"
+                      Grid.Row="0">
+                    <TextBlock FontSize="20"
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"
+                               Foreground="White"
+                               FontStyle="Italic"
+                               Margin="10 0 0 0">Dodaj sastojak</TextBlock>
+                    <Button Grid.Row="0"
+                            x:Name="Exit"
+                            HorizontalAlignment="Right"
+                            Command="{Binding Exit, UpdateSourceTrigger=PropertyChanged}"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                            ToolTip="Exit"
+                            BorderBrush="#FFC34A4A"
+                            Background="#FFC34A4A"
+                            Margin="5 5 10 5"
+                            Height="22"
+                            Width="22"
+                            Visibility="Visible">
+                        <materialDesign:PackIcon Kind="Close"
+                                                 Height="16"
+                                                 Width="16" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border BorderBrush="#2196F3"
+                            BorderThickness="0 2 0 2"
+                            Grid.Column="0">
+                        <Grid>
+                            <Button x:Name="btnAddItem"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"
+                                    materialDesign:ButtonAssist.CornerRadius="20"
+                                    ToolTip="Dodaj sastojak"
+                                    Margin="5"
+                                    Width="140"
+                                    Command="{Binding AddItem, UpdateSourceTrigger=PropertyChanged}"
+                                    Height="40"
+                                    FontSize="18"
+                                    VerticalAlignment="Bottom"
+                                    Content="Dodaj"
+                                    Foreground="White"
+                                    Background="Orange"
+                                    BorderBrush="{x:Null}"></Button>
+                            <TextBlock FontSize="18"
+                                       FontWeight="Bold"
+                                       FontStyle="Italic"
+                                       Foreground="#2196F3"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 10 0 500">Sastojci</TextBlock>
+                            <DataGrid x:Name="DataGridAllMenu"
+                                      Grid.Row="1"
+                                      Grid.Column="1"
+                                      ItemsSource="{Binding IngredientList, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedItem="{Binding Ingredient, UpdateSourceTrigger=PropertyChanged}"
+                                      IsReadOnly="True"
+                                      FontSize="14"
+                                      Height="auto"
+                                      Width="auto"
+                                      Margin="10 40 10 50"
+                                      MinColumnWidth="75"
+                                      Background="White"
+                                      AlternatingRowBackground="LightYellow"
+                                      HorizontalContentAlignment="Center"
+                                      MaxColumnWidth="200"
+                                      VerticalAlignment="Top"
+                                      HorizontalAlignment="Center"
+                                      HeadersVisibility="Column"
+                                      AutoGenerateColumns="False"
+                                      HorizontalGridLinesBrush="Black"
+                                      BorderBrush="LightGray"
+                                      BorderThickness="2"
+                                      Foreground="White"
+                                      FontWeight="Medium">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Ime"
+                                                        Binding="{Binding IngredientName}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style>
+                                                <Setter Property="TextBlock.TextAlignment"
+                                                        Value="Center" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+                    <Border BorderBrush="#2196F3"
+                            BorderThickness="2"
+                            Grid.Column="1">
+                        <Grid x:Name="msgNoItems">
+                            <TextBlock Foreground="Orange"
+                                       HorizontalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="18"
+                                       FontStyle="Italic"
+                                       Margin="0 205 0 300 ">Izaberi sastojak i dodaj u recept.</TextBlock>
+                            <materialDesign:PackIcon HorizontalAlignment="Center"
+                                                     Margin="0 250 0 0"
+                                                     Height="150"
+                                                     Width="150"
+                                                     Foreground="Orange"
+                                                     Kind="CartArrowDown" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+    </Border>
+</Window>
+
