@@ -63,22 +63,30 @@ CREATE TABLE tblShoppingBasket(
 	IngredientID INT FOREIGN KEY REFERENCES tblIngredient(IngredientID)	NOT NULL,
 );
 
+
 GO
 CREATE VIEW vwRecipe AS
-	SELECT	tblRecipe.*, tblUser.FirstLastName, tblIngredient.IngredientName, tblIngredientAmount.Amount 
-	FROM	tblUser, tblRecipe, tblIngredient, tblIngredientAmount
-	WHERE	tblUser.UserID = tblRecipe.UserID 
-			AND tblRecipe.RecipeID = tblIngredientAmount.RecipeID 
-			AND tblIngredient.IngredientID = tblIngredientAmount.IngredientID
+	SELECT        dbo.tblRecipe.RecipeID, dbo.tblRecipe.RecipeName, dbo.tblRecipe.RecipeType, dbo.tblRecipe.NoPeople, dbo.tblRecipe.RecipeDescription, dbo.tblRecipe.CreationDate, dbo.tblRecipe.UserID, dbo.tblRecipe.Changed, 
+                         dbo.tblUser.UserID AS Expr1, dbo.tblUser.FirstLastName, dbo.tblUser.Username, dbo.tblUser.UserPassword, dbo.tblIngredient.IngredientID, dbo.tblIngredient.IngredientName, dbo.tblIngredientAmount.IngredientAmountID, 
+                         dbo.tblIngredientAmount.Amount, dbo.tblIngredientAmount.RecipeID AS Expr2, dbo.tblIngredientAmount.IngredientID AS Expr3
+FROM            dbo.tblIngredient INNER JOIN
+                         dbo.tblIngredientAmount ON dbo.tblIngredient.IngredientID = dbo.tblIngredientAmount.IngredientID INNER JOIN
+                         dbo.tblRecipe ON dbo.tblIngredientAmount.RecipeID = dbo.tblRecipe.RecipeID INNER JOIN
+                         dbo.tblUser ON dbo.tblRecipe.UserID = dbo.tblUser.UserID
 
 GO
 CREATE VIEW vwIngredientStorage AS
-	SELECT	tblIngredientStorage.*, tblIngredient.IngredientName 
-	FROM	tblIngredient, tblIngredientStorage
-	WHERE	tblIngredient.IngredientID = tblIngredientStorage.IngredientID
+	SELECT        dbo.tblIngredientStorage.IngredientStorageID, dbo.tblIngredientStorage.Amount, dbo.tblIngredientStorage.UserID, dbo.tblIngredientStorage.IngredientID, dbo.tblIngredient.IngredientID AS Expr1, dbo.tblIngredient.IngredientName, 
+                         dbo.tblUser.UserID AS Expr2, dbo.tblUser.FirstLastName, dbo.tblUser.Username, dbo.tblUser.UserPassword
+FROM            dbo.tblIngredientStorage INNER JOIN
+                         dbo.tblUser ON dbo.tblIngredientStorage.UserID = dbo.tblUser.UserID INNER JOIN
+                         dbo.tblIngredient ON dbo.tblIngredientStorage.IngredientID = dbo.tblIngredient.IngredientID
 
 GO
 CREATE VIEW vwShoppingBasket AS
-	SELECT	tblShoppingBasket.*, tblIngredient.IngredientName 
-	FROM	tblIngredient, tblShoppingBasket
-	WHERE	tblIngredient.IngredientID = tblShoppingBasket.IngredientID
+	SELECT        dbo.tblShoppingBasket.ShoppingBasketID, dbo.tblShoppingBasket.Amount, dbo.tblShoppingBasket.UserID, dbo.tblShoppingBasket.IngredientID, dbo.tblIngredient.IngredientID AS Expr1, dbo.tblIngredient.IngredientName, 
+                         dbo.tblUser.UserID AS Expr2, dbo.tblUser.FirstLastName, dbo.tblUser.Username, dbo.tblUser.UserPassword
+FROM            dbo.tblShoppingBasket INNER JOIN
+                         dbo.tblUser ON dbo.tblShoppingBasket.UserID = dbo.tblUser.UserID INNER JOIN
+                         dbo.tblIngredient ON dbo.tblShoppingBasket.IngredientID = dbo.tblIngredient.IngredientID
+	
