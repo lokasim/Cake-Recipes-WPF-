@@ -48,12 +48,12 @@ namespace CakeRecipes
                 lblIme.Content = "".ToString(); ;
                 var menuOrders = new List<Subitem>
                     {
-                        new Subitem("Pending orders"),
+                        //new Subitem("Napisi novi recept", new AddRecipe()),
                         //new Subitem("All orders"),
-                        new Subitem("Archived orders"),
+                        new Subitem("Svi Recepti", new AllRecipesWindow()),
                     };
 
-                var item1 = new ItemMenu("Reports", menuOrders, PackIconKind.Pizzeria);
+                var item1 = new ItemMenu("Recepti", menuOrders, PackIconKind.Pizzeria);
 
                 var item50 = new ItemMenu("Menu", new UserControl(), PackIconKind.Pizza);
 
@@ -73,12 +73,11 @@ namespace CakeRecipes
 
                 var menuOrders = new List<Subitem>
                     {
-                        new Subitem("Create an order"),
-                        //new Subitem("Create an order",new PersonalReports()),
-                        new Subitem("View all orders"),
+                        //new Subitem("Napisi novi recept", new AddRecipe()),
+                        new Subitem("Svi Recepti", new AllRecipesWindow()),
                     };
 
-                var item1 = new ItemMenu("Orders", menuOrders, PackIconKind.Pizzeria);
+                var item1 = new ItemMenu("Recepti", menuOrders, PackIconKind.Pizzeria);
 
                 var item50 = new ItemMenu("Menu", new UserControl(), PackIconKind.Pizza);
 

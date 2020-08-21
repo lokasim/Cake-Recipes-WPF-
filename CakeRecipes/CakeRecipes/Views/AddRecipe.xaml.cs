@@ -16,7 +16,7 @@ namespace CakeRecipes.Views
         public AddRecipe()
         {
             InitializeComponent();
-            this.Name = "AddIngredient";
+            this.Name = "AddRecipe";
             this.DataContext = new AddRecipeViewModel(this);
             this.Language = XmlLanguage.GetLanguage("sr-SR");
         }
@@ -24,7 +24,7 @@ namespace CakeRecipes.Views
         public AddRecipe(tblRecipe recipeEdit)
         {
             InitializeComponent();
-            this.Name = "AddIngredient";
+            this.Name = "AddRecipe";
             this.DataContext = new AddRecipeViewModel(this, recipeEdit);
             this.Language = XmlLanguage.GetLanguage("sr-SR");
         }

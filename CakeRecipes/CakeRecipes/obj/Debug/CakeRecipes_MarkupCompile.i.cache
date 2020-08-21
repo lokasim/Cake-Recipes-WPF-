@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\App.xaml
-6164553800
+8-1738088471
 2-1067156342
-36-1796816623
+441806624926
 25-1876831540
-MainWindow.xaml;Views\AddIngredient.xaml;Views\AddIngredientAmountToRecipe.xaml;Views\AddIngredientToRecipe.xaml;Views\AddRecipe.xaml;Views\AllRecipesWindow.xaml;
+MainWindow.xaml;UserControlMenuItem.xaml;Views\AddIngredient.xaml;Views\AddIngredientAmountToRecipe.xaml;Views\AddIngredientToRecipe.xaml;Views\AddRecipe.xaml;Views\AllRecipesWindow.xaml;Views\Login.xaml;
 
-True
+False
 

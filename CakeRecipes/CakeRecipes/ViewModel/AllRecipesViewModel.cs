@@ -112,7 +112,7 @@ namespace CakeRecipes.ViewModel
         /// <returns></returns>
         public bool CanDeleteRecipeExecute()
         {
-            if (Recipe == null)
+            if (Recipe == null || LoggedGuest.NameSurname != "Administrator")
             {
                 return false;
             }
@@ -173,46 +173,54 @@ namespace CakeRecipes.ViewModel
             {
                 return false;
             }
-            else
+            else if (LoggedGuest.ID == Recipe.UserID || LoggedGuest.NameSurname == "Administrator")
             {
                 return true;
             }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
-        /// Exit button
+        /// Add Recipe button
         /// </summary>
-        private ICommand exit;
-        public ICommand Exit
+        private ICommand addRecipe;
+        public ICommand AddRecipe
         {
             get
             {
-                if (exit == null)
+                if (addRecipe == null)
                 {
-                    exit = new RelayCommand(param => ExitExecute(), param => CanExitExecute());
+                    addRecipe = new RelayCommand(param => AddRecipeExecute(), param => CanAddRecipeExecute());
                 }
-                return exit;
+                return addRecipe;
             }
         }
 
         /// <summary>
-        /// Exits the current window
+        /// Method for adding the selected item from the list
         /// </summary>
-        private void ExitExecute()
+        public void AddRecipeExecute()
         {
-            MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Da li zelite da napustiti aplikaciju", "Odustani", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-            if (dialog == MessageBoxResult.Yes)
+            try
             {
-                allReciperWindow.Close();
+                AddRecipe addRecipeWindow = new AddRecipe();
+                addRecipeWindow.ShowDialog();
+                RecipeList = recipeData.GetAllRecipes().ToList();
+            }
+            catch (Exception)
+            {
+                MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Trenutno je nemoguce obrisati recept...", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         /// <summary>
-        /// Checks if its possible to press the button
+        /// Checks if its possible to press the add button
         /// </summary>
         /// <returns></returns>
-        private bool CanExitExecute()
+        public bool CanAddRecipeExecute()
         {
             return true;
         }

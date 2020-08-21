@@ -1,4 +1,5 @@
 ﻿using CakeRecipes.Models;
+using CakeRecipes.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -118,11 +119,9 @@ namespace CakeRecipes.Services
                             NoPeople = recipe.NoPeople,
                             RecipeDescription = recipe.RecipeDescription,
                             CreationDate = DateTime.Now,
-                            Changed = recipe.Changed,
-                            // TODO remove this
-                            UserID = recipe.UserID = 1,
-                            //UserID = LoggedGuest.ID
-                    };
+                            Changed = LoggedGuest.NameSurname,
+                            UserID = LoggedGuest.ID
+                        };
 
                         context.tblRecipes.Add(newRecipe);
                         context.SaveChanges();
@@ -138,11 +137,17 @@ namespace CakeRecipes.Services
                         recipeToEdit.NoPeople = recipe.NoPeople;
                         recipeToEdit.RecipeDescription = recipe.RecipeDescription;
                         recipeToEdit.CreationDate = DateTime.Now;
-                        recipeToEdit.Changed = recipe.Changed;
-                        // TODO remove this
-                        recipeToEdit.UserID = 1;
-                        //UserID = LoggedGuest.ID
+                        recipeToEdit.Changed = LoggedGuest.NameSurname;
 
+                        if (LoggedGuest.ID == 0)
+                        {
+                            recipeToEdit.UserID = recipe.UserID;                          
+                        }
+                        else
+                        {
+                            recipeToEdit.UserID = LoggedGuest.ID;
+                        }
+                                              
                         context.SaveChanges();
 
                         return recipe;

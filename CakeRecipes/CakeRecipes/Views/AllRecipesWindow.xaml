@@ -1,4 +1,4 @@
-﻿<Window x:Class="CakeRecipes.Views.AllRecipesWindow"
+﻿<UserControl x:Class="CakeRecipes.Views.AllRecipesWindow"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,8 +7,7 @@
              mc:Ignorable="d"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="500"
-             d:DesignWidth="970"
-             WindowStyle="None">
+             d:DesignWidth="970">
     <Grid>
         <Grid MinWidth="950"
               MinHeight="500"
@@ -25,22 +24,6 @@
                         FontWeight="Bold"
                         FontSize="30"
                         Height="64">Recepti</Label>
-                <Button Grid.Column="2"
-                    x:Name="Exit"
-                    HorizontalAlignment="Right"
-                    Command="{Binding Exit, UpdateSourceTrigger=PropertyChanged}"
-                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
-                    ToolTip="Exit form"
-                    BorderBrush="#FFC34A4A"
-                    Background="#FFC34A4A"
-                    Margin="30 0"
-                    Height="22"
-                    Width="22"
-                    Visibility="Visible">
-                    <materialDesign:PackIcon Kind="Close"
-                                         Height="16"
-                                         Width="16" />
-                </Button>
                 <Border Grid.Row="0"
                         BorderThickness="0"
                         Margin="30,65,30,0"
@@ -78,6 +61,19 @@
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Right"
                                     Content="Azuriraj Recept"
+                                    BorderBrush="{x:Null}"></Button>
+                <Button x:Name="btnAddRecipe"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"
+                                    materialDesign:ButtonAssist.CornerRadius="15"
+                                    ToolTip="Dodaj recept"
+                                    Margin="50 5"
+                                    Width="130"
+                                    Foreground="White"
+                                    Command="{Binding AddRecipe, UpdateSourceTrigger=PropertyChanged}"
+                                    Height="30"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Left"
+                                    Content="Dodaj Recept"
                                     BorderBrush="{x:Null}"></Button>
                 <DataGrid Name="DataGridOrder"
                       Grid.Row="1"
@@ -134,8 +130,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
-            
         </Grid>
     </Grid>
-</Window>
+</UserControl>
 
