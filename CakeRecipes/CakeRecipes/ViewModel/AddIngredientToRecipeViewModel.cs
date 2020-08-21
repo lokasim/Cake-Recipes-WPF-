@@ -300,7 +300,7 @@ namespace CakeRecipes.ViewModel
         }
 
         /// <summary>
-        /// Method for deleting the selected item from the order
+        /// Method for deleting the selected item from the list
         /// </summary>
         public void DeleteExecute()
         {
@@ -324,6 +324,11 @@ namespace CakeRecipes.ViewModel
             }
         }
 
+
+        /// <summary>
+        /// Checks if its possible to press the delete button
+        /// </summary>
+        /// <returns></returns>
         public bool CanDeleteExecute()
         {
             if (IngredientAmount == null)
@@ -414,7 +419,14 @@ namespace CakeRecipes.ViewModel
         /// <returns></returns>
         private bool CanAddToRecipeExecute()
         {
-            return true;
+            if (RecipeIngrediantAmountList.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
         #endregion
     }

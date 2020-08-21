@@ -27,6 +27,17 @@ namespace CakeRecipes.ViewModel
             addRecipe = addRecipeOpen;
             IngredientList = ingrediantsData.GetAllIngredients().ToList();
         }
+
+        /// <summary>
+        /// Opens the Edit Recipe Window
+        /// </summary>
+        /// <param name="addRecipeOpen">opens the edit recipe window</param>
+        /// <param name="recipeEdit">gets the recipe info that is being edited</param>
+        public AddRecipeViewModel(AddRecipe addRecipeOpen, tblRecipe recipeEdit)
+        {
+            recipe = recipeEdit;
+            addRecipe = addRecipeOpen;
+        }
         #endregion
 
         #region Property

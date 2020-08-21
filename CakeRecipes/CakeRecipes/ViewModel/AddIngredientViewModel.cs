@@ -91,10 +91,7 @@ namespace CakeRecipes.ViewModel
 
                 ingrediantsData.AddIngredient(Ingredient);
                 isUpdateIngredient = true;
-                AddRecipe test = new AddRecipe();
                 addIngredient.Close();
-
-                test.Show();
             }
             catch (Exception ex)
             {

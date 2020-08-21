@@ -1,4 +1,5 @@
-﻿using CakeRecipes.ViewModel;
+﻿using CakeRecipes.Models;
+using CakeRecipes.ViewModel;
 using System;
 using System.Media;
 using System.Windows;
@@ -17,6 +18,14 @@ namespace CakeRecipes.Views
             InitializeComponent();
             this.Name = "AddIngredient";
             this.DataContext = new AddRecipeViewModel(this);
+            this.Language = XmlLanguage.GetLanguage("sr-SR");
+        }
+
+        public AddRecipe(tblRecipe recipeEdit)
+        {
+            InitializeComponent();
+            this.Name = "AddIngredient";
+            this.DataContext = new AddRecipeViewModel(this, recipeEdit);
             this.Language = XmlLanguage.GetLanguage("sr-SR");
         }
 
