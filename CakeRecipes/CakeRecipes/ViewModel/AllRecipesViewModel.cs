@@ -15,7 +15,9 @@ namespace CakeRecipes.ViewModel
     class AllRecipesViewModel : ViewModelBase
     {
         RecipeService recipeData = new RecipeService();
-        AllRecipesWindow allReciperWindow;
+        IngredientService ingredientData = new IngredientService();
+        readonly AllRecipesWindow allReciperWindow;
+        public static bool isRecipeNotUpdated = false;
 
         #region Constructor
         /// <summary>
@@ -143,6 +145,20 @@ namespace CakeRecipes.ViewModel
         /// </summary>
         public void EditRecipeExecute()
         {
+            tblRecipe tempRecipe = new tblRecipe
+            {
+                RecipeID = 0,
+                RecipeName = Recipe.RecipeName,
+                RecipeType = Recipe.RecipeType,
+                NoPeople = Recipe.NoPeople,
+                RecipeDescription = Recipe.RecipeDescription,
+                CreationDate = Recipe.CreationDate,
+                UserID = Recipe.UserID,
+                Changed = Recipe.Changed
+            };
+            
+            List<tblIngredientAmount> tempRecipeIngrediantAmountList = recipeData.GetAllSelectedRecipeIngrediantAmount(recipe.RecipeID).ToList();
+
             try
             {
                 MessageBoxResult dialogDelete = Xceed.Wpf.Toolkit.MessageBox.Show($"Da li zelite da azurirate ovaj recept iz liste?\n\nRecept: {Recipe.RecipeName}", "Azuriraj recept", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -153,6 +169,19 @@ namespace CakeRecipes.ViewModel
                     {
                         AddRecipe addRecipeWindow = new AddRecipe(Recipe);
                         addRecipeWindow.ShowDialog();
+
+                        // Checks if the recipe did not get updated
+                        if(isRecipeNotUpdated == true)
+                        {
+                            recipeData.AddRecipe(tempRecipe);
+                            for (int i = 0; i < tempRecipeIngrediantAmountList.Count; i++)
+                            {
+                                tempRecipeIngrediantAmountList[i].IngredientAmountID = 0;
+                                tempRecipeIngrediantAmountList[i].RecipeID = tempRecipe.RecipeID;
+                                recipeData.AddIngredientAmount(tempRecipeIngrediantAmountList[i]);
+                            }
+                            isRecipeNotUpdated = false;
+                        }
                         RecipeList = recipeData.GetAllRecipes().ToList();
                     }
                 }
@@ -222,7 +251,14 @@ namespace CakeRecipes.ViewModel
         /// <returns></returns>
         public bool CanAddRecipeExecute()
         {
-            return true;
+            if (ingredientData.GetAllIngredients().Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
         #endregion
     }

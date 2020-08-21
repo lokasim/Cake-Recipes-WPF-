@@ -112,17 +112,39 @@ namespace CakeRecipes.Services
                 {
                     if (recipe.RecipeID == 0)
                     {
-                        tblRecipe newRecipe = new tblRecipe
-                        {
-                            RecipeName = recipe.RecipeName,
-                            RecipeType = recipe.RecipeType,
-                            NoPeople = recipe.NoPeople,
-                            RecipeDescription = recipe.RecipeDescription,
-                            CreationDate = DateTime.Now,
-                            Changed = LoggedGuest.NameSurname,
-                            UserID = LoggedGuest.ID
-                        };
+                        tblRecipe newRecipe = new tblRecipe();
+                        newRecipe.RecipeName = recipe.RecipeName;
+                        newRecipe.RecipeType = recipe.RecipeType;
+                        newRecipe.NoPeople = recipe.NoPeople;
+                        newRecipe.RecipeDescription = recipe.RecipeDescription;
 
+                        if (recipe.CreationDate != default(DateTime))
+                        {
+                            newRecipe.CreationDate = recipe.CreationDate;
+                        }
+                        else
+                        {
+                            newRecipe.CreationDate = DateTime.Now;
+                        }
+
+                        if (recipe.Changed != null)
+                        {
+                            newRecipe.Changed = recipe.Changed;
+                        }
+                        else
+                        {
+                            newRecipe.Changed = LoggedGuest.NameSurname;
+                        }
+
+                        if (recipe.UserID != null)
+                        {
+                            newRecipe.UserID = recipe.UserID;
+                        }
+                        else
+                        {
+                            newRecipe.UserID = LoggedGuest.ID;
+                        }
+                            
                         context.tblRecipes.Add(newRecipe);
                         context.SaveChanges();
                         recipe.RecipeID = newRecipe.RecipeID;

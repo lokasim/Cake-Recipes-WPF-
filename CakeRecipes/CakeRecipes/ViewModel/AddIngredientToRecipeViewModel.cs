@@ -362,12 +362,13 @@ namespace CakeRecipes.ViewModel
         /// </summary>
         private void ExitExecute()
         {
-            MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Da li odustajete od dodavanja sastojaka\nCeo proces kreiranja recepta ce vam biti obrisan", "Odustani", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Da li odustajete od dodavanja sastojaka\nCeo proces kreiranja recepta ce vam biti ignorisan", "Odustani", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (dialog == MessageBoxResult.Yes)
             {
                 recipeData.DeleteRecipe(RecipeID);
                 addIngredientToRecipe.Close();
+                AllRecipesViewModel.isRecipeNotUpdated = true;
             }
         }
 
