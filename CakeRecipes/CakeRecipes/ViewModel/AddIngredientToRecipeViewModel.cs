@@ -389,7 +389,7 @@ namespace CakeRecipes.ViewModel
             if (dialog == MessageBoxResult.Yes)
             {
                 recipeData.DeleteRecipe(RecipeID);
-                addIngredientToRecipe.Close();
+                //addIngredientToRecipe.Close();
                 AllRecipesViewModel.isRecipeNotUpdated = true;
             }
         }
@@ -428,7 +428,7 @@ namespace CakeRecipes.ViewModel
 
             if (dialog == MessageBoxResult.Yes)
             {
-                addIngredientToRecipe.Close();
+                //addIngredientToRecipe.Close();
             }
             else
             {

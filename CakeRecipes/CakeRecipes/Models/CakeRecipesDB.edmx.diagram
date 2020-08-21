@@ -4,23 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a7569dfdce5f468291ee33b1dfb1800e" Name="Diagram1">
-        <EntityTypeShape EntityType="CakeRecipesDBModel.tblIngredient" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CakeRecipesDBModel.tblIngredientAmount" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CakeRecipesDBModel.tblIngredientStorage" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CakeRecipesDBModel.tblRecipe" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CakeRecipesDBModel.tblShoppingBasket" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CakeRecipesDBModel.tblUser" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CakeRecipesDBModel.vwIngredientStorage" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CakeRecipesDBModel.vwRecipe" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CakeRecipesDBModel.vwShoppingBasket" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="CakeRecipesDBModel.FK__tblIngred__Ingre__0D64F3ED" ManuallyRouted="false" />
-        <AssociationConnector Association="CakeRecipesDBModel.FK__tblIngred__Ingre__113584D1" ManuallyRouted="false" />
-        <AssociationConnector Association="CakeRecipesDBModel.FK__tblShoppi__Ingre__150615B5" ManuallyRouted="false" />
-        <AssociationConnector Association="CakeRecipesDBModel.FK__tblIngred__Recip__0C70CFB4" ManuallyRouted="false" />
-        <AssociationConnector Association="CakeRecipesDBModel.FK__tblIngred__UserI__10416098" ManuallyRouted="false" />
-        <AssociationConnector Association="CakeRecipesDBModel.FK__tblRecipe__UserI__09946309" ManuallyRouted="false" />
-        <AssociationConnector Association="CakeRecipesDBModel.FK__tblShoppi__UserI__1411F17C" ManuallyRouted="false" />
+      <Diagram DiagramId="343e3ad063414e50bbf33598f2f77947" Name="Diagram1">
+        <EntityTypeShape EntityType="CakeRecipesDB.tblIngredient" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeRecipesDB.tblIngredientAmount" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeRecipesDB.tblIngredientStorage" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeRecipesDB.tblRecipe" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeRecipesDB.tblShoppingBasket" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeRecipesDB.tblUser" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeRecipesDB.vwIngredientStorage" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeRecipesDB.vwRecipe" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeRecipesDB.vwShoppingBasket" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="CakeRecipesDB.FK__tblIngred__Ingre__08162EEB" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeRecipesDB.FK__tblIngred__Ingre__0BE6BFCF" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeRecipesDB.FK__tblShoppi__Ingre__0FB750B3" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeRecipesDB.FK__tblIngred__Recip__07220AB2" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeRecipesDB.FK__tblIngred__UserI__0AF29B96" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeRecipesDB.FK__tblRecipe__UserI__04459E07" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeRecipesDB.FK__tblShoppi__UserI__0EC32C7A" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

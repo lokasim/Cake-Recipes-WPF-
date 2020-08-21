@@ -20,7 +20,8 @@ namespace CakeRecipes.Services
 
                     if (username == usernameFromDB)
                     {
-                        return (from e in context.tblUsers where e.Username == username select e).FirstOrDefault();
+                        tblUser user = (from e in context.tblUsers where e.Username.Equals(username) where e.UserPassword.Equals(password) select e).First();
+                        return user;
                     }
 
                     return null;

@@ -1,5 +1,6 @@
 ﻿using CakeRecipes.ViewModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Markup;
 
 namespace CakeRecipes.Views
@@ -7,7 +8,7 @@ namespace CakeRecipes.Views
     /// <summary>
     /// Interaction logic for AddIngredientToRecipe.xaml
     /// </summary>
-    public partial class AddIngredientToRecipe : Window
+    public partial class AddIngredientToRecipe : UserControl
     {
         public AddIngredientToRecipe(int RecipeID)
         {
