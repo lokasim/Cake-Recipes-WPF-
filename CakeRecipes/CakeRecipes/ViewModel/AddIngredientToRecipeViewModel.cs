@@ -14,8 +14,8 @@ namespace CakeRecipes.ViewModel
     {
         readonly AddIngredientToRecipe addIngredientToRecipe;
         readonly AddIngredientAmountToRecipe addIngredientAmountToRecipe;
-        IngredientsData ingrediantsData = new IngredientsData();
-        RecipeData recipeData = new RecipeData();
+        IngredientService ingrediantsData = new IngredientService();
+        RecipeService recipeData = new RecipeService();
 
         #region Constructor
         /// <summary>

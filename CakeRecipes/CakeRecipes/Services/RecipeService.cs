@@ -3,15 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CakeRecipes.Services
 {
     /// <summary>
     /// Class used to create the CRUD structure for Recipes
     /// </summary>
-    class RecipeData
+    class RecipeService
     {
         /// <summary>
         /// Get all data about recipes from the database
@@ -33,6 +31,23 @@ namespace CakeRecipes.Services
                 Debug.WriteLine("Exception" + ex.Message.ToString());
                 return null;
             }
+        }
+
+        /// <summary>
+        /// Get all data about recipes from the current user
+        /// </summary>
+        /// <returns>The list of all recipes</returns>
+        public List<tblRecipe> GetAllRecipesFromCurrentUser(int userID)
+        {
+            List<tblRecipe> list = new List<tblRecipe>();
+            for (int i = 0; i < GetAllRecipes().Count; i++)
+            {
+                if (GetAllRecipes()[i].UserID == userID)
+                {
+                    list.Add(GetAllRecipes()[i]);
+                }
+            }
+            return list;
         }
 
         /// <summary>
@@ -180,6 +195,11 @@ namespace CakeRecipes.Services
             }
         }
 
+        /// <summary>
+        /// Checks if the ingredient was previoulsy added
+        /// </summary>
+        /// <param name="ingredientAmount">Ingredient we are checking</param>
+        /// <returns>The id of the ingredient that was added or not</returns>
         public int IsIngredientAdded(tblIngredientAmount ingredientAmount)
         {
             for (int i = 0; i < GetAllSelectedRecipeIngrediantAmount(ingredientAmount.RecipeID).Count; i++)

@@ -1,9 +1,9 @@
 ﻿using CakeRecipes.Command;
+using CakeRecipes.Helper;
 using CakeRecipes.Models;
 using CakeRecipes.Services;
 using CakeRecipes.Views;
 using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
@@ -12,7 +12,7 @@ namespace CakeRecipes.ViewModel
     class AddIngredientViewModel : ViewModelBase
     {
         readonly AddIngredient addIngredient;
-        IngredientsData ingrediantsData = new IngredientsData();
+        IngredientService ingrediantsData = new IngredientService();
 
         #region Constructor
         /// <summary>
@@ -82,6 +82,13 @@ namespace CakeRecipes.ViewModel
         {
             try
             {
+                Validations val = new Validations();
+                if (val.IngredientNameChecker(Ingredient.IngredientName) != null)
+                {
+                    Xceed.Wpf.Toolkit.MessageBox.Show(val.IngredientNameChecker(Ingredient.IngredientName), "Naziv sastojka");
+                    return;
+                }
+
                 ingrediantsData.AddIngredient(Ingredient);
                 isUpdateIngredient = true;
                 AddRecipe test = new AddRecipe();

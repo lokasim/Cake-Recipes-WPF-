@@ -9,7 +9,7 @@ namespace CakeRecipes.Services
     /// <summary>
     /// Class used to create the CRUD structure for Ingredients
     /// </summary>
-    class IngredientsData
+    class IngredientService
     {
         /// <summary>
         /// Get all data about ingredients from the database

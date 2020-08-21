@@ -88,6 +88,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helper\IngredientNameConverter.cs" />
+    <Compile Include="Helper\Validations.cs" />
     <Compile Include="Models\CakeRecipesDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -130,8 +131,8 @@
     <Compile Include="Models\vwShoppingBasket.cs">
       <DependentUpon>CakeRecipesDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Services\IngredientsData.cs" />
-    <Compile Include="Services\RecipeData.cs" />
+    <Compile Include="Services\IngredientService.cs" />
+    <Compile Include="Services\RecipeService.cs" />
     <Compile Include="ViewModel\AddIngredientToRecipeViewModel.cs" />
     <Compile Include="ViewModel\AddIngredientViewModel.cs" />
     <Compile Include="ViewModel\AddRecipeViewModel.cs" />

@@ -5,10 +5,7 @@ using CakeRecipes.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CakeRecipes.ViewModel
@@ -16,8 +13,8 @@ namespace CakeRecipes.ViewModel
     class AddRecipeViewModel : ViewModelBase
     {
         readonly AddRecipe addRecipe;
-        RecipeData recipesData = new RecipeData();
-        IngredientsData ingrediantsData = new IngredientsData();
+        RecipeService recipesData = new RecipeService();
+        IngredientService ingrediantsData = new IngredientService();
 
         #region Commands
         /// <summary>

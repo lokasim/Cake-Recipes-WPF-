@@ -64,7 +64,7 @@
                 <Grid Grid.Row="2">
                     <TextBox    Grid.Row="2"
                                 x:Name="txtIngredientName"
-                                materialDesign:HintAssist.Hint="Ime sastojka *"
+                                materialDesign:HintAssist.Hint="Naziv sastojka *"
                                 Width="270"
                                 HorizontalContentAlignment="Center"
                                 Text="{Binding Ingredient.IngredientName, UpdateSourceTrigger=PropertyChanged}"
