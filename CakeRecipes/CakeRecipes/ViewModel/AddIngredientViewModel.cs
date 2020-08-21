@@ -1,9 +1,9 @@
 ﻿using CakeRecipes.Command;
+using CakeRecipes.Helper;
 using CakeRecipes.Models;
 using CakeRecipes.Services;
 using CakeRecipes.Views;
 using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
@@ -12,13 +12,14 @@ namespace CakeRecipes.ViewModel
     class AddIngredientViewModel : ViewModelBase
     {
         readonly AddIngredient addIngredient;
-        IngredientsData ingrediantsData = new IngredientsData();
+        IngredientService ingrediantsData = new IngredientService();
 
         #region Constructor
         /// <summary>
         /// Opens the Add ingredient window
         /// </summary>
-        /// <param name="addIngrediwntOpen">Window that we open</param>
+        /// <param name="addIngredientOpen">Window that we open</param>
+        /// <param name="recipeID">recipe id</param>
         public AddIngredientViewModel(AddIngredient addIngredientOpen)
         {
             ingredient = new tblIngredient();
@@ -81,12 +82,16 @@ namespace CakeRecipes.ViewModel
         {
             try
             {
+                Validations val = new Validations();
+                if (val.IngredientNameChecker(Ingredient.IngredientName) != null)
+                {
+                    Xceed.Wpf.Toolkit.MessageBox.Show(val.IngredientNameChecker(Ingredient.IngredientName), "Naziv sastojka");
+                    return;
+                }
+
                 ingrediantsData.AddIngredient(Ingredient);
                 isUpdateIngredient = true;
-                AddIngredientToRecipe test = new AddIngredientToRecipe();
                 addIngredient.Close();
-
-                test.Show();
             }
             catch (Exception ex)
             {

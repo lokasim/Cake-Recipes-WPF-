@@ -17,7 +17,7 @@ namespace CakeRecipes.Views
             this.Name = "AddIngredient";
             this.DataContext = new AddIngredientViewModel(this);
             this.Language = XmlLanguage.GetLanguage("sr-SR");
-            lblNaslov.Content = "Add Ingredient";
+            lblNaslov.Content = "Dodaj sastojak";
         }
 
         private void DragMe(object sender, MouseButtonEventArgs e)
