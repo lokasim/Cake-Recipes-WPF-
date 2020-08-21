@@ -53,8 +53,12 @@ namespace CakeRecipes
                         new Subitem("Svi Recepti", new AllRecipesWindow()),
                     };
 
-                var item1 = new ItemMenu("Recepti", menuOrders, PackIconKind.Pizzeria);
+                var menuShopping = new List<Subitem>
+                    {
+                        new Subitem("Sve Shopping Liste", new AllShoppingList()),
+                    };
 
+                var item1 = new ItemMenu("Recepti", menuOrders, PackIconKind.Pizzeria);
                 var item50 = new ItemMenu("Menu", new UserControl(), PackIconKind.Pizza);
 
                 Menu.Children.Add(new UserControlMenuItem(item50, this));
@@ -77,12 +81,18 @@ namespace CakeRecipes
                         new Subitem("Svi Recepti", new AllRecipesWindow()),
                     };
 
-                var item1 = new ItemMenu("Recepti", menuOrders, PackIconKind.Pizzeria);
+                var menuShopping = new List<Subitem>
+                    {
+                        new Subitem("Sve Shopping Liste", new AllShoppingList()),
+                    };
 
+                var item1 = new ItemMenu("Recepti", menuOrders, PackIconKind.Pizzeria);
+                var item2 = new ItemMenu("Shopping Lista", menuShopping, PackIconKind.Pizzeria);
                 var item50 = new ItemMenu("Menu", new UserControl(), PackIconKind.Pizza);
 
                 Menu.Children.Add(new UserControlMenuItem(item50, this));
                 Menu.Children.Add(new UserControlMenuItem(item1, this));
+                Menu.Children.Add(new UserControlMenuItem(item2, this));
             }
 
             //determines the current page length
