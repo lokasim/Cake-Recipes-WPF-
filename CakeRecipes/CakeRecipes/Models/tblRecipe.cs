@@ -26,7 +26,7 @@ namespace CakeRecipes.Models
         public int NoPeople { get; set; }
         public string RecipeDescription { get; set; }
         public System.DateTime CreationDate { get; set; }
-        public int UserID { get; set; }
+        public Nullable<int> UserID { get; set; }
         public string Changed { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

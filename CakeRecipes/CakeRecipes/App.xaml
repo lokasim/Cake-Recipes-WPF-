@@ -4,13 +4,7 @@
              xmlns:local="clr-namespace:CakeRecipes"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-<<<<<<< HEAD
-             StartupUri="Views/AddIngredient.xaml">
-=======
-             
              StartupUri="MainWindow.xaml">
-    <!--StartupUri="Login.xaml">-->
->>>>>>> login_registration/Marko_Lokas
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

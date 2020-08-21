@@ -118,10 +118,7 @@ namespace CakeRecipes.ViewModel
         }
 
         private void LoginRegisterExecute()
-        {
-
-            
-
+        {          
             try
             {
                 LoginService s = new LoginService();

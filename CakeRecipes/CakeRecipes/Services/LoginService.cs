@@ -14,7 +14,7 @@ namespace CakeRecipes.Services
         {
             try
             {
-                using (CookDBEntities context = new CookDBEntities())
+                using (CakeRecipesDBEntities context = new CakeRecipesDBEntities())
                 {
                     string usernameFromDB = (from e in context.tblUsers where e.Username == username select e.Username).FirstOrDefault();
 
@@ -38,7 +38,7 @@ namespace CakeRecipes.Services
             try
             {
 
-                using (CookDBEntities context = new CookDBEntities())
+                using (CakeRecipesDBEntities context = new CakeRecipesDBEntities())
                 {
                     if (user.UserID == 0)
                     {
@@ -80,7 +80,7 @@ namespace CakeRecipes.Services
         {
             try
             {
-                using (CookDBEntities context = new CookDBEntities())
+                using (CakeRecipesDBEntities context = new CakeRecipesDBEntities())
                 {
                     string usernameFromDB = (from e in context.tblUsers where e.Username == username select e.Username).FirstOrDefault();
 

@@ -1,12 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-<<<<<<< HEAD
-  <EntityContainerMapping StorageEntityContainer="CookDBModelStoreContainer" CdmEntityContainer="CakeRecipesDBEntities">
-=======
-  <EntityContainerMapping StorageEntityContainer="CookDBModelStoreContainer" CdmEntityContainer="CookDBEntities">
->>>>>>> login_registration/Marko_Lokas
+  <EntityContainerMapping StorageEntityContainer="CakeRecipesDBModelStoreContainer" CdmEntityContainer="CakeRecipesDBEntities">
     <EntitySetMapping Name="tblIngredients">
-      <EntityTypeMapping TypeName="CookDBModel.tblIngredient">
+      <EntityTypeMapping TypeName="CakeRecipesDBModel.tblIngredient">
         <MappingFragment StoreEntitySet="tblIngredient">
           <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
           <ScalarProperty Name="IngredientName" ColumnName="IngredientName" />
@@ -14,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblIngredientAmounts">
-      <EntityTypeMapping TypeName="CookDBModel.tblIngredientAmount">
+      <EntityTypeMapping TypeName="CakeRecipesDBModel.tblIngredientAmount">
         <MappingFragment StoreEntitySet="tblIngredientAmount">
           <ScalarProperty Name="IngredientAmountID" ColumnName="IngredientAmountID" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -24,7 +20,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblIngredientStorages">
-      <EntityTypeMapping TypeName="CookDBModel.tblIngredientStorage">
+      <EntityTypeMapping TypeName="CakeRecipesDBModel.tblIngredientStorage">
         <MappingFragment StoreEntitySet="tblIngredientStorage">
           <ScalarProperty Name="IngredientStorageID" ColumnName="IngredientStorageID" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -34,7 +30,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblRecipes">
-      <EntityTypeMapping TypeName="CookDBModel.tblRecipe">
+      <EntityTypeMapping TypeName="CakeRecipesDBModel.tblRecipe">
         <MappingFragment StoreEntitySet="tblRecipe">
           <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
           <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
@@ -48,7 +44,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblShoppingBaskets">
-      <EntityTypeMapping TypeName="CookDBModel.tblShoppingBasket">
+      <EntityTypeMapping TypeName="CakeRecipesDBModel.tblShoppingBasket">
         <MappingFragment StoreEntitySet="tblShoppingBasket">
           <ScalarProperty Name="ShoppingBasketID" ColumnName="ShoppingBasketID" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -58,7 +54,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblUsers">
-      <EntityTypeMapping TypeName="CookDBModel.tblUser">
+      <EntityTypeMapping TypeName="CakeRecipesDBModel.tblUser">
         <MappingFragment StoreEntitySet="tblUser">
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="FirstLastName" ColumnName="FirstLastName" />
@@ -68,7 +64,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="vwIngredientStorages">
-      <EntityTypeMapping TypeName="CookDBModel.vwIngredientStorage">
+      <EntityTypeMapping TypeName="CakeRecipesDBModel.vwIngredientStorage">
         <MappingFragment StoreEntitySet="vwIngredientStorage">
           <ScalarProperty Name="IngredientStorageID" ColumnName="IngredientStorageID" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -84,7 +80,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="vwRecipes">
-      <EntityTypeMapping TypeName="CookDBModel.vwRecipe">
+      <EntityTypeMapping TypeName="CakeRecipesDBModel.vwRecipe">
         <MappingFragment StoreEntitySet="vwRecipe">
           <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
           <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
@@ -108,7 +104,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="vwShoppingBaskets">
-      <EntityTypeMapping TypeName="CookDBModel.vwShoppingBasket">
+      <EntityTypeMapping TypeName="CakeRecipesDBModel.vwShoppingBasket">
         <MappingFragment StoreEntitySet="vwShoppingBasket">
           <ScalarProperty Name="ShoppingBasketID" ColumnName="ShoppingBasketID" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
