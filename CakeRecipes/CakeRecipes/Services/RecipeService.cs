@@ -76,7 +76,7 @@ namespace CakeRecipes.Services
         /// <summary>
         /// Get all data about ingredients from selected recipe from the database
         /// </summary>
-        /// <param name="recipe">The recipe ID we are getting the ingredients from</param>
+        /// <param name="recipeID">The recipe ID we are getting the ingredients from</param>
         /// <returns>The list of all ingredients from recipes</returns>
         public List<tblIngredientAmount> GetAllSelectedRecipeIngrediantAmount(int recipeID)
         {
@@ -293,7 +293,7 @@ namespace CakeRecipes.Services
         }
 
         /// <summary>
-        /// Deletes recipe
+        /// Deletes ingredient amount
         /// </summary>
         /// <param name="ingredientAmountID">the ingredientAmount that is being deleted</param>
         public void DeleteIngredientAmount(int ingredientAmountID)

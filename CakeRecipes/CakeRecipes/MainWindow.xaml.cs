@@ -46,28 +46,23 @@ namespace CakeRecipes
             {
                 lblPrezime.Content = "Administrator".ToString();
                 lblIme.Content = "".ToString(); ;
-                var menuRecipe = new List<Subitem>
+                var menuOrders = new List<Subitem>
                     {
                         //new Subitem("Napisi novi recept", new AddRecipe()),
                         //new Subitem("All orders"),
-                        new Subitem("Lista recepata", new AllRecipesWindow()),
+                        new Subitem("Svi Recepti", new AllRecipesWindow()),
                     };
 
-                var item1 = new ItemMenu("Recepti", menuRecipe, PackIconKind.FileDocumentOutline);
-                var menuIngredient = new List<Subitem>
+                var menuShopping = new List<Subitem>
                     {
-                        //new Subitem("Napisi novi recept", new AddRecipe()),
-                        //new Subitem("All orders"),
-                        new Subitem("Lista sastojaka", new AddIngredientMenu()),
+                        new Subitem("Sve Shopping Liste", new AllShoppingList()),
                     };
 
-                var item2 = new ItemMenu("Sastojci", menuIngredient, PackIconKind.Cookie);
-
-                var item50 = new ItemMenu("Meni", new UserControl(), PackIconKind.Cupcake);
+                var item1 = new ItemMenu("Recepti", menuOrders, PackIconKind.Pizzeria);
+                var item50 = new ItemMenu("Menu", new UserControl(), PackIconKind.Pizza);
 
                 Menu.Children.Add(new UserControlMenuItem(item50, this));
                 Menu.Children.Add(new UserControlMenuItem(item1, this));
-                Menu.Children.Add(new UserControlMenuItem(item2, this));
             }
 
             //Guest menu
@@ -80,24 +75,20 @@ namespace CakeRecipes
                 //    PrintMessage();
                 //}
 
-                var menuRecipe = new List<Subitem>
+                var menuOrders = new List<Subitem>
                     {
                         //new Subitem("Napisi novi recept", new AddRecipe()),
-                        //new Subitem("All orders"),
-                        new Subitem("Lista recepata", new AllRecipesWindow()),
+                        new Subitem("Svi Recepti", new AllRecipesWindow()),
                     };
 
-                var item1 = new ItemMenu("Recepti", menuRecipe, PackIconKind.FileDocumentOutline);
-                var menuIngredient = new List<Subitem>
+                var menuShopping = new List<Subitem>
                     {
-                        //new Subitem("Napisi novi recept", new AddRecipe()),
-                        //new Subitem("All orders"),
-                        new Subitem("Lista sastojaka", new AddIngredientMenu()),
+                        new Subitem("Sve Shopping Liste", new AllShoppingList()),
                     };
 
-                var item2 = new ItemMenu("Sastojci", menuIngredient, PackIconKind.Cookie);
-
-                var item50 = new ItemMenu("Meni", new UserControl(), PackIconKind.Cupcake);
+                var item1 = new ItemMenu("Recepti", menuOrders, PackIconKind.Pizzeria);
+                var item2 = new ItemMenu("Shopping Lista", menuShopping, PackIconKind.Pizzeria);
+                var item50 = new ItemMenu("Menu", new UserControl(), PackIconKind.Pizza);
 
                 Menu.Children.Add(new UserControlMenuItem(item50, this));
                 Menu.Children.Add(new UserControlMenuItem(item1, this));
@@ -222,13 +213,13 @@ namespace CakeRecipes
             if (this.WindowState == WindowState.Normal)
             {
                 this.WindowState = WindowState.Maximized;
-                PovecajProzor.ToolTip = "Smanji prozor";
+                PovecajProzor.ToolTip = "Restore Down";
                 PovecajProzor1.Visibility = Visibility.Visible;
             }
             else if (this.WindowState == WindowState.Maximized)
             {
                 this.WindowState = WindowState.Normal;
-                PovecajProzor.ToolTip = "Povećaj prozor";
+                PovecajProzor.ToolTip = "Maximize";
                 PovecajProzor1.Visibility = Visibility.Collapsed;
             }
         }
