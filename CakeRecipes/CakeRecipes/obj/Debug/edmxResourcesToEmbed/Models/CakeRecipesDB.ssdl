@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="CakeRecipesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="CakeRecipesDB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="tblIngredient">
     <Key>
       <PropertyRef Name="IngredientID" />
@@ -148,7 +148,7 @@ warning 6002: The table/view 'CookDB.dbo.vwShoppingBasket' does not have a prima
     <Property Name="Username" Type="nvarchar" MaxLength="40" Nullable="false" />
     <Property Name="UserPassword" Type="char" MaxLength="1000" Nullable="false" />
   </EntityType>
-  <Association Name="FK__tblIngred__Ingre__0D64F3ED">
+  <Association Name="FK__tblIngred__Ingre__08162EEB">
     <End Role="tblIngredient" Type="Self.tblIngredient" Multiplicity="1" />
     <End Role="tblIngredientAmount" Type="Self.tblIngredientAmount" Multiplicity="*" />
     <ReferentialConstraint>
@@ -160,7 +160,7 @@ warning 6002: The table/view 'CookDB.dbo.vwShoppingBasket' does not have a prima
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblIngred__Ingre__113584D1">
+  <Association Name="FK__tblIngred__Ingre__0BE6BFCF">
     <End Role="tblIngredient" Type="Self.tblIngredient" Multiplicity="1" />
     <End Role="tblIngredientStorage" Type="Self.tblIngredientStorage" Multiplicity="*" />
     <ReferentialConstraint>
@@ -172,7 +172,7 @@ warning 6002: The table/view 'CookDB.dbo.vwShoppingBasket' does not have a prima
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblIngred__Recip__0C70CFB4">
+  <Association Name="FK__tblIngred__Recip__07220AB2">
     <End Role="tblRecipe" Type="Self.tblRecipe" Multiplicity="1" />
     <End Role="tblIngredientAmount" Type="Self.tblIngredientAmount" Multiplicity="*" />
     <ReferentialConstraint>
@@ -184,7 +184,7 @@ warning 6002: The table/view 'CookDB.dbo.vwShoppingBasket' does not have a prima
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblIngred__UserI__10416098">
+  <Association Name="FK__tblIngred__UserI__0AF29B96">
     <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
     <End Role="tblIngredientStorage" Type="Self.tblIngredientStorage" Multiplicity="*" />
     <ReferentialConstraint>
@@ -196,7 +196,7 @@ warning 6002: The table/view 'CookDB.dbo.vwShoppingBasket' does not have a prima
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblRecipe__UserI__09946309">
+  <Association Name="FK__tblRecipe__UserI__04459E07">
     <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
     <End Role="tblRecipe" Type="Self.tblRecipe" Multiplicity="*" />
     <ReferentialConstraint>
@@ -208,7 +208,7 @@ warning 6002: The table/view 'CookDB.dbo.vwShoppingBasket' does not have a prima
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblShoppi__Ingre__150615B5">
+  <Association Name="FK__tblShoppi__Ingre__0FB750B3">
     <End Role="tblIngredient" Type="Self.tblIngredient" Multiplicity="1" />
     <End Role="tblShoppingBasket" Type="Self.tblShoppingBasket" Multiplicity="*" />
     <ReferentialConstraint>
@@ -220,7 +220,7 @@ warning 6002: The table/view 'CookDB.dbo.vwShoppingBasket' does not have a prima
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblShoppi__UserI__1411F17C">
+  <Association Name="FK__tblShoppi__UserI__0EC32C7A">
     <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
     <End Role="tblShoppingBasket" Type="Self.tblShoppingBasket" Multiplicity="*" />
     <ReferentialConstraint>
@@ -232,7 +232,7 @@ warning 6002: The table/view 'CookDB.dbo.vwShoppingBasket' does not have a prima
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="CakeRecipesDBModelStoreContainer">
+  <EntityContainer Name="CakeRecipesDBStoreContainer">
     <EntitySet Name="tblIngredient" EntityType="Self.tblIngredient" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblIngredientAmount" EntityType="Self.tblIngredientAmount" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblIngredientStorage" EntityType="Self.tblIngredientStorage" Schema="dbo" store:Type="Tables" />
@@ -289,31 +289,31 @@ warning 6002: The table/view 'CookDB.dbo.vwShoppingBasket' does not have a prima
     [vwShoppingBasket].[UserPassword] AS [UserPassword]
     FROM [dbo].[vwShoppingBasket] AS [vwShoppingBasket]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__tblIngred__Ingre__0D64F3ED" Association="Self.FK__tblIngred__Ingre__0D64F3ED">
+    <AssociationSet Name="FK__tblIngred__Ingre__08162EEB" Association="Self.FK__tblIngred__Ingre__08162EEB">
       <End Role="tblIngredient" EntitySet="tblIngredient" />
       <End Role="tblIngredientAmount" EntitySet="tblIngredientAmount" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblIngred__Ingre__113584D1" Association="Self.FK__tblIngred__Ingre__113584D1">
+    <AssociationSet Name="FK__tblIngred__Ingre__0BE6BFCF" Association="Self.FK__tblIngred__Ingre__0BE6BFCF">
       <End Role="tblIngredient" EntitySet="tblIngredient" />
       <End Role="tblIngredientStorage" EntitySet="tblIngredientStorage" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblIngred__Recip__0C70CFB4" Association="Self.FK__tblIngred__Recip__0C70CFB4">
+    <AssociationSet Name="FK__tblIngred__Recip__07220AB2" Association="Self.FK__tblIngred__Recip__07220AB2">
       <End Role="tblRecipe" EntitySet="tblRecipe" />
       <End Role="tblIngredientAmount" EntitySet="tblIngredientAmount" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblIngred__UserI__10416098" Association="Self.FK__tblIngred__UserI__10416098">
+    <AssociationSet Name="FK__tblIngred__UserI__0AF29B96" Association="Self.FK__tblIngred__UserI__0AF29B96">
       <End Role="tblUser" EntitySet="tblUser" />
       <End Role="tblIngredientStorage" EntitySet="tblIngredientStorage" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblRecipe__UserI__09946309" Association="Self.FK__tblRecipe__UserI__09946309">
+    <AssociationSet Name="FK__tblRecipe__UserI__04459E07" Association="Self.FK__tblRecipe__UserI__04459E07">
       <End Role="tblUser" EntitySet="tblUser" />
       <End Role="tblRecipe" EntitySet="tblRecipe" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblShoppi__Ingre__150615B5" Association="Self.FK__tblShoppi__Ingre__150615B5">
+    <AssociationSet Name="FK__tblShoppi__Ingre__0FB750B3" Association="Self.FK__tblShoppi__Ingre__0FB750B3">
       <End Role="tblIngredient" EntitySet="tblIngredient" />
       <End Role="tblShoppingBasket" EntitySet="tblShoppingBasket" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblShoppi__UserI__1411F17C" Association="Self.FK__tblShoppi__UserI__1411F17C">
+    <AssociationSet Name="FK__tblShoppi__UserI__0EC32C7A" Association="Self.FK__tblShoppi__UserI__0EC32C7A">
       <End Role="tblUser" EntitySet="tblUser" />
       <End Role="tblShoppingBasket" EntitySet="tblShoppingBasket" />
     </AssociationSet>

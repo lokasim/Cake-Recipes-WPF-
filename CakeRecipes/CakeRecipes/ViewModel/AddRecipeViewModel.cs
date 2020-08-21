@@ -134,7 +134,7 @@ namespace CakeRecipes.ViewModel
 
                 AddIngredientToRecipe addIngredientWindow = new AddIngredientToRecipe(Recipe.RecipeID);
                 addRecipe.Close();
-                addIngredientWindow.ShowDialog();
+                //addIngredientWindow.ShowDialog();
             }
             catch (Exception ex)
             {

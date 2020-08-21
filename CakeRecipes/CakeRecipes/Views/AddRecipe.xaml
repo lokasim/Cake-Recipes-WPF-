@@ -8,7 +8,7 @@
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Napisi recept"
-        Height="500"
+        Height="620"
         Width="450"
         ResizeMode="NoResize"
         WindowStyle="None"
@@ -20,7 +20,7 @@
         WindowStartupLocation="CenterOwner">
     <Grid>
         <Border BorderBrush="#2196F3"
-                Height="500"
+                Height="620"
                 Width="450"
                 BorderThickness="3">
             <Grid Margin="0"
@@ -30,7 +30,7 @@
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
-                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="250"></RowDefinition>
                     <RowDefinition Height="80*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <TextBlock HorizontalAlignment="Stretch"
@@ -47,7 +47,7 @@
                     FontSize="36"
                     FontWeight="Bold"
                     Width="440"
-                    Content="Napisi recept">
+                    Content="Dodaj recept">
                
             </Label></TextBlock>
                 <TextBlock Grid.Row="1"
@@ -66,8 +66,8 @@
                 <Grid Grid.Row="2">
                     <TextBox    Grid.Row="2"
                                 x:Name="txtRecipeName"
-                                materialDesign:HintAssist.Hint="Naziv recepta *"
-                                Width="270"
+                                materialDesign:HintAssist.Hint="Naziv recepta*"
+                                Width="300"
                                 HorizontalContentAlignment="Center"
                                 Text="{Binding Recipe.RecipeName, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -76,15 +76,15 @@
                                 MaxLength="40"
                                 SelectionBrush="#FF8BC34A"></TextBox>
                 </Grid>
-                <Grid Grid.Row="3">
+                <Grid Grid.Row="3" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
                         <ComboBox x:Name="cbxRecipeTypes"
-                                      materialDesign:HintAssist.Hint="Tipovi recepta *"
-                                      Width="150"
+                                      materialDesign:HintAssist.Hint="Odaberite tip recepta*"
+                                      Width="140"
                                       Height="40"
                                       IsEditable="False"
                                       SelectedValue="{Binding Recipe.RecipeType, UpdateSourceTrigger=PropertyChanged}"
-                                      Margin="60,0,20,0"
+                                      Margin="0,0,10,0"
                                       VerticalAlignment="Top"
                                       Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                       SelectedValuePath="Content">
@@ -93,8 +93,8 @@
                             <ComboBoxItem Content="Desert"></ComboBoxItem>
                         </ComboBox>
                         <TextBox x:Name="txtNoPeople"
-                                     materialDesign:HintAssist.Hint="Broj Osoba *"
-                                     Width="150"
+                                     materialDesign:HintAssist.Hint="Broj osoba*"
+                                     Width="140"
                                      Text="{Binding Recipe.NoPeople, UpdateSourceTrigger=PropertyChanged}"
                                      MaxLength="50"
                                      DataObject.Pasting="PastingHandler"
@@ -109,16 +109,20 @@
                 </Grid>
                 <Grid Grid.Row="4">
                     <TextBox x:Name="txtDescription"
-                                     materialDesign:HintAssist.Hint="Opis Recepta *"
+                                     materialDesign:HintAssist.Hint="Opis recepta*"
                                      Width="300"
+
                                      Text="{Binding Recipe.RecipeDescription, UpdateSourceTrigger=PropertyChanged}"
                                      MaxLength="1000"
                                      PreviewKeyDown="TxtBox_PreviewKeyDown"
                                      TextWrapping="Wrap"
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     Height="40"
+                             
+                         AcceptsReturn="True"
+                         VerticalScrollBarVisibility="Auto"
+                                    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                                     Height="250"
                                      Padding="0,-2,0,0"
-                                     Margin="10,0,0,0"
+                                     Margin="0,5,0,5"
                                      VerticalAlignment="Top" />
                 </Grid>
                 <Grid Grid.Row="5">
@@ -148,7 +152,7 @@
                                VerticalAlignment="Bottom"
                                FontSize="14"
                                FontStyle="Italic"
-                               Foreground="Red">* - Required</TextBlock>
+                               Foreground="Red">* - Obavezno polje</TextBlock>
                     <Button Grid.Column="1"
                             x:Name="btnDodaj"
                             Style="{StaticResource MaterialDesignFloatingActionAccentButton}"

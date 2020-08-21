@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="CakeRecipesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="CakeRecipesDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="tblIngredient">
     <Key>
       <PropertyRef Name="IngredientID" />
     </Key>
     <Property Name="IngredientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IngredientName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="tblIngredientAmounts" Relationship="Self.FK__tblIngred__Ingre__0D64F3ED" FromRole="tblIngredient" ToRole="tblIngredientAmount" />
-    <NavigationProperty Name="tblIngredientStorages" Relationship="Self.FK__tblIngred__Ingre__113584D1" FromRole="tblIngredient" ToRole="tblIngredientStorage" />
-    <NavigationProperty Name="tblShoppingBaskets" Relationship="Self.FK__tblShoppi__Ingre__150615B5" FromRole="tblIngredient" ToRole="tblShoppingBasket" />
+    <NavigationProperty Name="tblIngredientAmounts" Relationship="Self.FK__tblIngred__Ingre__08162EEB" FromRole="tblIngredient" ToRole="tblIngredientAmount" />
+    <NavigationProperty Name="tblIngredientStorages" Relationship="Self.FK__tblIngred__Ingre__0BE6BFCF" FromRole="tblIngredient" ToRole="tblIngredientStorage" />
+    <NavigationProperty Name="tblShoppingBaskets" Relationship="Self.FK__tblShoppi__Ingre__0FB750B3" FromRole="tblIngredient" ToRole="tblShoppingBasket" />
   </EntityType>
   <EntityType Name="tblIngredientAmount">
     <Key>
@@ -18,8 +18,8 @@
     <Property Name="Amount" Type="Int32" Nullable="false" />
     <Property Name="RecipeID" Type="Int32" Nullable="false" />
     <Property Name="IngredientID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="tblIngredient" Relationship="Self.FK__tblIngred__Ingre__0D64F3ED" FromRole="tblIngredientAmount" ToRole="tblIngredient" />
-    <NavigationProperty Name="tblRecipe" Relationship="Self.FK__tblIngred__Recip__0C70CFB4" FromRole="tblIngredientAmount" ToRole="tblRecipe" />
+    <NavigationProperty Name="tblIngredient" Relationship="Self.FK__tblIngred__Ingre__08162EEB" FromRole="tblIngredientAmount" ToRole="tblIngredient" />
+    <NavigationProperty Name="tblRecipe" Relationship="Self.FK__tblIngred__Recip__07220AB2" FromRole="tblIngredientAmount" ToRole="tblRecipe" />
   </EntityType>
   <EntityType Name="tblIngredientStorage">
     <Key>
@@ -29,8 +29,8 @@
     <Property Name="Amount" Type="Int32" Nullable="false" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="IngredientID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="tblIngredient" Relationship="Self.FK__tblIngred__Ingre__113584D1" FromRole="tblIngredientStorage" ToRole="tblIngredient" />
-    <NavigationProperty Name="tblUser" Relationship="Self.FK__tblIngred__UserI__10416098" FromRole="tblIngredientStorage" ToRole="tblUser" />
+    <NavigationProperty Name="tblIngredient" Relationship="Self.FK__tblIngred__Ingre__0BE6BFCF" FromRole="tblIngredientStorage" ToRole="tblIngredient" />
+    <NavigationProperty Name="tblUser" Relationship="Self.FK__tblIngred__UserI__0AF29B96" FromRole="tblIngredientStorage" ToRole="tblUser" />
   </EntityType>
   <EntityType Name="tblRecipe">
     <Key>
@@ -44,8 +44,8 @@
     <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UserID" Type="Int32" />
     <Property Name="Changed" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tblIngredientAmounts" Relationship="Self.FK__tblIngred__Recip__0C70CFB4" FromRole="tblRecipe" ToRole="tblIngredientAmount" />
-    <NavigationProperty Name="tblUser" Relationship="Self.FK__tblRecipe__UserI__09946309" FromRole="tblRecipe" ToRole="tblUser" />
+    <NavigationProperty Name="tblIngredientAmounts" Relationship="Self.FK__tblIngred__Recip__07220AB2" FromRole="tblRecipe" ToRole="tblIngredientAmount" />
+    <NavigationProperty Name="tblUser" Relationship="Self.FK__tblRecipe__UserI__04459E07" FromRole="tblRecipe" ToRole="tblUser" />
   </EntityType>
   <EntityType Name="tblShoppingBasket">
     <Key>
@@ -55,8 +55,8 @@
     <Property Name="Amount" Type="Int32" Nullable="false" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="IngredientID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="tblIngredient" Relationship="Self.FK__tblShoppi__Ingre__150615B5" FromRole="tblShoppingBasket" ToRole="tblIngredient" />
-    <NavigationProperty Name="tblUser" Relationship="Self.FK__tblShoppi__UserI__1411F17C" FromRole="tblShoppingBasket" ToRole="tblUser" />
+    <NavigationProperty Name="tblIngredient" Relationship="Self.FK__tblShoppi__Ingre__0FB750B3" FromRole="tblShoppingBasket" ToRole="tblIngredient" />
+    <NavigationProperty Name="tblUser" Relationship="Self.FK__tblShoppi__UserI__0EC32C7A" FromRole="tblShoppingBasket" ToRole="tblUser" />
   </EntityType>
   <EntityType Name="tblUser">
     <Key>
@@ -66,9 +66,9 @@
     <Property Name="FirstLastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Username" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UserPassword" Type="String" MaxLength="1000" FixedLength="true" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="tblIngredientStorages" Relationship="Self.FK__tblIngred__UserI__10416098" FromRole="tblUser" ToRole="tblIngredientStorage" />
-    <NavigationProperty Name="tblRecipes" Relationship="Self.FK__tblRecipe__UserI__09946309" FromRole="tblUser" ToRole="tblRecipe" />
-    <NavigationProperty Name="tblShoppingBaskets" Relationship="Self.FK__tblShoppi__UserI__1411F17C" FromRole="tblUser" ToRole="tblShoppingBasket" />
+    <NavigationProperty Name="tblIngredientStorages" Relationship="Self.FK__tblIngred__UserI__0AF29B96" FromRole="tblUser" ToRole="tblIngredientStorage" />
+    <NavigationProperty Name="tblRecipes" Relationship="Self.FK__tblRecipe__UserI__04459E07" FromRole="tblUser" ToRole="tblRecipe" />
+    <NavigationProperty Name="tblShoppingBaskets" Relationship="Self.FK__tblShoppi__UserI__0EC32C7A" FromRole="tblUser" ToRole="tblShoppingBasket" />
   </EntityType>
   <EntityType Name="vwIngredientStorage">
     <Key>
@@ -156,7 +156,7 @@
     <Property Name="Username" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UserPassword" Type="String" MaxLength="1000" FixedLength="true" Unicode="false" Nullable="false" />
   </EntityType>
-  <Association Name="FK__tblIngred__Ingre__0D64F3ED">
+  <Association Name="FK__tblIngred__Ingre__08162EEB">
     <End Role="tblIngredient" Type="Self.tblIngredient" Multiplicity="1" />
     <End Role="tblIngredientAmount" Type="Self.tblIngredientAmount" Multiplicity="*" />
     <ReferentialConstraint>
@@ -168,7 +168,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblIngred__Ingre__113584D1">
+  <Association Name="FK__tblIngred__Ingre__0BE6BFCF">
     <End Role="tblIngredient" Type="Self.tblIngredient" Multiplicity="1" />
     <End Role="tblIngredientStorage" Type="Self.tblIngredientStorage" Multiplicity="*" />
     <ReferentialConstraint>
@@ -180,7 +180,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblShoppi__Ingre__150615B5">
+  <Association Name="FK__tblShoppi__Ingre__0FB750B3">
     <End Role="tblIngredient" Type="Self.tblIngredient" Multiplicity="1" />
     <End Role="tblShoppingBasket" Type="Self.tblShoppingBasket" Multiplicity="*" />
     <ReferentialConstraint>
@@ -192,7 +192,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblIngred__Recip__0C70CFB4">
+  <Association Name="FK__tblIngred__Recip__07220AB2">
     <End Role="tblRecipe" Type="Self.tblRecipe" Multiplicity="1" />
     <End Role="tblIngredientAmount" Type="Self.tblIngredientAmount" Multiplicity="*" />
     <ReferentialConstraint>
@@ -204,7 +204,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblIngred__UserI__10416098">
+  <Association Name="FK__tblIngred__UserI__0AF29B96">
     <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
     <End Role="tblIngredientStorage" Type="Self.tblIngredientStorage" Multiplicity="*" />
     <ReferentialConstraint>
@@ -216,7 +216,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblRecipe__UserI__09946309">
+  <Association Name="FK__tblRecipe__UserI__04459E07">
     <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
     <End Role="tblRecipe" Type="Self.tblRecipe" Multiplicity="*" />
     <ReferentialConstraint>
@@ -228,7 +228,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblShoppi__UserI__1411F17C">
+  <Association Name="FK__tblShoppi__UserI__0EC32C7A">
     <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
     <End Role="tblShoppingBasket" Type="Self.tblShoppingBasket" Multiplicity="*" />
     <ReferentialConstraint>
@@ -250,31 +250,31 @@
     <EntitySet Name="vwIngredientStorages" EntityType="Self.vwIngredientStorage" />
     <EntitySet Name="vwRecipes" EntityType="Self.vwRecipe" />
     <EntitySet Name="vwShoppingBaskets" EntityType="Self.vwShoppingBasket" />
-    <AssociationSet Name="FK__tblIngred__Ingre__0D64F3ED" Association="Self.FK__tblIngred__Ingre__0D64F3ED">
+    <AssociationSet Name="FK__tblIngred__Ingre__08162EEB" Association="Self.FK__tblIngred__Ingre__08162EEB">
       <End Role="tblIngredient" EntitySet="tblIngredients" />
       <End Role="tblIngredientAmount" EntitySet="tblIngredientAmounts" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblIngred__Ingre__113584D1" Association="Self.FK__tblIngred__Ingre__113584D1">
+    <AssociationSet Name="FK__tblIngred__Ingre__0BE6BFCF" Association="Self.FK__tblIngred__Ingre__0BE6BFCF">
       <End Role="tblIngredient" EntitySet="tblIngredients" />
       <End Role="tblIngredientStorage" EntitySet="tblIngredientStorages" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblShoppi__Ingre__150615B5" Association="Self.FK__tblShoppi__Ingre__150615B5">
+    <AssociationSet Name="FK__tblShoppi__Ingre__0FB750B3" Association="Self.FK__tblShoppi__Ingre__0FB750B3">
       <End Role="tblIngredient" EntitySet="tblIngredients" />
       <End Role="tblShoppingBasket" EntitySet="tblShoppingBaskets" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblIngred__Recip__0C70CFB4" Association="Self.FK__tblIngred__Recip__0C70CFB4">
+    <AssociationSet Name="FK__tblIngred__Recip__07220AB2" Association="Self.FK__tblIngred__Recip__07220AB2">
       <End Role="tblRecipe" EntitySet="tblRecipes" />
       <End Role="tblIngredientAmount" EntitySet="tblIngredientAmounts" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblIngred__UserI__10416098" Association="Self.FK__tblIngred__UserI__10416098">
+    <AssociationSet Name="FK__tblIngred__UserI__0AF29B96" Association="Self.FK__tblIngred__UserI__0AF29B96">
       <End Role="tblUser" EntitySet="tblUsers" />
       <End Role="tblIngredientStorage" EntitySet="tblIngredientStorages" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblRecipe__UserI__09946309" Association="Self.FK__tblRecipe__UserI__09946309">
+    <AssociationSet Name="FK__tblRecipe__UserI__04459E07" Association="Self.FK__tblRecipe__UserI__04459E07">
       <End Role="tblUser" EntitySet="tblUsers" />
       <End Role="tblRecipe" EntitySet="tblRecipes" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblShoppi__UserI__1411F17C" Association="Self.FK__tblShoppi__UserI__1411F17C">
+    <AssociationSet Name="FK__tblShoppi__UserI__0EC32C7A" Association="Self.FK__tblShoppi__UserI__0EC32C7A">
       <End Role="tblUser" EntitySet="tblUsers" />
       <End Role="tblShoppingBasket" EntitySet="tblShoppingBaskets" />
     </AssociationSet>

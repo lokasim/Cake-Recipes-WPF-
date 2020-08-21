@@ -137,6 +137,7 @@
     <Compile Include="UserControlMenuItem.xaml.cs">
       <DependentUpon>UserControlMenuItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AddIngredientMenuViewModel.cs" />
     <Compile Include="ViewModel\AddIngredientToRecipeViewModel.cs" />
     <Compile Include="ViewModel\AddIngredientViewModel.cs" />
     <Compile Include="ViewModel\AddRecipeViewModel.cs" />
@@ -152,6 +153,9 @@
     </Compile>
     <Compile Include="Views\AddIngredientAmountToRecipe.xaml.cs">
       <DependentUpon>AddIngredientAmountToRecipe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddIngredientMenu.xaml.cs">
+      <DependentUpon>AddIngredientMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddIngredientToRecipe.xaml.cs">
       <DependentUpon>AddIngredientToRecipe.xaml</DependentUpon>
@@ -187,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddIngredientAmountToRecipe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddIngredientMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,18 +249,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Models\CakeRecipesDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CakeRecipesDB.Context.cs</LastGenOutput>
       <DependentUpon>CakeRecipesDB.edmx</DependentUpon>
+      <LastGenOutput>CakeRecipesDB.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\CakeRecipesDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CakeRecipesDB.edmx</DependentUpon>
       <LastGenOutput>CakeRecipesDB.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Views\CookPNG.jpg" />
   </ItemGroup>
   <ItemGroup>

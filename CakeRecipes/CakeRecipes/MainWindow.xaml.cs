@@ -46,19 +46,28 @@ namespace CakeRecipes
             {
                 lblPrezime.Content = "Administrator".ToString();
                 lblIme.Content = "".ToString(); ;
-                var menuOrders = new List<Subitem>
+                var menuRecipe = new List<Subitem>
                     {
                         //new Subitem("Napisi novi recept", new AddRecipe()),
                         //new Subitem("All orders"),
-                        new Subitem("Svi Recepti", new AllRecipesWindow()),
+                        new Subitem("Lista recepata", new AllRecipesWindow()),
                     };
 
-                var item1 = new ItemMenu("Recepti", menuOrders, PackIconKind.Pizzeria);
+                var item1 = new ItemMenu("Recepti", menuRecipe, PackIconKind.FileDocumentOutline);
+                var menuIngredient = new List<Subitem>
+                    {
+                        //new Subitem("Napisi novi recept", new AddRecipe()),
+                        //new Subitem("All orders"),
+                        new Subitem("Lista sastojaka", new AddIngredientMenu()),
+                    };
 
-                var item50 = new ItemMenu("Menu", new UserControl(), PackIconKind.Pizza);
+                var item2 = new ItemMenu("Sastojci", menuIngredient, PackIconKind.Cookie);
+
+                var item50 = new ItemMenu("Meni", new UserControl(), PackIconKind.Cupcake);
 
                 Menu.Children.Add(new UserControlMenuItem(item50, this));
                 Menu.Children.Add(new UserControlMenuItem(item1, this));
+                Menu.Children.Add(new UserControlMenuItem(item2, this));
             }
 
             //Guest menu
@@ -71,18 +80,28 @@ namespace CakeRecipes
                 //    PrintMessage();
                 //}
 
-                var menuOrders = new List<Subitem>
+                var menuRecipe = new List<Subitem>
                     {
                         //new Subitem("Napisi novi recept", new AddRecipe()),
-                        new Subitem("Svi Recepti", new AllRecipesWindow()),
+                        //new Subitem("All orders"),
+                        new Subitem("Lista recepata", new AllRecipesWindow()),
                     };
 
-                var item1 = new ItemMenu("Recepti", menuOrders, PackIconKind.Pizzeria);
+                var item1 = new ItemMenu("Recepti", menuRecipe, PackIconKind.FileDocumentOutline);
+                var menuIngredient = new List<Subitem>
+                    {
+                        //new Subitem("Napisi novi recept", new AddRecipe()),
+                        //new Subitem("All orders"),
+                        new Subitem("Lista sastojaka", new AddIngredientMenu()),
+                    };
 
-                var item50 = new ItemMenu("Menu", new UserControl(), PackIconKind.Pizza);
+                var item2 = new ItemMenu("Sastojci", menuIngredient, PackIconKind.Cookie);
+
+                var item50 = new ItemMenu("Meni", new UserControl(), PackIconKind.Cupcake);
 
                 Menu.Children.Add(new UserControlMenuItem(item50, this));
                 Menu.Children.Add(new UserControlMenuItem(item1, this));
+                Menu.Children.Add(new UserControlMenuItem(item2, this));
             }
 
             //determines the current page length
@@ -203,13 +222,13 @@ namespace CakeRecipes
             if (this.WindowState == WindowState.Normal)
             {
                 this.WindowState = WindowState.Maximized;
-                PovecajProzor.ToolTip = "Restore Down";
+                PovecajProzor.ToolTip = "Smanji prozor";
                 PovecajProzor1.Visibility = Visibility.Visible;
             }
             else if (this.WindowState == WindowState.Maximized)
             {
                 this.WindowState = WindowState.Normal;
-                PovecajProzor.ToolTip = "Maximize";
+                PovecajProzor.ToolTip = "Povećaj prozor";
                 PovecajProzor1.Visibility = Visibility.Collapsed;
             }
         }
