@@ -16,10 +16,14 @@ namespace CakeRecipes.Services
             {
                 using (CookDBEntities context = new CookDBEntities())
                 {
-                    tblUser user = (from e in context.tblUsers where e.Username.Equals(username) where e.UserPassword.Equals(password) select e).First();
+                    string usernameFromDB = (from e in context.tblUsers where e.Username == username select e.Username).FirstOrDefault();
 
+                    if (username == usernameFromDB)
+                    {
+                        return (from e in context.tblUsers where e.Username == username select e).FirstOrDefault();
+                    }
 
-                    return user;
+                    return null;
                 }
             }
             catch (Exception ex)
@@ -78,9 +82,14 @@ namespace CakeRecipes.Services
             {
                 using (CookDBEntities context = new CookDBEntities())
                 {
-                    tblUser user = (from e in context.tblUsers where e.Username == username select e).First();
-                    
-                    return user;
+                    string usernameFromDB = (from e in context.tblUsers where e.Username == username select e.Username).FirstOrDefault();
+
+                    if (username == usernameFromDB)
+                    {
+                        return (from e in context.tblUsers where e.Username == username select e).FirstOrDefault();
+                    }
+
+                    return null;
                 }
             }
             catch (Exception ex)
