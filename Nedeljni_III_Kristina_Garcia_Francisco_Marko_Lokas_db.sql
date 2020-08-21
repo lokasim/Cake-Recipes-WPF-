@@ -38,7 +38,7 @@ CREATE TABLE tblRecipe(
 	NoPeople			INT								NOT NULL,
 	RecipeDescription	NVARCHAR (1000)					NOT NULL,
 	CreationDate		DATETIME						NOT NULL,
-	UserID INT FOREIGN KEY REFERENCES tblUser(UserID)	NOT NULL,
+	UserID INT FOREIGN KEY REFERENCES tblUser(UserID),
 	Changed				NVARCHAR(100)
 );
 

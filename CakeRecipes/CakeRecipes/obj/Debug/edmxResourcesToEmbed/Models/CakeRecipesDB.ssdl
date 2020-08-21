@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CookDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblIngredient">
+    <Key>
+      <PropertyRef Name="IngredientID" />
+    </Key>
+    <Property Name="IngredientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IngredientName" Type="nvarchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblIngredientAmount">
+    <Key>
+      <PropertyRef Name="IngredientAmountID" />
+    </Key>
+    <Property Name="IngredientAmountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="RecipeID" Type="int" Nullable="false" />
+    <Property Name="IngredientID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblIngredientStorage">
+    <Key>
+      <PropertyRef Name="IngredientStorageID" />
+    </Key>
+    <Property Name="IngredientStorageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="IngredientID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblRecipe">
+    <Key>
+      <PropertyRef Name="RecipeID" />
+    </Key>
+    <Property Name="RecipeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecipeName" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="RecipeType" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="NoPeople" Type="int" Nullable="false" />
+    <Property Name="RecipeDescription" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Changed" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tblShoppingBasket">
+    <Key>
+      <PropertyRef Name="ShoppingBasketID" />
+    </Key>
+    <Property Name="ShoppingBasketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="IngredientID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstLastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="UserPassword" Type="char" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CookDB.dbo.vwIngredientStorage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwIngredientStorage">
+    <Key>
+      <PropertyRef Name="IngredientStorageID" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="IngredientID" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="IngredientName" />
+      <PropertyRef Name="Expr2" />
+      <PropertyRef Name="FirstLastName" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="UserPassword" />
+    </Key>
+    <Property Name="IngredientStorageID" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="IngredientID" Type="int" Nullable="false" />
+    <Property Name="Expr1" Type="int" Nullable="false" />
+    <Property Name="IngredientName" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Expr2" Type="int" Nullable="false" />
+    <Property Name="FirstLastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="UserPassword" Type="char" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CookDB.dbo.vwRecipe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwRecipe">
+    <Key>
+      <PropertyRef Name="RecipeID" />
+      <PropertyRef Name="RecipeName" />
+      <PropertyRef Name="RecipeType" />
+      <PropertyRef Name="NoPeople" />
+      <PropertyRef Name="RecipeDescription" />
+      <PropertyRef Name="CreationDate" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="FirstLastName" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="UserPassword" />
+      <PropertyRef Name="IngredientID" />
+      <PropertyRef Name="IngredientName" />
+      <PropertyRef Name="IngredientAmountID" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="Expr2" />
+      <PropertyRef Name="Expr3" />
+    </Key>
+    <Property Name="RecipeID" Type="int" Nullable="false" />
+    <Property Name="RecipeName" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="RecipeType" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="NoPeople" Type="int" Nullable="false" />
+    <Property Name="RecipeDescription" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Changed" Type="nvarchar" MaxLength="100" />
+    <Property Name="Expr1" Type="int" Nullable="false" />
+    <Property Name="FirstLastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="UserPassword" Type="char" MaxLength="1000" Nullable="false" />
+    <Property Name="IngredientID" Type="int" Nullable="false" />
+    <Property Name="IngredientName" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="IngredientAmountID" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="Expr2" Type="int" Nullable="false" />
+    <Property Name="Expr3" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CookDB.dbo.vwShoppingBasket' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwShoppingBasket">
+    <Key>
+      <PropertyRef Name="ShoppingBasketID" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="IngredientID" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="IngredientName" />
+      <PropertyRef Name="Expr2" />
+      <PropertyRef Name="FirstLastName" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="UserPassword" />
+    </Key>
+    <Property Name="ShoppingBasketID" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="IngredientID" Type="int" Nullable="false" />
+    <Property Name="Expr1" Type="int" Nullable="false" />
+    <Property Name="IngredientName" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Expr2" Type="int" Nullable="false" />
+    <Property Name="FirstLastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="UserPassword" Type="char" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__tblIngred__Ingre__00AA174D">
+    <End Role="tblIngredient" Type="Self.tblIngredient" Multiplicity="1" />
+    <End Role="tblIngredientStorage" Type="Self.tblIngredientStorage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblIngredient">
+        <PropertyRef Name="IngredientID" />
+      </Principal>
+      <Dependent Role="tblIngredientStorage">
+        <PropertyRef Name="IngredientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblIngred__Ingre__7CD98669">
+    <End Role="tblIngredient" Type="Self.tblIngredient" Multiplicity="1" />
+    <End Role="tblIngredientAmount" Type="Self.tblIngredientAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblIngredient">
+        <PropertyRef Name="IngredientID" />
+      </Principal>
+      <Dependent Role="tblIngredientAmount">
+        <PropertyRef Name="IngredientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblIngred__Recip__7BE56230">
+    <End Role="tblRecipe" Type="Self.tblRecipe" Multiplicity="1" />
+    <End Role="tblIngredientAmount" Type="Self.tblIngredientAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRecipe">
+        <PropertyRef Name="RecipeID" />
+      </Principal>
+      <Dependent Role="tblIngredientAmount">
+        <PropertyRef Name="RecipeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblIngred__UserI__7FB5F314">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+    <End Role="tblIngredientStorage" Type="Self.tblIngredientStorage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblIngredientStorage">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblRecipe__UserI__7908F585">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+    <End Role="tblRecipe" Type="Self.tblRecipe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblRecipe">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblShoppi__Ingre__047AA831">
+    <End Role="tblIngredient" Type="Self.tblIngredient" Multiplicity="1" />
+    <End Role="tblShoppingBasket" Type="Self.tblShoppingBasket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblIngredient">
+        <PropertyRef Name="IngredientID" />
+      </Principal>
+      <Dependent Role="tblShoppingBasket">
+        <PropertyRef Name="IngredientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblShoppi__UserI__038683F8">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+    <End Role="tblShoppingBasket" Type="Self.tblShoppingBasket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblShoppingBasket">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CookDBModelStoreContainer">
+    <EntitySet Name="tblIngredient" EntityType="Self.tblIngredient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblIngredientAmount" EntityType="Self.tblIngredientAmount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblIngredientStorage" EntityType="Self.tblIngredientStorage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRecipe" EntityType="Self.tblRecipe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblShoppingBasket" EntityType="Self.tblShoppingBasket" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vwIngredientStorage" EntityType="Self.vwIngredientStorage" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwIngredientStorage].[IngredientStorageID] AS [IngredientStorageID], 
+    [vwIngredientStorage].[Amount] AS [Amount], 
+    [vwIngredientStorage].[UserID] AS [UserID], 
+    [vwIngredientStorage].[IngredientID] AS [IngredientID], 
+    [vwIngredientStorage].[Expr1] AS [Expr1], 
+    [vwIngredientStorage].[IngredientName] AS [IngredientName], 
+    [vwIngredientStorage].[Expr2] AS [Expr2], 
+    [vwIngredientStorage].[FirstLastName] AS [FirstLastName], 
+    [vwIngredientStorage].[Username] AS [Username], 
+    [vwIngredientStorage].[UserPassword] AS [UserPassword]
+    FROM [dbo].[vwIngredientStorage] AS [vwIngredientStorage]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwRecipe" EntityType="Self.vwRecipe" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwRecipe].[RecipeID] AS [RecipeID], 
+    [vwRecipe].[RecipeName] AS [RecipeName], 
+    [vwRecipe].[RecipeType] AS [RecipeType], 
+    [vwRecipe].[NoPeople] AS [NoPeople], 
+    [vwRecipe].[RecipeDescription] AS [RecipeDescription], 
+    [vwRecipe].[CreationDate] AS [CreationDate], 
+    [vwRecipe].[UserID] AS [UserID], 
+    [vwRecipe].[Changed] AS [Changed], 
+    [vwRecipe].[Expr1] AS [Expr1], 
+    [vwRecipe].[FirstLastName] AS [FirstLastName], 
+    [vwRecipe].[Username] AS [Username], 
+    [vwRecipe].[UserPassword] AS [UserPassword], 
+    [vwRecipe].[IngredientID] AS [IngredientID], 
+    [vwRecipe].[IngredientName] AS [IngredientName], 
+    [vwRecipe].[IngredientAmountID] AS [IngredientAmountID], 
+    [vwRecipe].[Amount] AS [Amount], 
+    [vwRecipe].[Expr2] AS [Expr2], 
+    [vwRecipe].[Expr3] AS [Expr3]
+    FROM [dbo].[vwRecipe] AS [vwRecipe]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwShoppingBasket" EntityType="Self.vwShoppingBasket" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwShoppingBasket].[ShoppingBasketID] AS [ShoppingBasketID], 
+    [vwShoppingBasket].[Amount] AS [Amount], 
+    [vwShoppingBasket].[UserID] AS [UserID], 
+    [vwShoppingBasket].[IngredientID] AS [IngredientID], 
+    [vwShoppingBasket].[Expr1] AS [Expr1], 
+    [vwShoppingBasket].[IngredientName] AS [IngredientName], 
+    [vwShoppingBasket].[Expr2] AS [Expr2], 
+    [vwShoppingBasket].[FirstLastName] AS [FirstLastName], 
+    [vwShoppingBasket].[Username] AS [Username], 
+    [vwShoppingBasket].[UserPassword] AS [UserPassword]
+    FROM [dbo].[vwShoppingBasket] AS [vwShoppingBasket]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__tblIngred__Ingre__00AA174D" Association="Self.FK__tblIngred__Ingre__00AA174D">
+      <End Role="tblIngredient" EntitySet="tblIngredient" />
+      <End Role="tblIngredientStorage" EntitySet="tblIngredientStorage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblIngred__Ingre__7CD98669" Association="Self.FK__tblIngred__Ingre__7CD98669">
+      <End Role="tblIngredient" EntitySet="tblIngredient" />
+      <End Role="tblIngredientAmount" EntitySet="tblIngredientAmount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblIngred__Recip__7BE56230" Association="Self.FK__tblIngred__Recip__7BE56230">
+      <End Role="tblRecipe" EntitySet="tblRecipe" />
+      <End Role="tblIngredientAmount" EntitySet="tblIngredientAmount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblIngred__UserI__7FB5F314" Association="Self.FK__tblIngred__UserI__7FB5F314">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblIngredientStorage" EntitySet="tblIngredientStorage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblRecipe__UserI__7908F585" Association="Self.FK__tblRecipe__UserI__7908F585">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblRecipe" EntitySet="tblRecipe" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblShoppi__Ingre__047AA831" Association="Self.FK__tblShoppi__Ingre__047AA831">
+      <End Role="tblIngredient" EntitySet="tblIngredient" />
+      <End Role="tblShoppingBasket" EntitySet="tblShoppingBasket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblShoppi__UserI__038683F8" Association="Self.FK__tblShoppi__UserI__038683F8">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblShoppingBasket" EntitySet="tblShoppingBasket" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
