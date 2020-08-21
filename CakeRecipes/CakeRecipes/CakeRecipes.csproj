@@ -129,6 +129,7 @@
     <Compile Include="Models\vwShoppingBasket.cs">
       <DependentUpon>CakeRecipesDB.tt</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Services\IngredientsData.cs" />
     <Compile Include="ViewModel\AddIngredientToRecipeViewModel.cs" />
     <Compile Include="ViewModel\AddIngredientViewModel.cs" />
@@ -138,6 +139,20 @@
     </Compile>
     <Compile Include="Views\AddIngredientToRecipe.xaml.cs">
       <DependentUpon>AddIngredientToRecipe.xaml</DependentUpon>
+=======
+    <Compile Include="Services\LoginService.cs" />
+    <Compile Include="UserControlMenuItem.xaml.cs">
+      <DependentUpon>UserControlMenuItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ItemMenu.cs" />
+    <Compile Include="ViewModel\LoggedGuest.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\Subitem.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="Views\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+>>>>>>> login_registration/Marko_Lokas
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -152,11 +167,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+<<<<<<< HEAD
     <Page Include="Views\AddIngredient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddIngredientToRecipe.xaml">
+=======
+    <Page Include="UserControlMenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Login.xaml">
+>>>>>>> login_registration/Marko_Lokas
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -197,6 +220,12 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <Resource Include="Views\CookPNG.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+>>>>>>> login_registration/Marko_Lokas
     <Content Include="Models\CakeRecipesDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CakeRecipesDB.Context.cs</LastGenOutput>

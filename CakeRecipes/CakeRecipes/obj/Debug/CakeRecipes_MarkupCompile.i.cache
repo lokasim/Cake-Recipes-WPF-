@@ -9,6 +9,7 @@ CakeRecipes
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\App.xaml
 31357053861
 2-1067156342
@@ -17,4 +18,14 @@ C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\C
 MainWindow.xaml;Views\AddIngredient.xaml;Views\AddIngredientToRecipe.xaml;
 
 False
+=======
+C:\Users\panonit\Desktop\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\App.xaml
+3-751094146
+2-1067156342
+311819539674
+25949710559
+MainWindow.xaml;UserControlMenuItem.xaml;Views\Login.xaml;
+
+True
+>>>>>>> login_registration/Marko_Lokas
 

@@ -4,15 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
+<<<<<<< HEAD
       <Diagram DiagramId="a0042823ba5548e1be702fdea1bbbd13" Name="Diagram1">
         <EntityTypeShape EntityType="CookDBModel.tblIngredient" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CookDBModel.tblIngredientAmount" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CookDBModel.tblIngredientStorage" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CookDBModel.tblRecipe" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+=======
+      <Diagram DiagramId="7a9ebe1f11b34fa383a4a18aa3ca08b1" Name="Diagram1">
+        <EntityTypeShape EntityType="CookDBModel.tblIngredient" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CookDBModel.tblIngredientAmount" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CookDBModel.tblIngredientStorage" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CookDBModel.tblRecipe" Width="1.5" PointX="2.125" PointY="7.625" IsExpanded="true" />
+>>>>>>> login_registration/Marko_Lokas
         <EntityTypeShape EntityType="CookDBModel.tblShoppingBasket" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CookDBModel.tblUser" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CookDBModel.vwIngredientStorage" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CookDBModel.vwRecipe" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+<<<<<<< HEAD
         <EntityTypeShape EntityType="CookDBModel.vwShoppingBasket" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="CookDBModel.FK__tblIngred__Ingre__184C96B4" ManuallyRouted="false" />
         <AssociationConnector Association="CookDBModel.FK__tblIngred__Ingre__1C1D2798" ManuallyRouted="false" />
@@ -21,6 +30,16 @@
         <AssociationConnector Association="CookDBModel.FK__tblIngred__UserI__1B29035F" ManuallyRouted="false" />
         <AssociationConnector Association="CookDBModel.FK__tblRecipe__UserI__147C05D0" ManuallyRouted="false" />
         <AssociationConnector Association="CookDBModel.FK__tblShoppi__UserI__1EF99443" ManuallyRouted="false" />
+=======
+        <EntityTypeShape EntityType="CookDBModel.vwShoppingBasket" Width="1.5" PointX="8.625" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="CookDBModel.FK__tblIngred__Ingre__00AA174D" ManuallyRouted="false" />
+        <AssociationConnector Association="CookDBModel.FK__tblIngred__Ingre__7CD98669" ManuallyRouted="false" />
+        <AssociationConnector Association="CookDBModel.FK__tblShoppi__Ingre__047AA831" ManuallyRouted="false" />
+        <AssociationConnector Association="CookDBModel.FK__tblIngred__Recip__7BE56230" ManuallyRouted="false" />
+        <AssociationConnector Association="CookDBModel.FK__tblIngred__UserI__7FB5F314" ManuallyRouted="false" />
+        <AssociationConnector Association="CookDBModel.FK__tblRecipe__UserI__7908F585" ManuallyRouted="false" />
+        <AssociationConnector Association="CookDBModel.FK__tblShoppi__UserI__038683F8" ManuallyRouted="false" />
+>>>>>>> login_registration/Marko_Lokas
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

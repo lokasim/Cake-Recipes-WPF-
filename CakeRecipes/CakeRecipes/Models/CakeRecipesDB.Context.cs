@@ -13,10 +13,17 @@ namespace CakeRecipes.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
+<<<<<<< HEAD
     public partial class CakeRecipesDBEntities : DbContext
     {
         public CakeRecipesDBEntities()
             : base("name=CakeRecipesDBEntities")
+=======
+    public partial class CookDBEntities : DbContext
+    {
+        public CookDBEntities()
+            : base("name=CookDBEntities")
+>>>>>>> login_registration/Marko_Lokas
         {
         }
     

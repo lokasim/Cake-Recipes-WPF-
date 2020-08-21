@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+<<<<<<< HEAD
   <EntityContainerMapping StorageEntityContainer="CookDBModelStoreContainer" CdmEntityContainer="CakeRecipesDBEntities">
+=======
+  <EntityContainerMapping StorageEntityContainer="CookDBModelStoreContainer" CdmEntityContainer="CookDBEntities">
+>>>>>>> login_registration/Marko_Lokas
     <EntitySetMapping Name="tblIngredients">
       <EntityTypeMapping TypeName="CookDBModel.tblIngredient">
         <MappingFragment StoreEntitySet="tblIngredient">

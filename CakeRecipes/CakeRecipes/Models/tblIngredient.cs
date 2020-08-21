@@ -17,8 +17,13 @@ namespace CakeRecipes.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblIngredient()
         {
+<<<<<<< HEAD
             this.tblIngredientAmounts = new HashSet<tblIngredientAmount>();
             this.tblIngredientStorages = new HashSet<tblIngredientStorage>();
+=======
+            this.tblIngredientStorages = new HashSet<tblIngredientStorage>();
+            this.tblIngredientAmounts = new HashSet<tblIngredientAmount>();
+>>>>>>> login_registration/Marko_Lokas
             this.tblShoppingBaskets = new HashSet<tblShoppingBasket>();
         }
     
@@ -26,10 +31,17 @@ namespace CakeRecipes.Models
         public string IngredientName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+<<<<<<< HEAD
         public virtual ICollection<tblIngredientAmount> tblIngredientAmounts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblIngredientStorage> tblIngredientStorages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+=======
+        public virtual ICollection<tblIngredientStorage> tblIngredientStorages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblIngredientAmount> tblIngredientAmounts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+>>>>>>> login_registration/Marko_Lokas
         public virtual ICollection<tblShoppingBasket> tblShoppingBaskets { get; set; }
     }
 }
