@@ -36,7 +36,6 @@ C:\Users\panonit\Desktop\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\Cake
 C:\Users\panonit\Desktop\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\CakeRecipes.csproj.CopyComplete
 C:\Users\panonit\Desktop\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\CakeRecipes.exe
 C:\Users\panonit\Desktop\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\CakeRecipes.pdb
-C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\CakeRecipes.csprojAssemblyReference.cache
 C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\MainWindow.g.cs
 C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\Views\AddIngredient.g.cs
 C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\App.g.cs
@@ -94,3 +93,6 @@ C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\C
 C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\Views\Login.g.cs
 C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\UserControlMenuItem.baml
 C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\Views\Login.baml
+C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\Views\AllShoppingList.g.cs
+C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\Views\AllShoppingList.baml
+C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\CakeRecipes.csprojAssemblyReference.cache

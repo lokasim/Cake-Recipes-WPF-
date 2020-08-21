@@ -15,5 +15,12 @@ namespace CakeRecipes.Views
             this.DataContext = new AddIngredientToRecipeViewModel(this, RecipeID);
             this.Language = XmlLanguage.GetLanguage("sr-SR");
         }
+
+        public AddIngredientToRecipe()
+        {
+            InitializeComponent();
+            this.DataContext = new AddIngredientToBasketViewModel(this);
+            this.Language = XmlLanguage.GetLanguage("sr-SR");
+        }
     }
 }

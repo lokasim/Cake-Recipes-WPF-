@@ -4,7 +4,6 @@ using System;
 using System.Media;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Markup;
 
 namespace CakeRecipes.Views
 {
@@ -17,6 +16,12 @@ namespace CakeRecipes.Views
         {
             InitializeComponent();
             this.DataContext = new AddIngredientToRecipeViewModel(this, ingredient, RecipeID);
+        }
+
+        public AddIngredientAmountToRecipe(tblIngredient ingredient)
+        {
+            InitializeComponent();
+            this.DataContext = new AddIngredientToBasketViewModel(this, ingredient);
         }
 
         /// <summary>

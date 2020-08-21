@@ -5,8 +5,6 @@ using CakeRecipes.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -241,7 +239,7 @@ namespace CakeRecipes.ViewModel
             }
             catch (Exception)
             {
-                MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Trenutno je nemoguce obrisati recept...", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Trenutno je nemoguce dodati recept...", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

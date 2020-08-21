@@ -127,7 +127,7 @@
                                        FontWeight="Bold"
                                        FontSize="18"
                                        FontStyle="Italic"
-                                       Margin="0 205 0 300 ">Izaberi sastojak i dodaj u recept.</TextBlock>
+                                       Margin="0 205 0 300 ">Izaberi sastojak.</TextBlock>
 
                         </Grid>
                     </Border>
@@ -159,12 +159,12 @@
                                        FontStyle="Italic"
                                        Foreground="#4caf50"
                                        HorizontalAlignment="Left"
-                                       Margin="10">Dodaj sastojke u recept</TextBlock>
+                                       Margin="10">Dodaj sastojke</TextBlock>
                             <DataGrid Name="DataGridOrder"
                                       Grid.Row="0"
                                       Grid.Column="1"
-                                      ItemsSource="{Binding RecipeIngrediantAmountList, UpdateSourceTrigger=PropertyChanged}"
-                                      SelectedItem="{Binding IngredientAmount, UpdateSourceTrigger=PropertyChanged}"
+                                      ItemsSource="{Binding IngrediantAmountList, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedItem="{Binding ItemAmount, UpdateSourceTrigger=PropertyChanged}"
                                       IsReadOnly="True"
                                       FontSize="14"
                                       Height="auto"
@@ -233,7 +233,7 @@
                                 Margin="0 0 10 0"
                                 Style="{StaticResource MaterialDesignRaisedButton}"
                                 materialDesign:ButtonAssist.CornerRadius="20"
-                                ToolTip="Dodaj u recept"
+                                ToolTip="Dodaj sastojak"
                                 Command="{Binding AddToRecipe, UpdateSourceTrigger=PropertyChanged}">
                             <StackPanel HorizontalAlignment="Left"
                                         Width="490">
@@ -248,7 +248,7 @@
                                                HorizontalAlignment="Center"
                                                FontWeight="Bold"
                                                VerticalAlignment="Center"
-                                               FontSize="20">Dodaj u recept</TextBlock>
+                                               FontSize="20">Dodaj</TextBlock>
                                 </Grid>
                             </StackPanel>
                         </Button>
