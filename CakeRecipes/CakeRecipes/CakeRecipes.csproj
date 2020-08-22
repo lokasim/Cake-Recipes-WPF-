@@ -166,6 +166,9 @@
     <Compile Include="Views\AddIngredientToRecipe.xaml.cs">
       <DependentUpon>AddIngredientToRecipe.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddIngredientToRecipeWindow.xaml.cs">
+      <DependentUpon>AddIngredientToRecipeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddRecipe.xaml.cs">
       <DependentUpon>AddRecipe.xaml</DependentUpon>
     </Compile>
@@ -211,6 +214,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddIngredientToRecipe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AddIngredientToRecipeWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -124,3 +124,5 @@ C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\C
 C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\Views\AddIngredientMenu.baml
 C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\Views\AllStorageList.g.cs
 C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\Views\AllStorageList.baml
+C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\Views\AddIngredientToRecipeWindow.g.cs
+C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\Views\AddIngredientToRecipeWindow.baml
