@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\
+C:\Users\panonit\Desktop\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\
 CakeRecipes
 none
 false
 DEBUG;TRACE
-C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\App.xaml
-11-1457773472
+C:\Users\panonit\Desktop\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\App.xaml
+112051938779
 2-1067156342
-54-1566451339
-25-1876831540
-MainWindow.xaml;UserControlMenuItem.xaml;Views\AddIngredient.xaml;Views\AddIngredientAmountToRecipe.xaml;Views\AddIngredientMenu.xaml;Views\AddIngredientToRecipe.xaml;Views\AddRecipe.xaml;Views\AllRecipesWindow.xaml;Views\AllShoppingList.xaml;Views\AllStorageList.xaml;Views\Login.xaml;
+51-1186535996
+25949710559
+MainWindow.xaml;UserControlMenuItem.xaml;Views\AddIngredient.xaml;Views\AddIngredientAmountToRecipe.xaml;Views\AddIngredientMenu.xaml;Views\AddIngredientToRecipe.xaml;Views\AddIngredientToRecipeWindow.xaml;Views\AddRecipe.xaml;Views\AllRecipesWindow.xaml;Views\AllShoppingList.xaml;Views\Login.xaml;
 
-False
+True
 

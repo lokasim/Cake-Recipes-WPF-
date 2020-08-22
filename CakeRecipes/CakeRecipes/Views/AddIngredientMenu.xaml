@@ -24,7 +24,7 @@
             <Grid Grid.Row="0">
                 <Label  x:Name="lblCreateOrder"
                         Margin="40,15,300,0"
-                        Foreground="#4caf50"
+                        Foreground="{StaticResource PrimaryHueMidBrush}"
                         FontWeight="Bold"
                         FontSize="30"
                         Height="64">Lista sastojaka</Label>
@@ -32,7 +32,7 @@
                         BorderThickness="0"
                         Margin="30,65,30,0"
                         Height="10"
-                        Background="#4caf50"
+                        Background="#505050"
                         CornerRadius="5"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"></Border>

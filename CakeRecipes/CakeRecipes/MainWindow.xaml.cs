@@ -62,9 +62,9 @@ namespace CakeRecipes
 
                 var menuIngredient = new List<Subitem>
                     {
-                        new Subitem("Sve Shopping Liste", new AllShoppingList()),
+                        new Subitem("Lista sastojaka", new AddIngredientMenu()),
                     };
-                var item22 = new ItemMenu("Shopping Lista", menuIngredient, PackIconKind.Cookie);
+                var item22 = new ItemMenu("Sastojci", menuIngredient, PackIconKind.Cookie);
 
                 var menuStorage = new List<Subitem>
                     {
@@ -107,9 +107,9 @@ namespace CakeRecipes
 
                 var menuIngredient = new List<Subitem>
                     {
-                        new Subitem("Sve Shopping Liste", new AllShoppingList()),
+                        new Subitem("Lista sastojaka", new AddIngredientMenu()),
                     };
-                var item22 = new ItemMenu("Shopping Lista", menuIngredient, PackIconKind.Cookie);
+                var item22 = new ItemMenu("Sastojci", menuIngredient, PackIconKind.Cookie);
 
                 var menuStorage = new List<Subitem>
                     {
