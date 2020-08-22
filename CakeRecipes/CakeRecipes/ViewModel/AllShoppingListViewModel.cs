@@ -146,8 +146,8 @@ namespace CakeRecipes.ViewModel
             try
             {
                 List<tblShoppingBasket> tempShoppingList = shoppingData.GetAllSelectedShoppingBasketItems(LoggedGuest.ID).ToList();
-                AddIngredientToRecipe adIngredientToBasket = new AddIngredientToRecipe();
-                //adIngredientToBasket.ShowDialog();
+                AddIngredientToRecipeWindow addIngredientToRecipeWindow = new AddIngredientToRecipeWindow();
+                addIngredientToRecipeWindow.ShowDialog();
 
                 // Return the list to the initial state
                 if (isShoppingListNotUpdated == true)

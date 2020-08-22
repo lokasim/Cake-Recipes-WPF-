@@ -20,7 +20,7 @@
             <Grid Grid.Row="0">
                 <Label  x:Name="lblCreateOrder"
                         Margin="40,15,300,0"
-                        Foreground="#4caf50"
+                        Foreground="{StaticResource PrimaryHueMidBrush}"
                         FontWeight="Bold"
                         FontSize="30"
                         Height="64">Recepti</Label>
@@ -62,7 +62,7 @@
                                     BorderBrush="{x:Null}"></Button>
                 <Button x:Name="btnAddRecipe"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
-                                    materialDesign:ButtonAssist.CornerRadius="15"
+                                    materialDesign:ButtonAssist.CornerRadius="20"
                                     ToolTip="Dodaj recept"
                                     Margin="50 5 250 15"
                                     Width="100"
@@ -116,7 +116,96 @@
                                     BorderBrush="{x:Null}"></Button>
             </Grid>
             <Grid Grid.Row="1">
+                <!--PopupBox-->
+                <StackPanel Width="120" Margin="30 15 0 0" Height="40" VerticalAlignment="Top" Orientation="Horizontal"
+                                             HorizontalAlignment="Left">
+                    <TextBlock Panel.ZIndex="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" FontStyle="Italic">Sortiraj</TextBlock>
+                    
+                    <materialDesign:PopupBox Grid.Column="1"
+                                             Width="30"
+                                             Margin="10 0"
+                                             PlacementMode="BottomAndAlignRightEdges"
+                                             HorizontalAlignment="Center"
+                                             VerticalAlignment="Center">
+                        <materialDesign:PopupBox.ToggleContent>
+                            <materialDesign:PackIcon Kind="SortVariant" Width="24" Height="24"
+                                                     Background="{StaticResource PrimaryHueMidBrush}"/>
+                            
+                        </materialDesign:PopupBox.ToggleContent>
+                        <StackPanel>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="SortAlphabeticalAscending"
+                                                         VerticalAlignment="Center"
+                                                         Margin="10,0,5,0"
+                                                         Height="25"
+                                                         Width="25" />
+                                <Button Name="Profil"
+                                        Margin="40,0,10,0">
+                                    Po nazivu rastuće
+                                </Button>
+                            </Grid>
 
+                            <Grid>
+                                <materialDesign:PackIcon Kind="SortAlphabeticalDescending"
+                                                         VerticalAlignment="Center"
+                                                         Margin="10,0,5,0"
+                                                         Height="25"
+                                                         Width="25" />
+                                <Button Name="Inf"
+                                        Margin="40,0,10,0">
+                                    Po nazivu opadajuće
+                                </Button>
+                            </Grid>
+
+                            <Grid>
+                                <materialDesign:PackIcon Kind="SortNumericAscendingVariant"
+                                                         VerticalAlignment="Center"
+                                                         Margin="10,0,5,0"
+                                                         Height="25"
+                                                         Width="25" />
+                                <Button Name="Calculator"
+                                        Margin="40,0,10,0">
+                                    Po datumu rastuće
+                                </Button>
+                            </Grid>
+
+                            <Grid>
+                                <materialDesign:PackIcon Kind="SortNumericDescendingVariant"
+                                                         VerticalAlignment="Center"
+                                                         Margin="10,0,5,0"
+                                                         Height="25"
+                                                         Width="25" />
+                                <Button Name="Uputstvo"
+                                        Margin="40,0,10,0">
+                                    Po datumu opadajuće
+                                </Button>
+                            </Grid>
+
+                            <Grid>
+                                <materialDesign:PackIcon Kind="SortNumericAscending"
+                                                         VerticalAlignment="Center"
+                                                         Margin="10,0,5,0"
+                                                         Height="25"
+                                                         Width="25" />
+                                <Button Name="Napusti"
+                                        Margin="40,0,10,0">
+                                    Po broju sastojaka rastuće
+                                </Button>
+                            </Grid>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="SortNumericDescending"
+                                                         VerticalAlignment="Center"
+                                                         Margin="10,0,5,0"
+                                                         Height="25"
+                                                         Width="25" />
+                                <Button Name="Uputstvoa"
+                                        Margin="40,0,10,0">
+                                    Po broju sastojaka opadajuće
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+                </StackPanel>
                 <DataGrid Name="DataGridOrder"
                       Grid.Row="1"
                       ItemsSource="{Binding RecipeList, UpdateSourceTrigger=PropertyChanged}"
@@ -126,7 +215,7 @@
                       Height="auto"
                       MinWidth="500"
                           Width="auto"
-                      Margin="30 30 30 0"
+                      Margin="30 70 30 0"
                       Background="White"
                       AlternatingRowBackground="LightYellow"
                       HorizontalContentAlignment="Center"

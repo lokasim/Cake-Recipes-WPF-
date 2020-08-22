@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CakeRecipes.ViewModel
@@ -71,6 +72,20 @@ namespace CakeRecipes.ViewModel
             }
         }
 
+        private int recipeID;
+        public int RecipeID
+        {
+            get
+            {
+                return recipeID;
+            }
+            set
+            {
+                recipeID = value;
+                OnPropertyChanged("RecipeID");
+            }
+        }
+
         /// <summary>
         /// List of ingredients
         /// </summary>
@@ -129,12 +144,8 @@ namespace CakeRecipes.ViewModel
         {
             try
             {
-                recipesData.AddRecipe(Recipe);
-                isUpdateRecipe = true;
-
-                AddIngredientToRecipe addIngredientWindow = new AddIngredientToRecipe(Recipe.RecipeID);
+                AddIngredientToRecipeViewModel.IngrediantAmountListCount = 0;
                 addRecipe.Close();
-                //addIngredientWindow.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -160,13 +171,100 @@ namespace CakeRecipes.ViewModel
                 addRecipe.error.Visibility = Visibility.Visible;
                 return false;
             }
+            else if(AddIngredientToRecipeViewModel.IngrediantAmountListCount < 1)
+            {
+                
+                return false;
+            }
             else
             {
                 addRecipe.error.Visibility = Visibility.Collapsed;
                 return true;
             }
         }
-       
+
+        /// <summary>
+        /// Add new Ingredient
+        /// </summary>
+        private ICommand addIngredient;
+        public ICommand AddIngredient
+        {
+            get
+            {
+                if (addIngredient == null)
+                {
+                    addIngredient = new RelayCommand(param => AddIngredientExecute(), param => CanAddIngredientExecute());
+                }
+                return addIngredient;
+            }
+        }
+
+        private Visibility viewIngredinet = Visibility.Collapsed;
+        public Visibility ViewIngredinet
+        {
+            get
+            {
+                return viewIngredinet;
+            }
+            set
+            {
+                viewIngredinet = value;
+                OnPropertyChanged("ViewIngredinet");
+            }
+        }
+
+        /// <summary>
+        /// Method for adding new Ingredient
+        /// </summary>
+        private void AddIngredientExecute()
+        {
+            try
+            {
+                recipesData.AddRecipe(Recipe);
+                isUpdateRecipe = true;
+
+                AddIngredientToRecipe addIngredientWindow = new AddIngredientToRecipe(Recipe.RecipeID);
+                addIngredientWindow.Height = 450;
+                addRecipe.border.Width = 1000;
+                ViewIngredinet = Visibility.Visible;
+                addRecipe.btnDodajSastojak.Visibility = Visibility.Collapsed;
+
+                //AddIngredientToRecipe addIngredientToRecipe = new AddIngredientToRecipe();
+                UserControl screen = ((UserControl)addIngredientWindow);
+                addRecipe.StackPanelMain.Children.Clear();
+                addRecipe.StackPanelMain.Children.Add(screen);
+            }
+            catch (Exception ex)
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show(ex.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Checks if it is possible to click on the button
+        /// </summary>
+        /// <returns></returns>
+        private bool CanAddIngredientExecute()
+        {
+            if (String.IsNullOrEmpty(Recipe.RecipeName) ||
+                String.IsNullOrEmpty(Recipe.RecipeType) ||
+                String.IsNullOrEmpty(Recipe.RecipeDescription))
+            {
+                return false;
+            }
+            else if (Convert.ToInt32(Recipe.NoPeople) < 1)
+            {
+                addRecipe.error.Text = "Broj osoba ne moze biti manji od 1";
+                addRecipe.error.Visibility = Visibility.Visible;
+                return false;
+            }
+            else
+            {
+                addRecipe.error.Visibility = Visibility.Collapsed;
+                return true;
+            }
+        }
+
         /// <summary>
         /// Close button
         /// </summary>
@@ -190,7 +288,34 @@ namespace CakeRecipes.ViewModel
         {
             try
             {
-                addRecipe.Close();
+                RecipeService recipeData = new RecipeService();
+                if(addRecipe.IngredientGrid.Visibility != Visibility.Collapsed)
+                {
+
+                    MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Napuštanjem dijaloga za dodavanje recepta, izgubićete sve trenutno unete podatke i recept se neće sačuvati.", "Odustajete od unosa recepta?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (dialog == MessageBoxResult.Yes)
+                    {
+                        var recipe = recipeData.GetAllRecipes();
+                        recipeData.DeleteRecipe(recipe.LastOrDefault().RecipeID);
+                        //addIngredientToRecipe.Close();
+                        AllRecipesViewModel.isRecipeNotUpdated = true;
+                        addRecipe.Close();
+                        AddIngredientToRecipeViewModel.IngrediantAmountListCount = 0;
+                    }
+                }
+                else
+                {
+                    MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Napuštanjem dijaloga za dodavanje recepta, izgubićete sve trenutno unete podatke i recept se neće sačuvati.", "Odustajete od unosa recepta?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                    if (dialog == MessageBoxResult.Yes)
+                    {
+                        addRecipe.Close();
+                        AddIngredientToRecipeViewModel.IngrediantAmountListCount = 0;
+                    }
+                    
+                }
+
+
             }
             catch (Exception ex)
             {

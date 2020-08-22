@@ -16,6 +16,7 @@ namespace CakeRecipes.ViewModel
         readonly AddIngredientAmountToRecipe addIngredientAmountToRecipe;
         IngredientService ingrediantsData = new IngredientService();
         RecipeService recipeData = new RecipeService();
+        public static int IngrediantAmountListCount = 0;
 
         #region Constructor
         /// <summary>
@@ -179,6 +180,12 @@ namespace CakeRecipes.ViewModel
                 addIngredientWindow.ShowDialog();
                 // Refresh the list
                 IngrediantAmountList = recipeData.GetAllSelectedRecipeIngrediantAmount(RecipeID);
+                IngrediantAmountListCount = IngrediantAmountList.Count();
+                if (IngrediantAmountList.Count > 0)
+                {
+                    addIngredientToRecipe.gridIngredientItem.Visibility = Visibility.Visible;
+                    addIngredientToRecipe.msgNoItems.Visibility = Visibility.Collapsed;
+                }
             }
             catch (Exception ex)
             {
@@ -337,6 +344,7 @@ namespace CakeRecipes.ViewModel
                     {
                         recipeData.DeleteIngredientAmount(ItemAmount.IngredientAmountID);
                         IngrediantAmountList = recipeData.GetAllSelectedRecipeIngrediantAmount(RecipeID);
+                        IngrediantAmountListCount = IngrediantAmountList.Count();
                     }
                 }
             }

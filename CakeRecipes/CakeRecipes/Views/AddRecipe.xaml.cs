@@ -19,6 +19,7 @@ namespace CakeRecipes.Views
             this.Name = "AddRecipe";
             this.DataContext = new AddRecipeViewModel(this);
             this.Language = XmlLanguage.GetLanguage("sr-SR");
+            border.Width = 400;
         }
 
         public AddRecipe(tblRecipe recipeEdit)

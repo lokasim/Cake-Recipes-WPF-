@@ -13,7 +13,7 @@
         Height="250"
         Width="300"
         MaxWidth="300">
-    <Border BorderBrush="#4caf50"
+    <Border BorderBrush="#505050"
             BorderThickness="2">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -32,9 +32,9 @@
             <Grid Grid.Column="0"
                   Grid.ColumnSpan="3"
                   Grid.Row="0"
-                  Background="#4caf50">
-                <TextBlock Foreground="White"
-                           Background="#4caf50"
+                  Background="#505050">
+                <TextBlock Foreground="{StaticResource PrimaryHueMidBrush}"
+                           Background="#505050"
                            FontSize="20"
                            FontWeight="Bold"
                            HorizontalAlignment="Center"
@@ -44,7 +44,7 @@
                      materialDesign:HintAssist.Hint="Naziv"
                      Grid.Column="1"
                      Grid.Row="1"
-                     Width="150"
+                     Width="180"
                      MaxLength="30"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      Margin="0,0,0,0"
@@ -59,7 +59,7 @@
                      materialDesign:HintAssist.Hint="Kolicina"
                      Grid.Column="1"
                      Grid.Row="3"
-                     Width="150"
+                     Width="180"
                      MaxLength="2"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      Margin="0,0,0,0"
@@ -76,11 +76,11 @@
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     materialDesign:ButtonAssist.CornerRadius="15"
                     Name="btnSave"
-                    Content="Save"
-                    Height="30"
+                    Content="Sačuvaj"
+                    Height="35"
                     Foreground="White"
                     FontWeight="Bold"
-                    Width="70"
+                    Width="80"
                     Margin="40 0"
                     HorizontalAlignment="Right"
                     Command="{Binding Save, UpdateSourceTrigger=PropertyChanged}" />
@@ -89,14 +89,14 @@
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     materialDesign:ButtonAssist.CornerRadius="15"
                     Name="btnClose"
-                    Content="Close"
+                    Content="Otkaži"
                     Margin="40 0"
                     FontWeight="Bold"
-                    Background="#FFC34A4A"
-                    BorderBrush="#FFC34A4A"
+                    Background="#FFF34A4A"
+                    BorderBrush="#FFF34A4A"
                     Foreground="White"
-                    Height="30"
-                    Width="70"
+                    Height="35"
+                    Width="80"
                     HorizontalAlignment="Left"
                     Command="{Binding Close, UpdateSourceTrigger=PropertyChanged}" />
         </Grid>

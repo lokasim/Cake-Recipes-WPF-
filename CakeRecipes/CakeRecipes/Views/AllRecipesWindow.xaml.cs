@@ -2,6 +2,7 @@
 using CakeRecipes.ViewModel;
 using System;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace CakeRecipes.Views
@@ -15,6 +16,16 @@ namespace CakeRecipes.Views
         {
             InitializeComponent();
             this.DataContext = new AllRecipesViewModel(this);
+            if(LoginViewModel.usersLogin == true)
+            {
+                btnDeleteRecipe.Visibility = System.Windows.Visibility.Collapsed;
+                Thickness marginThickness = btnEditRecipe.Margin;
+                btnEditRecipe.Margin = new Thickness(30,0,30,15);
+                Thickness marginThickness1 = btnAddRecipe.Margin;
+                btnAddRecipe.Margin = new Thickness(30, 0, 140, 15);
+
+            }
+
         }
     }
 }

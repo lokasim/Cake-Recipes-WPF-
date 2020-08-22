@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\panonit\Desktop\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\App.xaml
-1090167283
+112051938779
 2-1067156342
-46-1378464144
+47-1999315135
 25949710559
-MainWindow.xaml;UserControlMenuItem.xaml;Views\AddIngredient.xaml;Views\AddIngredientAmountToRecipe.xaml;Views\AddIngredientMenu.xaml;Views\AddIngredientToRecipe.xaml;Views\AddRecipe.xaml;Views\AllRecipesWindow.xaml;Views\AllShoppingList.xaml;Views\Login.xaml;
+MainWindow.xaml;UserControlMenuItem.xaml;Views\AddIngredient.xaml;Views\AddIngredientAmountToRecipe.xaml;Views\AddIngredientMenu.xaml;Views\AddIngredientToRecipe.xaml;Views\AddIngredientToRecipeWindow.xaml;Views\AddRecipe.xaml;Views\AllRecipesWindow.xaml;Views\AllShoppingList.xaml;Views\Login.xaml;
 
 False
 
