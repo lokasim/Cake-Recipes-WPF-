@@ -27,12 +27,11 @@ namespace CakeRecipes.Models
             lock (locker)
             {
                 string file = @"~\..\..\..\TextFiles\" + LoggedGuest.Username + ".txt";
-                string ingredientName = "";
                 tblIngredient ing = ingredientData.FindIngredient(item.IngredientID);
 
                 using (StreamWriter sw = new StreamWriter(file, append: true))
                 {
-                    sw.WriteLine("Kupljen je sastojak {0}. Kolicina {1}. Vreme {2}", ingredientName, item.Amount, DateTime.Now.ToString("dd.MM.yyy HH:mm"));
+                    sw.WriteLine("Kupljen je sastojak {0}. Kolicina {1}. Vreme {2}", ing.IngredientName, item.Amount, DateTime.Now.ToString("dd.MM.yyy HH:mm"));
                 }
             }
         }
