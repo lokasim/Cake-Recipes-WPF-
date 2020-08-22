@@ -66,12 +66,19 @@ namespace CakeRecipes
                     };
                 var item22 = new ItemMenu("Shopping Lista", menuIngredient, PackIconKind.Cookie);
 
+                var menuStorage = new List<Subitem>
+                    {
+                        new Subitem("Skladiste Sastojaka", new AllStorageList()),
+                    };
+                var item33 = new ItemMenu("Skladiste", menuStorage, PackIconKind.Cookie);
+
                 var item50 = new ItemMenu("Menu", new UserControl(), PackIconKind.Pizza);
 
                 Menu.Children.Add(new UserControlMenuItem(item50, this));
                 Menu.Children.Add(new UserControlMenuItem(item1, this));
                 Menu.Children.Add(new UserControlMenuItem(item2, this));
                 Menu.Children.Add(new UserControlMenuItem(item22, this));
+                Menu.Children.Add(new UserControlMenuItem(item33, this));
             }
 
             //Guest menu
@@ -104,12 +111,19 @@ namespace CakeRecipes
                     };
                 var item22 = new ItemMenu("Shopping Lista", menuIngredient, PackIconKind.Cookie);
 
+                var menuStorage = new List<Subitem>
+                    {
+                        new Subitem("Skladiste Sastojaka", new AllStorageList()),
+                    };
+                var item33 = new ItemMenu("Skladiste", menuStorage, PackIconKind.Cookie);
+
                 var item50 = new ItemMenu("Menu", new UserControl(), PackIconKind.Pizza);
 
                 Menu.Children.Add(new UserControlMenuItem(item50, this));
                 Menu.Children.Add(new UserControlMenuItem(item1, this));
                 Menu.Children.Add(new UserControlMenuItem(item2, this));
                 Menu.Children.Add(new UserControlMenuItem(item22, this));
+                Menu.Children.Add(new UserControlMenuItem(item33, this));
             }
 
             //determines the current page length
@@ -136,11 +150,11 @@ namespace CakeRecipes
                 //ArchivedOrder ao = StackPanelMain.FindName("ArchivedOrder") as ArchivedOrder;
                 //ArchivedOrder ar = new ArchivedOrder();
 
-                if (screen.Name == "ArchivedOrder")
+                if (screen.Name == "AllStorageList")
                 {
-                    //ArchivedOrder archivedOrder = new ArchivedOrder();
-                    //StackPanelMain.Children.Clear();
-                    //StackPanelMain.Children.Add(archivedOrder);
+                    AllStorageList storageList = new AllStorageList();
+                    StackPanelMain.Children.Clear();
+                    StackPanelMain.Children.Add(storageList);
                 }
                 else
                 {
