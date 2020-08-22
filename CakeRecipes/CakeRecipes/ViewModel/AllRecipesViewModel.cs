@@ -117,6 +117,57 @@ namespace CakeRecipes.ViewModel
                 OnPropertyChanged("SortByDateBtn");
             }
         }
+
+        /// <summary>
+        /// Number of people
+        /// </summary>
+        private int newNoPeople;
+        public int NewNoPeople
+        {
+            get
+            {
+                return newNoPeople;
+            }
+            set
+            {
+                newNoPeople = value;
+                OnPropertyChanged("NewNoPeople");
+            }
+        }
+
+        /// <summary>
+        /// Recipe text
+        /// </summary>
+        private string recipeText;
+        public string RecipeText
+        {
+            get
+            {
+                return recipeText;
+            }
+            set
+            {
+                recipeText = value;
+                OnPropertyChanged("RecipeText");
+            }
+        }
+
+        /// <summary>
+        /// Info text
+        /// </summary>
+        private string infoText;
+        public string InfoText
+        {
+            get
+            {
+                return infoText;
+            }
+            set
+            {
+                infoText = value;
+                OnPropertyChanged("InfoText");
+            }
+        }
         #endregion
 
         #region Commands
@@ -252,13 +303,13 @@ namespace CakeRecipes.ViewModel
             if (orderAmountAsc == true)
             {
                 orderAmountAsc = false;
-                RecipeList = recipeData.SortByAmount().ToList();
+                RecipeList = recipeData.SortByAmountAsecnding().ToList();
                 SortByAmountBtn = "Broj desc";
             }
             else
             {
                 orderAmountAsc = true;
-                RecipeList = recipeData.SortByAmount().ToList();
+                RecipeList = recipeData.SortByAmountDescending().ToList();
                 SortByAmountBtn = "Broj asc";
             }
         }
@@ -469,6 +520,70 @@ namespace CakeRecipes.ViewModel
             }
             else
             {
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Preview Recipe button
+        /// </summary>
+        private ICommand previewRecipe;
+        public ICommand PreviewRecipe
+        {
+            get
+            {
+                if (previewRecipe == null)
+                {
+                    previewRecipe = new RelayCommand(param => PreviewRecipeExecute(), param => CanPreviewRecipeExecute());
+                }
+                return previewRecipe;
+            }
+        }
+
+        /// <summary>
+        /// Method for previewing a recipe
+        /// </summary>
+        public void PreviewRecipeExecute()
+        {
+            string ingredientText = "";
+
+            foreach (var item in recipeData.CountRecipeValue(Recipe, NewNoPeople))
+            {
+                ingredientText += item.Key + ": " + item.Value.ToString() + Environment.NewLine;
+            }
+
+            RecipeText =
+                "Naziv recepta: " + Recipe.RecipeName + "\t\tAutor: " + Recipe.Changed + Environment.NewLine +
+                "Tip recepta: " + Recipe.RecipeType + "\t\tDatum: " + Recipe.CreationDate.ToString("dd.MM.yyyy") + Environment.NewLine +
+                "Opis: " + Recipe.RecipeDescription + Environment.NewLine + Environment.NewLine +
+                "Sastojci: " + Environment.NewLine +
+                ingredientText;
+        }
+
+        /// <summary>
+        /// Checks if its possible to press the preview button
+        /// </summary>
+        /// <returns></returns>
+        public bool CanPreviewRecipeExecute()
+        {
+            if (NewNoPeople < 1 && Recipe == null)
+            {
+                InfoText = "Da biste prikazali recept, potrebno je da" + Environment.NewLine + "unesete broj osoba i selektujete recept iz tabele.";
+                return false;
+            }
+            else if (NewNoPeople > 0 && Recipe == null)
+            {
+                InfoText = "Da biste prikazali recept, potrebno je da" + Environment.NewLine + "selektujete recept iz tabele.";
+                return  false;
+            }
+            else if (NewNoPeople < 1 && Recipe != null)
+            {
+                InfoText = "Da biste prikazali recept, potrebno je da" + Environment.NewLine + "unesete broj osoba veceg od nula.";
+                return false;
+            }
+            else
+            {
+                InfoText = "Vrednost je uvek zaokruzena na veci broj.";
                 return true;
             }
         }
