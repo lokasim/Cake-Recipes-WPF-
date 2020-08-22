@@ -1,4 +1,7 @@
-﻿using CakeRecipes.ViewModel;
+﻿using CakeRecipes.Services;
+using CakeRecipes.ViewModel;
+using System;
+using System.Linq;
 using System.Windows.Controls;
 
 namespace CakeRecipes.Views

@@ -26,6 +26,9 @@ namespace CakeRecipes.ViewModel
         {
             allReciperWindow = allRecipesWindowOpen;
             RecipeList = recipeData.GetAllRecipes().ToList();
+            SortByAmountBtn = "Broj Sastojka";
+            SortByDateBtn = "Datum";
+            SortByNameBtn = "Naziv";
         }
         #endregion
 
@@ -63,9 +66,220 @@ namespace CakeRecipes.ViewModel
                 OnPropertyChanged("Recipe");
             }
         }
+
+        /// <summary>
+        /// Sort button name
+        /// </summary>
+        private string sortByAmountBtn;
+        public string SortByAmountBtn
+        {
+            get
+            {
+                return sortByAmountBtn;
+            }
+            set
+            {
+                sortByAmountBtn = value;
+                OnPropertyChanged("SortByAmountBtn");
+            }
+        }
+
+        /// <summary>
+        /// Sort button name
+        /// </summary>
+        private string sortByNameBtn;
+        public string SortByNameBtn
+        {
+            get
+            {
+                return sortByNameBtn;
+            }
+            set
+            {
+                sortByNameBtn = value;
+                OnPropertyChanged("SortByNameBtn");
+            }
+        }
+
+        /// <summary>
+        /// Sort button name
+        /// </summary>
+        private string sortByDateBtn;
+        public string SortByDateBtn
+        {
+            get
+            {
+                return sortByDateBtn;
+            }
+            set
+            {
+                sortByDateBtn = value;
+                OnPropertyChanged("SortByDateBtn");
+            }
+        }
         #endregion
 
         #region Commands
+        /// <summary>
+        /// Sort Recipe button
+        /// </summary>
+        private ICommand sortByName;
+        public ICommand SortByName
+        {
+            get
+            {
+                if (sortByName == null)
+                {
+                    sortByName = new RelayCommand(param => SortByNameExecute(), param => CanSortByNameExecute());
+                }
+                return sortByName;
+            }
+        }
+
+        private static bool orderNameAsc = false;
+        /// <summary>
+        /// Method for sorting by name
+        /// </summary>
+        public void SortByNameExecute()
+        {
+         
+            if (orderNameAsc == true)
+            {
+                orderNameAsc = false;
+                RecipeList = recipeData.GetAllRecipes().OrderByDescending(x => x.RecipeName).ToList();
+                SortByNameBtn = "Naziv desc";
+            }
+            else
+            {
+                orderNameAsc = true;
+                RecipeList = recipeData.GetAllRecipes().OrderBy(x => x.RecipeName).ToList();
+                SortByNameBtn = "Naziv asc";
+            }
+        }
+
+        /// <summary>
+        /// Checks if its possible to press the sort button
+        /// </summary>
+        /// <returns></returns>
+        public bool CanSortByNameExecute()
+        {
+            if (RecipeList.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Sort Recipe button
+        /// </summary>
+        private ICommand sortByDate;
+        public ICommand SortByDate
+        {
+            get
+            {
+                if (sortByDate == null)
+                {
+                    sortByDate = new RelayCommand(param => SortByDateExecute(), param => CanSortByDateExecute());
+                }
+                return sortByDate;
+            }
+        }
+
+        private static bool orderDateAsc = false;
+        /// <summary>
+        /// Method for sorting by name
+        /// </summary>
+        public void SortByDateExecute()
+        {
+
+            if (orderDateAsc == true)
+            {
+                orderDateAsc = false;
+                RecipeList = recipeData.GetAllRecipes().OrderByDescending(x => x.CreationDate).ToList();
+                SortByDateBtn = "Datum desc";
+            }
+            else
+            {
+                orderDateAsc = true;
+                RecipeList = recipeData.GetAllRecipes().OrderBy(x => x.CreationDate).ToList();
+                SortByDateBtn = "Datum asc";
+            }
+        }
+
+        /// <summary>
+        /// Checks if its possible to press the sort button
+        /// </summary>
+        /// <returns></returns>
+        public bool CanSortByDateExecute()
+        {
+            if (RecipeList.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Sort Recipe button
+        /// </summary>
+        private ICommand sortByIngredientAmount;
+        public ICommand SortByIngredientAmount
+        {
+            get
+            {
+                if (sortByIngredientAmount == null)
+                {
+                    sortByIngredientAmount = new RelayCommand(param => SortByIngredientAmountExecute(), param => CanSortByIngredientAmountExecute());
+                }
+                return sortByIngredientAmount;
+            }
+        }
+
+        public static bool orderAmountAsc = false;
+        /// <summary>
+        /// Method for sorting by ingredient amount
+        /// </summary>
+        public void SortByIngredientAmountExecute()
+        {
+
+            if (orderAmountAsc == true)
+            {
+                orderAmountAsc = false;
+                RecipeList = recipeData.SortByAmount().ToList();
+                SortByAmountBtn = "Broj desc";
+            }
+            else
+            {
+                orderAmountAsc = true;
+                RecipeList = recipeData.SortByAmount().ToList();
+                SortByAmountBtn = "Broj asc";
+            }
+        }
+
+        /// <summary>
+        /// Checks if its possible to press the sort button
+        /// </summary>
+        /// <returns></returns>
+        public bool CanSortByIngredientAmountExecute()
+        {
+            if (RecipeList.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
         /// <summary>
         /// Delete Recipe button
         /// </summary>

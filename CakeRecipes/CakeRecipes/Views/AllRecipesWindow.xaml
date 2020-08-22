@@ -74,9 +74,49 @@
                                     HorizontalAlignment="Right"
                                     Content="Dodaj"
                                     BorderBrush="{x:Null}"></Button>
+                
+                <Button x:Name="btnSortName"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"
+                                    materialDesign:ButtonAssist.CornerRadius="15"
+                                    ToolTip="Sortiraj recept po nazivu"
+                                    Width="100"
+                                    Foreground="White"
+                                    Command="{Binding SortByName, UpdateSourceTrigger=PropertyChanged}"
+                                    HorizontalAlignment="Left" 
+                                    Margin="184,0,0,18"
+                                    Background="#FF8BC34A"
+                                    VerticalAlignment="Bottom"
+                                    Content="{Binding SortByNameBtn, UpdateSourceTrigger=PropertyChanged}"
+                                    BorderBrush="{x:Null}"></Button>
+                <Button x:Name="btnSortDate"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"
+                                    materialDesign:ButtonAssist.CornerRadius="15"
+                                    ToolTip="Sortiraj recept po datumu"
+                                    Width="100"
+                                    Foreground="White"
+                                    Command="{Binding SortByDate, UpdateSourceTrigger=PropertyChanged}"
+                                    HorizontalAlignment="Left" 
+                                    Margin="289,0,0,18"
+                                    Background="#FF8BC34A"
+                                    VerticalAlignment="Bottom"
+                                    Content="{Binding SortByDateBtn, UpdateSourceTrigger=PropertyChanged}"
+                                    BorderBrush="{x:Null}"></Button>
+                <Button x:Name="btnSortAmount"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"
+                                    materialDesign:ButtonAssist.CornerRadius="15"
+                                    ToolTip="Sortiraj recept po broju sastojaka"
+                                    Width="120"
+                                    Foreground="White"
+                                    Command="{Binding SortByIngredientAmount, UpdateSourceTrigger=PropertyChanged}"
+                                    HorizontalAlignment="Left" 
+                                    Margin="394,0,0,18"
+                                    Background="#FF8BC34A"
+                                    VerticalAlignment="Bottom"
+                                    Content="{Binding SortByAmountBtn, UpdateSourceTrigger=PropertyChanged}"
+                                    BorderBrush="{x:Null}"></Button>
             </Grid>
             <Grid Grid.Row="1">
-                
+
                 <DataGrid Name="DataGridOrder"
                       Grid.Row="1"
                       ItemsSource="{Binding RecipeList, UpdateSourceTrigger=PropertyChanged}"
