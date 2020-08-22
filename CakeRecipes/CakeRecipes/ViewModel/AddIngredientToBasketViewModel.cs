@@ -375,7 +375,7 @@ namespace CakeRecipes.ViewModel
                 }
 
                 AllShoppingListViewModel.isShoppingListNotUpdated = true;
-                addIngredientToRecipe.Close();
+                //addIngredientToRecipe.Close();
             }
         }
 
@@ -413,7 +413,7 @@ namespace CakeRecipes.ViewModel
 
             if (dialog == MessageBoxResult.Yes)
             {
-                addIngredientToRecipe.Close();
+                //addIngredientToRecipe.Close();
             }
             else
             {

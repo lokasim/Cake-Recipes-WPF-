@@ -319,5 +319,68 @@ namespace CakeRecipes.Services
                 Debug.WriteLine("Exception" + ex.Message.ToString());
             }
         }
+
+        /// <summary>
+        /// Searches for recipes with the given id in a dictionary to sort them by recipe type
+        /// </summary>
+        /// <returns>Sorted list of recipes</returns>
+        public List<tblRecipe> SortByAmount()
+        {
+            try
+            {
+                List<tblRecipe> list = new List<tblRecipe>();
+                Dictionary<int, int> amountDict = IngredientAmountList();
+
+                for (int i = 0; i < amountDict.Count; i++)
+                {
+                    for (int j = 0; j < GetAllRecipes().Count; j++)
+                    {
+                        if (GetAllRecipes()[j].RecipeID == amountDict.Keys.ElementAt(i))
+                        {
+                            list.Add(GetAllRecipes()[j]);
+                            break;
+                        }
+                    }
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception" + ex.Message.ToString());
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Save the amount of ingredients per recipe in a collection
+        /// </summary>
+        /// <returns>the corted collection by amount and recipe id</returns>
+        public Dictionary<int, int> IngredientAmountList()
+        {
+            int totalAmount = 0;
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            for (int i = 0; i < GetAllRecipes().Count; i++)
+            {
+                totalAmount = 0;
+                for (int j = 0; j < GetAllRecipeIngrediant().Count; j++)
+                {                 
+                    if (GetAllRecipes()[i].RecipeID == GetAllRecipeIngrediant()[j].RecipeID)
+                    {
+                        totalAmount++;
+                    }
+                }
+                dict[GetAllRecipes()[i].RecipeID] = totalAmount;
+            }
+
+            if (AllRecipesViewModel.orderAmountAsc == false)
+            {
+                return dict.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+            }
+            else
+            {
+                return dict.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+            }
+        }
     }
 }
