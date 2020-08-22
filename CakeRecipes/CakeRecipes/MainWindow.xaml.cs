@@ -49,20 +49,29 @@ namespace CakeRecipes
                 var menuOrders = new List<Subitem>
                     {
                         //new Subitem("Napisi novi recept", new AddRecipe()),
-                        //new Subitem("All orders"),
                         new Subitem("Svi Recepti", new AllRecipesWindow()),
                     };
+                var item1 = new ItemMenu("Recepti", menuOrders, PackIconKind.Pizzeria);
 
                 var menuShopping = new List<Subitem>
                     {
                         new Subitem("Sve Shopping Liste", new AllShoppingList()),
                     };
+                var item2 = new ItemMenu("Shopping Lista", menuShopping, PackIconKind.Pizzeria);
 
-                var item1 = new ItemMenu("Recepti", menuOrders, PackIconKind.Pizzeria);
+
+                var menuIngredient = new List<Subitem>
+                    {
+                        new Subitem("Sve Shopping Liste", new AllShoppingList()),
+                    };
+                var item22 = new ItemMenu("Shopping Lista", menuIngredient, PackIconKind.Cookie);
+
                 var item50 = new ItemMenu("Menu", new UserControl(), PackIconKind.Pizza);
 
                 Menu.Children.Add(new UserControlMenuItem(item50, this));
                 Menu.Children.Add(new UserControlMenuItem(item1, this));
+                Menu.Children.Add(new UserControlMenuItem(item2, this));
+                Menu.Children.Add(new UserControlMenuItem(item22, this));
             }
 
             //Guest menu
@@ -80,19 +89,27 @@ namespace CakeRecipes
                         //new Subitem("Napisi novi recept", new AddRecipe()),
                         new Subitem("Svi Recepti", new AllRecipesWindow()),
                     };
+                var item1 = new ItemMenu("Recepti", menuOrders, PackIconKind.Pizzeria);
 
                 var menuShopping = new List<Subitem>
                     {
                         new Subitem("Sve Shopping Liste", new AllShoppingList()),
                     };
-
-                var item1 = new ItemMenu("Recepti", menuOrders, PackIconKind.Pizzeria);
                 var item2 = new ItemMenu("Shopping Lista", menuShopping, PackIconKind.Pizzeria);
+
+
+                var menuIngredient = new List<Subitem>
+                    {
+                        new Subitem("Sve Shopping Liste", new AllShoppingList()),
+                    };
+                var item22 = new ItemMenu("Shopping Lista", menuIngredient, PackIconKind.Cookie);
+
                 var item50 = new ItemMenu("Menu", new UserControl(), PackIconKind.Pizza);
 
                 Menu.Children.Add(new UserControlMenuItem(item50, this));
                 Menu.Children.Add(new UserControlMenuItem(item1, this));
                 Menu.Children.Add(new UserControlMenuItem(item2, this));
+                Menu.Children.Add(new UserControlMenuItem(item22, this));
             }
 
             //determines the current page length
