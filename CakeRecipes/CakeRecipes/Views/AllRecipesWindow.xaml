@@ -74,7 +74,7 @@
                                     HorizontalAlignment="Right"
                                     Content="Dodaj"
                                     BorderBrush="{x:Null}"></Button>
-                
+
                 <Button x:Name="btnSortName"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
                                     materialDesign:ButtonAssist.CornerRadius="15"
@@ -173,7 +173,67 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
+            <Border BorderBrush="#505050" 
+                    BorderThickness="3" 
+                    HorizontalAlignment="Left" 
+                    Height="317" 
+                    Margin="572,30,0,0" 
+                    Grid.Row="1" 
+                    VerticalAlignment="Top" 
+                    Width="364"
+                    MaxWidth="500"
+                    CornerRadius="5">
+                <Label Content=""/>
+            </Border>
         </Grid>
+        <TextBlock
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="583,112,0,0" 
+                Width="340"
+                MinHeight="5"
+                MaxHeight="51"
+                FontWeight="Bold"
+            FontSize="15px" Text="{Binding InfoText}">
+        </TextBlock>
+        <TextBox x:Name="txtNoPeople"
+                     materialDesign:HintAssist.Hint="Broj Osoba"
+                     Width="150"
+                     MaxLength="30"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     Margin="603,0,217,300"
+                     Padding="0,-2,0,0"
+                     VerticalContentAlignment="Bottom"
+                     HorizontalContentAlignment="Center"
+                     Height="50"
+                     VerticalAlignment="Bottom"
+                     HorizontalAlignment="Left"
+                     DataObject.Pasting="PastingHandler"
+                     PreviewKeyDown="TxtBox_PreviewKeyDown"
+                     PreviewTextInput="PreviewNumberInputHandler"
+                     Text="{Binding NewNoPeople, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button x:Name="btnPreviewRecipe"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"
+                                    materialDesign:ButtonAssist.CornerRadius="15"
+                                    ToolTip="Prikazi recept za uneti broj osoba"
+                                    Width="125"
+                                    MaxWidth="160"
+                                    Foreground="White"
+                                    Command="{Binding PreviewRecipe, UpdateSourceTrigger=PropertyChanged}"
+                                    HorizontalAlignment="Left" 
+                                    Margin="774,0,0,300"
+                                    Background="#FF8BC34A"
+                                    VerticalAlignment="Bottom"
+                                    Content="Prikazi Recept"
+                                    BorderBrush="{x:Null}"></Button>
+        <TextBlock Text="{Binding RecipeText, UpdateSourceTrigger=PropertyChanged}"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"
+                   Margin="594,231,0,0"
+                   TextWrapping="Wrap"
+                   Height="176" 
+                   Width="319"
+                   FontSize="13px"/>
     </Grid>
 </UserControl>
 

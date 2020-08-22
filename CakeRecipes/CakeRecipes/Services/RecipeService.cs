@@ -321,15 +321,47 @@ namespace CakeRecipes.Services
         }
 
         /// <summary>
-        /// Searches for recipes with the given id in a dictionary to sort them by recipe type
+        /// Searches for recipes with the given id in a dictionary to sort them by recipe type ascending
         /// </summary>
         /// <returns>Sorted list of recipes</returns>
-        public List<tblRecipe> SortByAmount()
+        public List<tblRecipe> SortByAmountAsecnding()
         {
             try
             {
                 List<tblRecipe> list = new List<tblRecipe>();
                 Dictionary<int, int> amountDict = IngredientAmountList();
+
+                for (int i = 0; i < amountDict.Count; i++)
+                {
+                    for (int j = 0; j < GetAllRecipes().Count; j++)
+                    {
+                        if (GetAllRecipes()[j].RecipeID == amountDict.Keys.ElementAt(i))
+                        {
+                            list.Add(GetAllRecipes()[j]);
+                            break;
+                        }
+                    }
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception" + ex.Message.ToString());
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Searches for recipes with the given id in a dictionary to sort them by recipe type descending
+        /// </summary>
+        /// <returns>Sorted list of recipes</returns>
+        public List<tblRecipe> SortByAmountDescending()
+        {
+            try
+            {
+                List<tblRecipe> list = new List<tblRecipe>();
+                Dictionary<int, int> amountDict = IngredientAmountList().OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 
                 for (int i = 0; i < amountDict.Count; i++)
                 {
@@ -373,14 +405,28 @@ namespace CakeRecipes.Services
                 dict[GetAllRecipes()[i].RecipeID] = totalAmount;
             }
 
-            if (AllRecipesViewModel.orderAmountAsc == false)
+            // Sort the order of the dictionary depending on the value
+            return dict.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+        }
+
+        /// <summary>
+        /// Gets the value of each ingredient in the recipe and multiplies with the user inserted value
+        /// </summary>
+        /// <param name="recipe">The recipe we are checking for</param>
+        /// <param name="value">The value we vant to multipy the ingredients with</param>
+        /// <returns>A dictionary with ingredient type and amount for that recipe</returns>
+        public Dictionary<string, double> CountRecipeValue(tblRecipe recipe, int value)
+        {
+            List<tblIngredientAmount> allIngredients = GetAllSelectedRecipeIngrediantAmount(recipe.RecipeID);
+            Dictionary<string, double> ingredientDict = new Dictionary<string, double>();
+            IngredientService ingData = new IngredientService();
+
+            for (int i = 0; i < allIngredients.Count; i++)
             {
-                return dict.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+                ingredientDict[ingData.FindIngredient(allIngredients[i].IngredientID).IngredientName] = Math.Ceiling((double)allIngredients[i].Amount / recipe.NoPeople * value);
             }
-            else
-            {
-                return dict.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-            }
+
+            return ingredientDict;
         }
     }
 }
