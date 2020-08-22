@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 
 namespace CakeRecipes.Services
 {
@@ -143,7 +144,7 @@ namespace CakeRecipes.Services
                         {
                             tblShoppingBasket shoppingBasketToDelete = (from ss in context.tblShoppingBaskets where ss.ShoppingBasketID == shoppingBasketID select ss).First();
                             context.tblShoppingBaskets.Remove(shoppingBasketToDelete);
-                            context.SaveChanges();
+                            context.SaveChanges();                            
                             break;
                         }
                     }

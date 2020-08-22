@@ -57,7 +57,7 @@
                                     Style="{StaticResource MaterialDesignRaisedButton}"
                                     materialDesign:ButtonAssist.CornerRadius="15"
                                     ToolTip="Dodaj sastojak u shopping listu"
-                                    Margin="50 5"
+                                    Margin="641,5,0,0"
                                     Width="130"
                                     Foreground="White"
                                     Command="{Binding AddShoppingItem, UpdateSourceTrigger=PropertyChanged}"
@@ -66,15 +66,35 @@
                                     HorizontalAlignment="Left"
                                     Content="Dodaj Sastojak"
                                     BorderBrush="{x:Null}"></Button>
-                <DataGrid Name="DataGridOrder"
-                      Grid.Row="1"
+                <Button x:Name="btnPurchaseIngredient"
+                                    Visibility="{Binding ButtonVisibility, Mode=OneWay}"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"
+                                    materialDesign:ButtonAssist.CornerRadius="15"
+                                    ToolTip="Kupi sastojak"
+                                    Margin="36,5,0,0"
+                                    Width="130"
+                                    Foreground="White"
+                                    Command="{Binding PurchaseItem, UpdateSourceTrigger=PropertyChanged}"
+                                    Height="30"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Left"
+                                    Content="Kupi Sastojak"
+                                    BorderBrush="{x:Null}"></Button>
+                <ProgressBar HorizontalAlignment="Center" Height="16" Margin="36,10,684,0" VerticalAlignment="Top" Width="250"
+                     Value="{Binding CurrentProgress, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding ProgressBarVisibility, Mode=OneWay}"/>
+                <Label Content="{Binding ProgressBarInfoLabel, Mode=OneWay}" HorizontalAlignment="Center" Visibility="{Binding ProgressBarVisibility, Mode=OneWay}"
+                     Margin="158,5,804,0" VerticalAlignment="Top" Foreground="White"/>
+
+                <Rectangle Fill="{Binding InfoLabelBG, Mode=OneWay}" Margin="282,-50,30,441" />
+                <Label Margin="282,-44,30,435" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Stretch" Content="{Binding InfoLabel, Mode=OneWay}" RenderTransformOrigin="0.5,0.5" Width="658"/>
+                <DataGrid Name="DataGridShoppingList"
                       ItemsSource="{Binding ShoppingBasketList, UpdateSourceTrigger=PropertyChanged}"
                       SelectedItem="{Binding ShoppingBasket, UpdateSourceTrigger=PropertyChanged}"
                       IsReadOnly="True"
                       FontSize="14"
                       Height="365"
                       Width="950"
-                      Margin="10 50 10 0"
+                      Margin="10,44,10,-334"
                       Background="White"
                       AlternatingRowBackground="LightYellow"
                       HorizontalContentAlignment="Center"
