@@ -44,6 +44,13 @@ namespace CakeRecipes.Services
                 List<tblShoppingBasket> list = new List<tblShoppingBasket>();
                 for (int i = 0; i < GetAllShoppingBasketItems().Count; i++)
                 {
+                    // admin
+                    if (GetAllShoppingBasketItems()[i].UserID == null)
+                    {
+                        GetAllShoppingBasketItems()[i].UserID = 0;
+                        list.Add(GetAllShoppingBasketItems()[i]);
+                    }
+
                     if (GetAllShoppingBasketItems()[i].UserID == userID)
                     {
                         list.Add(GetAllShoppingBasketItems()[i]);
@@ -65,12 +72,23 @@ namespace CakeRecipes.Services
         /// <returns>The id of the ingredient that was added or not</returns>
         public int IsIngredientAdded(tblShoppingBasket ingredient)
         {
-            for (int i = 0; i < GetAllSelectedShoppingBasketItems(ingredient.UserID).Count; i++)
+            int value = 0;
+
+            if (ingredient.UserID == null)
             {
-                if (ingredient.IngredientID == GetAllSelectedShoppingBasketItems(ingredient.UserID)[i].IngredientID &&
-                        ingredient.UserID == GetAllSelectedShoppingBasketItems(ingredient.UserID)[i].UserID)
+                value = 0;
+            }
+            else
+            {
+                value = (int)ingredient.UserID;
+            }
+
+            for (int i = 0; i < GetAllSelectedShoppingBasketItems(value).Count; i++)
+            {
+                if (ingredient.IngredientID == GetAllSelectedShoppingBasketItems(value)[i].IngredientID &&
+                        ingredient.UserID == GetAllSelectedShoppingBasketItems(value)[i].UserID)
                 {
-                    return GetAllSelectedShoppingBasketItems(ingredient.UserID)[i].ShoppingBasketID;
+                    return GetAllSelectedShoppingBasketItems(value)[i].ShoppingBasketID;
                 }
             }
             return 0;
@@ -102,6 +120,11 @@ namespace CakeRecipes.Services
                             Amount = shoppingBasket.Amount
                         };
 
+                        if (LoggedGuest.ID == 0)
+                        {
+                            newShoppingBasket.UserID = null;
+                        }
+
                         context.tblShoppingBaskets.Add(newShoppingBasket);
                         context.SaveChanges();
                         shoppingBasket.ShoppingBasketID = newShoppingBasket.ShoppingBasketID;
@@ -111,7 +134,16 @@ namespace CakeRecipes.Services
                     else
                     {
                         tblShoppingBasket shoppingBasketEdit = (from ss in context.tblShoppingBaskets where ss.ShoppingBasketID == shoppingBasket.ShoppingBasketID select ss).First();
-                        shoppingBasketEdit.UserID = LoggedGuest.ID;
+
+                        if (LoggedGuest.ID == 0)
+                        {
+                            shoppingBasketEdit.UserID = shoppingBasket.UserID;
+                        }
+                        else
+                        {
+                            shoppingBasketEdit.UserID = LoggedGuest.ID;
+                        }
+
                         shoppingBasketEdit.IngredientID = shoppingBasket.IngredientID;
                         shoppingBasketEdit.Amount = shoppingBasket.Amount;
 

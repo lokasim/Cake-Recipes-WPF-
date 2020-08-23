@@ -22,7 +22,15 @@ namespace CakeRecipes.Models
         {
             lock (locker)
             {
-                string file = @"~\..\..\..\TextFiles\" + LoggedGuest.Username + ".txt";
+                string file = "";
+                if (LoggedGuest.ID == 0)
+                {
+                    file = @"~\..\..\..\TextFiles\Administrator.txt";
+                }
+                else
+                {
+                    file = @"~\..\..\..\TextFiles\" + LoggedGuest.Username + ".txt";
+                }
                 tblIngredient ing = ingredientData.FindIngredient(item.IngredientID);
 
                 using (StreamWriter sw = new StreamWriter(file, append: true))

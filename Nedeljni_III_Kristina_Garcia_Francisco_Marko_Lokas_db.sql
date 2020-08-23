@@ -45,21 +45,21 @@ CREATE TABLE tblRecipe(
 CREATE TABLE tblIngredientAmount(
 	IngredientAmountID		INT IDENTITY(1,1) PRIMARY KEY 	NOT NULL,
 	Amount					INT								NOT NULL,
-	RecipeID INT FOREIGN KEY REFERENCES tblRecipe(RecipeID)	NOT NULL,
+	RecipeID INT FOREIGN KEY REFERENCES tblRecipe(RecipeID) NOT NULL,
 	IngredientID INT FOREIGN KEY REFERENCES tblIngredient(IngredientID)	NOT NULL,
 );
 
 CREATE TABLE tblIngredientStorage(
 	IngredientStorageID		INT IDENTITY(1,1) PRIMARY KEY 	NOT NULL,
 	Amount					INT								NOT NULL,
-	UserID INT FOREIGN KEY REFERENCES tblUser(UserID)		NOT NULL,
+	UserID INT FOREIGN KEY REFERENCES tblUser(UserID),
 	IngredientID INT FOREIGN KEY REFERENCES tblIngredient(IngredientID)	NOT NULL,
 );
 
 CREATE TABLE tblShoppingBasket(
 	ShoppingBasketID		INT IDENTITY(1,1) PRIMARY KEY 	NOT NULL,
 	Amount					INT								NOT NULL,
-	UserID INT FOREIGN KEY REFERENCES tblUser(UserID)		NOT NULL,
+	UserID INT FOREIGN KEY REFERENCES tblUser(UserID),
 	IngredientID INT FOREIGN KEY REFERENCES tblIngredient(IngredientID)	NOT NULL,
 );
 

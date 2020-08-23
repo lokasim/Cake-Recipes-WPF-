@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\panonit\Desktop\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\
+C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\obj\Debug\
 CakeRecipes
 none
 false
 DEBUG;TRACE
-C:\Users\panonit\Desktop\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\App.xaml
+C:\Users\krist\source\repos\Nedeljni_III_Kristina_Garcia_Francisco_Marko_Lokas\CakeRecipes\CakeRecipes\App.xaml
 12503998024
 2-1067156342
-56-539586980
-25949710559
+56-748588785
+25-1876831540
 MainWindow.xaml;UserControlMenuItem.xaml;Views\AddIngredient.xaml;Views\AddIngredientAmountToRecipe.xaml;Views\AddIngredientMenu.xaml;Views\AddIngredientToRecipe.xaml;Views\AddIngredientToRecipeWindow.xaml;Views\AddRecipe.xaml;Views\AllRecipesWindow.xaml;Views\AllShoppingList.xaml;Views\AllStorageList.xaml;Views\Login.xaml;
 
-True
+False
 

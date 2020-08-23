@@ -26,9 +26,6 @@ namespace CakeRecipes.ViewModel
         {
             allReciperWindow = allRecipesWindowOpen;
             RecipeList = recipeData.GetAllRecipes().ToList();
-            SortByAmountBtn = "Broj Sastojka";
-            SortByDateBtn = "Datum";
-            SortByNameBtn = "Naziv";
         }
         #endregion
 
@@ -201,8 +198,6 @@ namespace CakeRecipes.ViewModel
             else
             {
                 allReciperWindow.DataGridOrder.ItemsSource = recipeData.GetAllRecipes().OrderBy(x => x.RecipeName).ToList();
-
-
             }
         }
 
@@ -394,9 +389,6 @@ namespace CakeRecipes.ViewModel
         public void SortByIngredientAmountAscExecute()
         {
             allReciperWindow.DataGridOrder.ItemsSource = recipeData.SortByAmountAsecnding().ToList();
-            allReciperWindow.CheckType.IsChecked = false;
-            allReciperWindow.CheckName.IsChecked = false;
-
         }
 
         /// <summary>
@@ -437,8 +429,6 @@ namespace CakeRecipes.ViewModel
         public void SortByIngredientAmountDescExecute()
         {
             allReciperWindow.DataGridOrder.ItemsSource = recipeData.SortByAmountDescending().ToList();
-            allReciperWindow.CheckType.IsChecked = false;
-            allReciperWindow.CheckName.IsChecked = false;
         }
 
         /// <summary>
@@ -488,6 +478,7 @@ namespace CakeRecipes.ViewModel
                     {
                         recipeData.DeleteRecipe(Recipe.RecipeID);
                         RecipeList = recipeData.GetAllRecipes().ToList();
+                        allReciperWindow.DataGridOrder.ItemsSource = RecipeList;
                     }
                 }
             }
@@ -578,6 +569,7 @@ namespace CakeRecipes.ViewModel
                         }
 
                         RecipeList = recipeData.GetAllRecipes().ToList();
+                        allReciperWindow.DataGridOrder.ItemsSource = RecipeList;
                     }
                 }
             }
@@ -633,6 +625,7 @@ namespace CakeRecipes.ViewModel
                 AddRecipe addRecipeWindow = new AddRecipe();
                 addRecipeWindow.ShowDialog();
                 RecipeList = recipeData.GetAllRecipes().ToList();
+                allReciperWindow.DataGridOrder.ItemsSource = RecipeList;
             }
             catch (Exception)
             {

@@ -16,7 +16,7 @@ namespace CakeRecipes.Models
     {
         public int ShoppingBasketID { get; set; }
         public int Amount { get; set; }
-        public int UserID { get; set; }
+        public Nullable<int> UserID { get; set; }
         public int IngredientID { get; set; }
     
         public virtual tblIngredient tblIngredient { get; set; }

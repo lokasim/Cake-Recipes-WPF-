@@ -62,6 +62,13 @@ namespace CakeRecipes.Services
             List<tblRecipe> list = new List<tblRecipe>();
             for (int i = 0; i < GetAllRecipes().Count; i++)
             {
+                // admin
+                if (GetAllRecipes()[i].UserID == null)
+                {
+                    GetAllRecipes()[i].UserID = 0;
+                    list.Add(GetAllRecipes()[i]);
+                }
+
                 if (GetAllRecipes()[i].UserID == userID)
                 {
                     list.Add(GetAllRecipes()[i]);
@@ -159,6 +166,10 @@ namespace CakeRecipes.Services
                         {
                             newRecipe.UserID = recipe.UserID;
                         }
+                        else if (LoggedGuest.ID == 0)
+                        {
+                            newRecipe.UserID = null;
+                        }
                         else
                         {
                             newRecipe.UserID = LoggedGuest.ID;
@@ -180,7 +191,11 @@ namespace CakeRecipes.Services
                         recipeToEdit.CreationDate = DateTime.Now;
                         recipeToEdit.Changed = LoggedGuest.NameSurname;
 
-                        if (LoggedGuest.ID == 0)
+                        if (recipe.UserID == null)
+                        {
+                            recipe.UserID = null;
+                        }
+                        else if (LoggedGuest.ID == 0)
                         {
                             recipeToEdit.UserID = recipe.UserID;                          
                         }
@@ -411,17 +426,36 @@ namespace CakeRecipes.Services
         {
             int totalAmount = 0;
             Dictionary<int, int> dict = new Dictionary<int, int>();
-            for (int i = 0; i < AllRecipesWindow.filteredList.Count; i++)
+
+            if (AllRecipesWindow.filteredList.Count != 0)
             {
-                totalAmount = 0;
-                for (int j = 0; j < GetAllRecipeIngrediant().Count; j++)
-                {                 
-                    if (AllRecipesWindow.filteredList[i].RecipeID == GetAllRecipeIngrediant()[j].RecipeID)
+                for (int i = 0; i < AllRecipesWindow.filteredList.Count; i++)
+                {
+                    totalAmount = 0;
+                    for (int j = 0; j < GetAllRecipeIngrediant().Count; j++)
                     {
-                        totalAmount++;
+                        if (AllRecipesWindow.filteredList[i].RecipeID == GetAllRecipeIngrediant()[j].RecipeID)
+                        {
+                            totalAmount++;
+                        }
                     }
+                    dict[AllRecipesWindow.filteredList[i].RecipeID] = totalAmount;
                 }
-                dict[AllRecipesWindow.filteredList[i].RecipeID] = totalAmount;
+            }
+            else
+            {
+                for (int i = 0; i < GetAllRecipes().Count; i++)
+                {
+                    totalAmount = 0;
+                    for (int j = 0; j < GetAllRecipeIngrediant().Count; j++)
+                    {
+                        if (GetAllRecipes()[i].RecipeID == GetAllRecipeIngrediant()[j].RecipeID)
+                        {
+                            totalAmount++;
+                        }
+                    }
+                    dict[GetAllRecipes()[i].RecipeID] = totalAmount;
+                }
             }
 
             // Sort the order of the dictionary depending on the value

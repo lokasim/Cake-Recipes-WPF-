@@ -281,7 +281,7 @@
                             </StackPanel>
                         </materialDesign:PopupBox>
                     </StackPanel>
-                    <DataGrid Name="DataGridOrder"
+                    <DataGrid x:Name="DataGridOrder"
                               Grid.Row="1"
                               ItemsSource="{Binding RecipeList, UpdateSourceTrigger=PropertyChanged}"
                               SelectedItem="{Binding Recipe, UpdateSourceTrigger=PropertyChanged}"

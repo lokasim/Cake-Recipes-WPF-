@@ -57,6 +57,13 @@ namespace CakeRecipes.Services
                 List<tblIngredientStorage> list = new List<tblIngredientStorage>();
                 for (int i = 0; i < GetAllIngredientStorageItems().Count; i++)
                 {
+                    // admin
+                    if (GetAllIngredientStorageItems()[i].UserID == null)
+                    {
+                        GetAllIngredientStorageItems()[i].UserID = 0;
+                        list.Add(GetAllIngredientStorageItems()[i]);
+                    }
+
                     if (GetAllIngredientStorageItems()[i].UserID == userID)
                     {
                         list.Add(GetAllIngredientStorageItems()[i]);
@@ -86,13 +93,27 @@ namespace CakeRecipes.Services
                             Amount = item.Amount
                         };
 
+                        if (LoggedGuest.ID == 0)
+                        {
+                            newStorage.UserID = null;
+                        }
+
                         context.tblIngredientStorages.Add(newStorage);
                         context.SaveChanges();
                     }
                     else
                     {
                         tblIngredientStorage storageEdit = (from ss in context.tblIngredientStorages where ss.IngredientID == item.IngredientID where ss.UserID == item.UserID select ss).First();
-                        storageEdit.UserID = LoggedGuest.ID;
+
+                        if (LoggedGuest.ID == 0)
+                        {
+                            storageEdit.UserID = item.UserID;
+                        }
+                        else
+                        {
+                            storageEdit.UserID = LoggedGuest.ID;
+                        }
+
                         storageEdit.IngredientID = item.IngredientID;
                         storageEdit.Amount = item.Amount + storageEdit.Amount;
 
