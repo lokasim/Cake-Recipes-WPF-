@@ -38,6 +38,19 @@ namespace CakeRecipes.ViewModel
         {
             recipe = recipeEdit;
             addRecipe = addRecipeOpen;
+            addRecipe.btnDodaj.IsEnabled = true;
+            AddIngredientToRecipe addIngredientWindow = new AddIngredientToRecipe(Recipe.RecipeID);
+            addIngredientWindow.Height = 450;
+            addRecipe.border.Width = 1000;
+            ViewIngredinet = Visibility.Visible;
+            addRecipe.btnDodajSastojak.Visibility = Visibility.Collapsed;
+            
+            //AddIngredientToRecipe addIngredientToRecipe = new AddIngredientToRecipe();
+            UserControl screen = ((UserControl)addIngredientWindow);
+            addRecipe.StackPanelMain.Children.Clear();
+            addRecipe.StackPanelMain.Children.Add(screen);
+
+            AddIngredientToRecipeViewModel.IngrediantAmountListCount = ingrediantsData.GetAllIngredients().Count();
         }
         #endregion
 

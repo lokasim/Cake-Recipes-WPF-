@@ -157,6 +157,33 @@ namespace CakeRecipes.Views
             }
         }
 
+        private Boolean TextAllowedMalaSlova(String s)
+        {
+            foreach (Char c in s.ToCharArray())
+            {
+                if (Char.IsLower(c) || Char.IsDigit(c) || Char.IsControl(c))
+                {
+                    loginFail.Visibility = Visibility.Collapsed;
+                    tbCapsLock.Visibility = Visibility.Collapsed;
+                    continue;
+                }
+                else
+                {
+                    tbCapsLock.Visibility = Visibility.Visible;
+                    tbCapsLock.Text = "Dozvoljn je unos malih slova i brojeva";
+                    SystemSounds.Beep.Play();
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        //samo mala slova i brojevi
+        private void PreviewTextInputHandlerMala(Object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !TextAllowedMalaSlova(e.Text);
+        }
+
         private Boolean TextAllowedVelikaSlova(String s)
         {
             foreach (Char c in s.ToCharArray())

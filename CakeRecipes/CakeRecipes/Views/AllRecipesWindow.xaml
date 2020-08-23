@@ -1,8 +1,8 @@
 ﻿<UserControl x:Class="CakeRecipes.Views.AllRecipesWindow"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:CakeRecipes.Views"
              mc:Ignorable="d"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -11,7 +11,8 @@
     <Grid>
         <Grid MinWidth="950"
               MinHeight="500"
-              Background="White">
+              Background="White"
+              Margin="0,0,-10,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="75" />
                 <RowDefinition Height="355*" />
@@ -34,261 +35,377 @@
                         VerticalAlignment="Stretch"></Border>
                 <!--Dugmici-->
                 <Button x:Name="btnDeleteRecipe"
-                                    Style="{StaticResource MaterialDesignRaisedButton}"
-                                    materialDesign:ButtonAssist.CornerRadius="20"
-                                    ToolTip="Obriši recept"
-                                    Margin="30 0 30 15"
-                                    Width="100"
-                                    Foreground="White"
-                                    Command="{Binding DeleteRecipe, UpdateSourceTrigger=PropertyChanged}"
-                                    Height="35"
-                                    VerticalAlignment="Bottom"
-                                    HorizontalAlignment="Right"
-                                    Content="Obriši"
-                                    Background="#FFF34A4A"
-                                    BorderBrush="{x:Null}"></Button>
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        materialDesign:ButtonAssist.CornerRadius="20"
+                        ToolTip="Obriši recept"
+                        Margin="30 0 30 15"
+                        Width="100"
+                        Foreground="White"
+                        Command="{Binding DeleteRecipe, UpdateSourceTrigger=PropertyChanged}"
+                        Height="35"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Right"
+                        Content="Obriši"
+                        Background="#FFF34A4A"
+                        BorderBrush="{x:Null}"></Button>
                 <Button x:Name="btnEditRecipe"
-                                    Style="{StaticResource MaterialDesignRaisedButton}"
-                                    materialDesign:ButtonAssist.CornerRadius="20"
-                                    ToolTip="Ažuriraj recept"
-                                    Margin="30 0 140 15"
-                                    Width="100"
-                                    Foreground="White"
-                                    Command="{Binding EditRecipe, UpdateSourceTrigger=PropertyChanged}"
-                                    Height="35"
-                                    VerticalAlignment="Bottom"
-                                    HorizontalAlignment="Right"
-                                    Content="Ažuriraj"
-                                    BorderBrush="{x:Null}"></Button>
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        materialDesign:ButtonAssist.CornerRadius="20"
+                        ToolTip="Ažuriraj recept"
+                        Margin="30 0 140 15"
+                        Width="100"
+                        Foreground="White"
+                        Command="{Binding EditRecipe, UpdateSourceTrigger=PropertyChanged}"
+                        Height="35"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Right"
+                        Content="Ažuriraj"
+                        BorderBrush="{x:Null}"></Button>
                 <Button x:Name="btnAddRecipe"
-                                    Style="{StaticResource MaterialDesignRaisedButton}"
-                                    materialDesign:ButtonAssist.CornerRadius="20"
-                                    ToolTip="Dodaj recept"
-                                    Margin="50 5 250 15"
-                                    Width="100"
-                                    Foreground="White"
-                                    Command="{Binding AddRecipe, UpdateSourceTrigger=PropertyChanged}"
-                                    Height="35"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        materialDesign:ButtonAssist.CornerRadius="20"
+                        ToolTip="Dodaj recept"
+                        Margin="50 5 250 15"
+                        Width="100"
+                        Foreground="White"
+                        Command="{Binding AddRecipe, UpdateSourceTrigger=PropertyChanged}"
+                        Height="35"
                         Background="#FF8BC34A"
-                                    VerticalAlignment="Bottom"
-                                    HorizontalAlignment="Right"
-                                    Content="Dodaj"
-                                    BorderBrush="{x:Null}"></Button>
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Right"
+                        Content="Dodaj"
+                        BorderBrush="{x:Null}"></Button>
             </Grid>
             <Grid Grid.Row="1">
-                <!--PopupBox-->
-                <StackPanel Width="120" Margin="30 15 0 0" Height="40" VerticalAlignment="Top" Orientation="Horizontal"
-                                             HorizontalAlignment="Left">
-                    <TextBlock Panel.ZIndex="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" FontStyle="Italic">Sortiraj</TextBlock>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="400"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"></RowDefinition>
+                                <RowDefinition Height="80"></RowDefinition>
+                                <RowDefinition Height="80"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Background="LightGray">
+                                <StackPanel>
+                                    <TextBlock FontSize="20"
+                                               FontWeight="Bold"
+                                               Foreground="#505050"
+                                               FontStyle="Italic" Margin="30 5 0 0">Filtriraj</TextBlock>
+                                    <TextBlock FontSize="20"
+                                               FontWeight="Bold"
+                                               Foreground="#505050"
+                                               FontStyle="Italic"
+                                               Margin="30 5 0 0">Rezultate</TextBlock>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <StackPanel>
+                                    <CheckBox x:Name="CheckName"
+                                              IsChecked="False"
+                                              VerticalAlignment="Center"
+                                              Margin="10 5 0 0"
+                                              Click="CheckName_Click"
+                                              Command="{Binding CheckFilter, UpdateSourceTrigger=PropertyChanged}"
+                                              FontSize="16">Naziv recepta</CheckBox>
+                                    <TextBox x:Name="txtRecipeName"
+                                             materialDesign:HintAssist.Hint="Naziv recepta*"
+                                             Width="140"
+                                             HorizontalContentAlignment="Center"
+                                             Text="{Binding Recipe.RecipeName, UpdateSourceTrigger=PropertyChanged}"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                             Height="40"
+                                             Margin="10,0,10,6"
+                                             MaxLength="40"
+                                             TextChanged="TxtRecipeName_TextChanged"
+                                             SelectionBrush="#FF8BC34A"
+                                             IsEnabled="{Binding Path=IsChecked, ElementName=CheckName}" />
+                                    <Grid Background="{StaticResource PrimaryHueMidBrush}" Height="3"></Grid>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <StackPanel>
+                                    <CheckBox x:Name="CheckType"
+                                              IsChecked="False"
+                                              VerticalAlignment="Center"
+                                              Margin="10 5 0 0"
+                                              Click="CheckType_Click"
+                                              Command="{Binding CheckFilter, UpdateSourceTrigger=PropertyChanged}"
+                                              FontSize="16">Tip recepta</CheckBox>
+                                    <ComboBox x:Name="cbxRecipeTypes"
+                                              materialDesign:HintAssist.Hint="Odaberite tip recepta*"
+                                              Width="140"
+                                              Height="40"
+                                              
+                                              IsEditable="False"
+                                              SelectionChanged="CbxRecipeTypes_SelectionChanged"
+                                              SelectedValue="{Binding Recipe.RecipeType, UpdateSourceTrigger=PropertyChanged}"
+                                              Margin="10,0,10,6"
+                                              VerticalAlignment="Top"
+                                              Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                              SelectedValuePath="Content"
+                                              IsEnabled="{Binding Path=IsChecked, ElementName=CheckType}">
+                                        <ComboBoxItem Content="Predjelo"></ComboBoxItem>
+                                        <ComboBoxItem Content="Glavno Jelo"></ComboBoxItem>
+                                        <ComboBoxItem Content="Desert"></ComboBoxItem>
+                                    </ComboBox>
+                                    <Grid Background="{StaticResource PrimaryHueMidBrush}"
+                                          Height="3"></Grid>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <StackPanel>
+                                    <CheckBox x:Name="CheckIngredient"
+                                              IsChecked="False"
+                                              VerticalAlignment="Center"
+                                              Margin="10 5 0 0"
+                                              Command="{Binding CheckFilter, UpdateSourceTrigger=PropertyChanged}"
+                                              FontSize="16">Sastojci</CheckBox>
+                                    <ComboBox x:Name="cbxRecipeIngredient"
+                                              materialDesign:HintAssist.Hint="Odaberite tip recepta*"
+                                              Width="140"
+                                              Height="40"
+                                              IsEditable="False"
+                                              SelectedValue="{Binding Recipe.RecipeType, UpdateSourceTrigger=PropertyChanged}"
+                                              Margin="10,0,10,6"
+                                              VerticalAlignment="Top"
+                                              Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                              SelectedValuePath="Content"
+                                              IsEnabled="{Binding Path=IsChecked, ElementName=CheckIngredient}">
+                                        <ComboBoxItem Content="Predjelo"></ComboBoxItem>
+                                        <ComboBoxItem Content="Glavno Jelo"></ComboBoxItem>
+                                        <ComboBoxItem Content="Desert"></ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </Grid>
                     
-                    <materialDesign:PopupBox Grid.Column="1"
-                                             Width="30"
-                                             Margin="10 0"
-                                             PlacementMode="BottomAndAlignRightEdges"
-                                             HorizontalAlignment="Center"
-                                             VerticalAlignment="Center">
-                        <materialDesign:PopupBox.ToggleContent>
-                            <materialDesign:PackIcon Kind="SortVariant" Width="24" Height="24"
-                                                     Background="{StaticResource PrimaryHueMidBrush}"/>
-                            
-                        </materialDesign:PopupBox.ToggleContent>
+                    <Grid Grid.Column="1"></Grid>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <StackPanel Width="120"
+                                Margin="30 15 0 0"
+                                Height="40"
+                                VerticalAlignment="Top"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                        <TextBlock Panel.ZIndex="1"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   FontStyle="Italic">Sortiraj</TextBlock>
+                        <materialDesign:PopupBox Grid.Column="1"
+                                                 Width="30"
+                                                 Margin="10 0"
+                                                 PlacementMode="BottomAndAlignRightEdges"
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center">
+                            <materialDesign:PopupBox.ToggleContent>
+                                <materialDesign:PackIcon Kind="SortVariant"
+                                                         Width="24"
+                                                         Height="24"
+                                                         Background="{StaticResource PrimaryHueMidBrush}" />
+                            </materialDesign:PopupBox.ToggleContent>
+                            <StackPanel>
+                                <Grid>
+                                    <materialDesign:PackIcon Kind="SortAlphabeticalAscending"
+                                                             VerticalAlignment="Center"
+                                                             Margin="10,0,5,0"
+                                                             Height="25"
+                                                             Width="25" />
+                                    <Button Name="Profil"
+                                            Margin="40,0,10,0"
+                                            Command="{Binding SortByNameAsc, UpdateSourceTrigger=PropertyChanged}">Po nazivu rastuće</Button>
+                                </Grid>
+                                <Grid>
+                                    <materialDesign:PackIcon Kind="SortAlphabeticalDescending"
+                                                             VerticalAlignment="Center"
+                                                             Margin="10,0,5,0"
+                                                             Height="25"
+                                                             Width="25" />
+                                    <Button Name="Inf"
+                                            Margin="40,0,10,0"
+                                            Command="{Binding SortByNameDesc, UpdateSourceTrigger=PropertyChanged}">>
+                                    Po nazivu opadajuće</Button>
+                                </Grid>
+                                <Grid>
+                                    <materialDesign:PackIcon Kind="SortNumericAscendingVariant"
+                                                             VerticalAlignment="Center"
+                                                             Margin="10,0,5,0"
+                                                             Height="25"
+                                                             Width="25" />
+                                    <Button Name="Calculator"
+                                            Margin="40,0,10,0"
+                                            Command="{Binding SortByDateAsc, UpdateSourceTrigger=PropertyChanged}">>
+                                    Po datumu rastuće</Button>
+                                </Grid>
+                                <Grid>
+                                    <materialDesign:PackIcon Kind="SortNumericDescendingVariant"
+                                                             VerticalAlignment="Center"
+                                                             Margin="10,0,5,0"
+                                                             Height="25"
+                                                             Width="25" />
+                                    <Button Name="Uputstvo"
+                                            Margin="40,0,10,0"
+                                            Command="{Binding SortByDateDesc, UpdateSourceTrigger=PropertyChanged}">>
+                                    Po datumu opadajuće</Button>
+                                </Grid>
+                                <Grid>
+                                    <materialDesign:PackIcon Kind="SortNumericAscending"
+                                                             VerticalAlignment="Center"
+                                                             Margin="10,0,5,0"
+                                                             Height="25"
+                                                             Width="25" />
+                                    <Button Name="Napusti"
+                                            Margin="40,0,10,0"
+                                            Command="{Binding SortByIngredientAmountAsc, UpdateSourceTrigger=PropertyChanged}">Po broju sastojaka rastuće</Button>
+                                </Grid>
+                                <Grid>
+                                    <materialDesign:PackIcon Kind="SortNumericDescending"
+                                                             VerticalAlignment="Center"
+                                                             Margin="10,0,5,0"
+                                                             Height="25"
+                                                             Width="25" />
+                                    <Button Name="Uputstvoa"
+                                            Margin="40,0,10,0"
+                                            Command="{Binding SortByIngredientAmountDesc, UpdateSourceTrigger=PropertyChanged}">Po broju sastojaka opadajuće</Button>
+                                </Grid>
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+                    </StackPanel>
+                    <DataGrid Name="DataGridOrder"
+                              Grid.Row="1"
+                              ItemsSource="{Binding RecipeList, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedItem="{Binding Recipe, UpdateSourceTrigger=PropertyChanged}"
+                              IsReadOnly="True"
+                              FontSize="14"
+                              Height="auto"
+                              MinWidth="300"
+                              MinColumnWidth="50"
+                              Width="auto"
+                              Margin="30 70 10 0"
+                              Background="White"
+                              AlternatingRowBackground="LightYellow"
+                              HorizontalContentAlignment="Center"
+                              VerticalAlignment="Top"
+                              HorizontalAlignment="Left"
+                              HeadersVisibility="Column"
+                              AutoGenerateColumns="False"
+                              HorizontalGridLinesBrush="Black"
+                              BorderBrush="LightGray"
+                              BorderThickness="2"
+                              Foreground="White"
+                              FontWeight="Medium">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Naziv"
+                                                MinWidth="100"
+                                                Binding="{Binding RecipeName}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextWrapping"
+                                                Value="Wrap" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Tip"
+                                                Width="100"
+                                                Binding="{Binding RecipeType}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextWrapping"
+                                                Value="Wrap" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Broj Osoba"
+                                                Width="100"
+                                                Binding="{Binding NoPeople}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextWrapping"
+                                                Value="Wrap" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <TextBlock HorizontalAlignment="Right"
+                               VerticalAlignment="Top"
+                               Margin="0,20,30,0"
+                               Width="350"
+                               MinHeight="5"
+                               MaxHeight="51"
+                               FontWeight="Bold"
+                               FontSize="15px"
+                               Text="{Binding InfoText}"></TextBlock>
+                    <TextBox x:Name="txtNoPeople"
+                             materialDesign:HintAssist.Hint="Broj Osoba"
+                             Width="100"
+                             MaxLength="30"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             Margin="0,80,270,0"
+                             Padding="0,-2,0,0"
+                             VerticalContentAlignment="Bottom"
+                             HorizontalContentAlignment="Center"
+                             Height="40"
+                             VerticalAlignment="Top"
+                             HorizontalAlignment="Right"
+                             DataObject.Pasting="PastingHandler"
+                             PreviewKeyDown="TxtBox_PreviewKeyDown"
+                             PreviewTextInput="PreviewNumberInputHandler"
+                             Text="{Binding NewNoPeople, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button x:Name="btnPreviewRecipe"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            materialDesign:ButtonAssist.CornerRadius="0 15 15 0"
+                            ToolTip="Prikazi recept za uneti broj osoba"
+                            Width="150"
+                            Height="40"
+                            Foreground="White"
+                            Command="{Binding PreviewRecipe, UpdateSourceTrigger=PropertyChanged}"
+                            HorizontalAlignment="Right"
+                            Margin="0,80,120,0"
+                            Background="#FF8BC34A"
+                            VerticalAlignment="Top"
+                            Content="Prikaži Recept"
+                            BorderBrush="{x:Null}"></Button>
+                    <Border BorderBrush="#505050"
+                            BorderThickness="3"
+                            HorizontalAlignment="Right"
+                            Height="auto"
+                            Margin="20,125,30,0"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                            MinWidth="350"
+                            CornerRadius="5">
                         <StackPanel>
-                            <Grid>
-                                <materialDesign:PackIcon Kind="SortAlphabeticalAscending"
-                                                         VerticalAlignment="Center"
-                                                         Margin="10,0,5,0"
-                                                         Height="25"
-                                                         Width="25" />
-                                <Button Name="Profil"
-                                        Margin="40,0,10,0"
-                                        Command="{Binding SortByNameAsc, UpdateSourceTrigger=PropertyChanged}">
-                                    Po nazivu rastuće
-                                </Button>
-                            </Grid>
-
-                            <Grid>
-                                <materialDesign:PackIcon Kind="SortAlphabeticalDescending"
-                                                         VerticalAlignment="Center"
-                                                         Margin="10,0,5,0"
-                                                         Height="25"
-                                                         Width="25" />
-                                <Button Name="Inf"
-                                        Margin="40,0,10,0"
-                                        Command="{Binding SortByNameDesc, UpdateSourceTrigger=PropertyChanged}">>
-                                    Po nazivu opadajuće
-                                </Button>
-                            </Grid>
-
-                            <Grid>
-                                <materialDesign:PackIcon Kind="SortNumericAscendingVariant"
-                                                         VerticalAlignment="Center"
-                                                         Margin="10,0,5,0"
-                                                         Height="25"
-                                                         Width="25" />
-                                <Button Name="Calculator"
-                                        Margin="40,0,10,0"
-                                        Command="{Binding SortByDateAsc, UpdateSourceTrigger=PropertyChanged}">>
-                                    Po datumu rastuće
-                                </Button>
-                            </Grid>
-
-                            <Grid>
-                                <materialDesign:PackIcon Kind="SortNumericDescendingVariant"
-                                                         VerticalAlignment="Center"
-                                                         Margin="10,0,5,0"
-                                                         Height="25"
-                                                         Width="25" />
-                                <Button Name="Uputstvo"
-                                        Margin="40,0,10,0"
-                                        Command="{Binding SortByDateDesc, UpdateSourceTrigger=PropertyChanged}">>
-                                    Po datumu opadajuće
-                                </Button>
-                            </Grid>
-
-                            <Grid>
-                                <materialDesign:PackIcon Kind="SortNumericAscending"
-                                                         VerticalAlignment="Center"
-                                                         Margin="10,0,5,0"
-                                                         Height="25"
-                                                         Width="25" />
-                                <Button Name="Napusti"
-                                        Margin="40,0,10,0"
-                                        Command="{Binding SortByIngredientAmountAsc, UpdateSourceTrigger=PropertyChanged}">
-                                    Po broju sastojaka rastuće
-                                </Button>
-                            </Grid>
-                            <Grid>
-                                <materialDesign:PackIcon Kind="SortNumericDescending"
-                                                         VerticalAlignment="Center"
-                                                         Margin="10,0,5,0"
-                                                         Height="25"
-                                                         Width="25" />
-                                <Button Name="Uputstvoa"
-                                        Margin="40,0,10,0"
-                                        Command="{Binding SortByIngredientAmountDesc, UpdateSourceTrigger=PropertyChanged}">
-                                    Po broju sastojaka opadajuće
-                                </Button>
-                            </Grid>
+                            <TextBlock Text="{Binding RecipeText, UpdateSourceTrigger=PropertyChanged}"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Top"
+                               Margin="10,10,10,10"
+                               TextWrapping="Wrap"
+                               Height="auto"
+                                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                               Width="325"
+                               FontSize="13px" />
                         </StackPanel>
-                    </materialDesign:PopupBox>
-                </StackPanel>
-                <DataGrid Name="DataGridOrder"
-                      Grid.Row="1"
-                      ItemsSource="{Binding RecipeList, UpdateSourceTrigger=PropertyChanged}"
-                      SelectedItem="{Binding Recipe, UpdateSourceTrigger=PropertyChanged}"
-                      IsReadOnly="True"
-                      FontSize="14"
-                      Height="auto"
-                      MinWidth="500"
-                          Width="auto"
-                      Margin="30 70 30 0"
-                      Background="White"
-                      AlternatingRowBackground="LightYellow"
-                      HorizontalContentAlignment="Center"
-                      VerticalAlignment="Top"
-                      HorizontalAlignment="Left"
-                      HeadersVisibility="Column"
-                      AutoGenerateColumns="False"
-                      HorizontalGridLinesBrush="Black"
-                      BorderBrush="LightGray"
-                      BorderThickness="2"
-                      Foreground="White"
-                      FontWeight="Medium">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Naziv"
-                                        Width="150"
-                                        Binding="{Binding RecipeName}">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style>
-                                    <Setter Property="TextBlock.TextWrapping"
-                                        Value="Wrap" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Tip"
-                                        Width="150"
-                                        Binding="{Binding RecipeType}">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style>
-                                    <Setter Property="TextBlock.TextWrapping"
-                                        Value="Wrap" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Broj Osoba"
-                                        Width="150"
-                                        Binding="{Binding NoPeople}">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style>
-                                    <Setter Property="TextBlock.TextWrapping"
-                                        Value="Wrap" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                    </Border>
+                </Grid>
             </Grid>
-            <Border BorderBrush="#505050" 
-                    BorderThickness="3" 
-                    HorizontalAlignment="Left" 
-                    Height="317" 
-                    Margin="572,30,0,0" 
-                    Grid.Row="1" 
-                    VerticalAlignment="Top" 
-                    Width="364"
-                    MaxWidth="500"
-                    CornerRadius="5">
-                <Label Content=""/>
-            </Border>
+            
         </Grid>
-        <TextBlock
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top" 
-                Margin="583,112,0,0" 
-                Width="340"
-                MinHeight="5"
-                MaxHeight="51"
-                FontWeight="Bold"
-            FontSize="15px" Text="{Binding InfoText}">
-        </TextBlock>
-        <TextBox x:Name="txtNoPeople"
-                     materialDesign:HintAssist.Hint="Broj Osoba"
-                     Width="150"
-                     MaxLength="30"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     Margin="603,0,217,300"
-                     Padding="0,-2,0,0"
-                     VerticalContentAlignment="Bottom"
-                     HorizontalContentAlignment="Center"
-                     Height="50"
-                     VerticalAlignment="Bottom"
-                     HorizontalAlignment="Left"
-                     DataObject.Pasting="PastingHandler"
-                     PreviewKeyDown="TxtBox_PreviewKeyDown"
-                     PreviewTextInput="PreviewNumberInputHandler"
-                     Text="{Binding NewNoPeople, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnPreviewRecipe"
-                                    Style="{StaticResource MaterialDesignRaisedButton}"
-                                    materialDesign:ButtonAssist.CornerRadius="15"
-                                    ToolTip="Prikazi recept za uneti broj osoba"
-                                    Width="125"
-                                    MaxWidth="160"
-                                    Foreground="White"
-                                    Command="{Binding PreviewRecipe, UpdateSourceTrigger=PropertyChanged}"
-                                    HorizontalAlignment="Left" 
-                                    Margin="774,0,0,300"
-                                    Background="#FF8BC34A"
-                                    VerticalAlignment="Bottom"
-                                    Content="Prikazi Recept"
-                                    BorderBrush="{x:Null}"></Button>
-        <TextBlock Text="{Binding RecipeText, UpdateSourceTrigger=PropertyChanged}"
-                   HorizontalAlignment="Left" 
-                   VerticalAlignment="Top"
-                   Margin="594,231,0,0"
-                   TextWrapping="Wrap"
-                   Height="176" 
-                   Width="319"
-                   FontSize="13px"/>
     </Grid>
 </UserControl>
 

@@ -192,7 +192,18 @@ namespace CakeRecipes.ViewModel
         /// </summary>
         public void SortByNameAscExecute()
         {
-            RecipeList = recipeData.GetAllRecipes().OrderBy(x => x.RecipeName).ToList();
+
+            if (AllRecipesWindow.filteredList.Count != 0)
+            {
+                allReciperWindow.DataGridOrder.ItemsSource = AllRecipesWindow.filteredList.OrderBy(x => x.RecipeName).ToList();
+
+            }
+            else
+            {
+                allReciperWindow.DataGridOrder.ItemsSource = recipeData.GetAllRecipes().OrderBy(x => x.RecipeName).ToList();
+
+
+            }
         }
 
         /// <summary>
@@ -232,7 +243,19 @@ namespace CakeRecipes.ViewModel
         /// </summary>
         public void SortByNameDescExecute()
         {
-            RecipeList = recipeData.GetAllRecipes().OrderByDescending(x => x.RecipeName).ToList();
+            //RecipeList = AllRecipesWindow.filteredList.OrderByDescending(x => x.RecipeName).ToList();
+            if(AllRecipesWindow.filteredList.Count != 0)
+            {
+                allReciperWindow.DataGridOrder.ItemsSource = AllRecipesWindow.filteredList.OrderByDescending(x => x.RecipeName).ToList();
+            }
+            else
+            {
+                allReciperWindow.DataGridOrder.ItemsSource = recipeData.GetAllRecipes().OrderByDescending(x => x.RecipeName).ToList();
+
+            }
+
+            //allReciperWindow.DataGridOrder.ItemsSource = RecipeList;
+            //AllRecipesWindow.filteredList = RecipeList;
         }
 
         /// <summary>
@@ -272,7 +295,16 @@ namespace CakeRecipes.ViewModel
         /// </summary>
         public void SortByDateAscExecute()
         {
-            RecipeList = recipeData.GetAllRecipes().OrderBy(x => x.CreationDate).ToList();
+            if (AllRecipesWindow.filteredList.Count != 0)
+            {
+                allReciperWindow.DataGridOrder.ItemsSource = AllRecipesWindow.filteredList.OrderBy(x => x.CreationDate).ToList();
+
+            }
+            else
+            {
+                allReciperWindow.DataGridOrder.ItemsSource = recipeData.GetAllRecipes().OrderBy(x => x.CreationDate).ToList();
+            }
+            
         }
 
         /// <summary>
@@ -312,7 +344,16 @@ namespace CakeRecipes.ViewModel
         /// </summary>
         public void SortByDateDescExecute()
         {
-            RecipeList = recipeData.GetAllRecipes().OrderByDescending(x => x.CreationDate).ToList();
+            if (AllRecipesWindow.filteredList.Count != 0)
+            {
+                allReciperWindow.DataGridOrder.ItemsSource = AllRecipesWindow.filteredList.OrderByDescending(x => x.CreationDate).ToList();
+
+            }
+            else
+            {
+                allReciperWindow.DataGridOrder.ItemsSource = recipeData.GetAllRecipes().OrderByDescending(x => x.CreationDate).ToList();
+
+            }
         }
 
         /// <summary>
@@ -352,7 +393,10 @@ namespace CakeRecipes.ViewModel
         /// </summary>
         public void SortByIngredientAmountAscExecute()
         {
-            RecipeList = recipeData.SortByAmountAsecnding().ToList();
+            allReciperWindow.DataGridOrder.ItemsSource = recipeData.SortByAmountAsecnding().ToList();
+            allReciperWindow.CheckType.IsChecked = false;
+            allReciperWindow.CheckName.IsChecked = false;
+
         }
 
         /// <summary>
@@ -392,7 +436,9 @@ namespace CakeRecipes.ViewModel
         /// </summary>
         public void SortByIngredientAmountDescExecute()
         {
-            RecipeList = recipeData.SortByAmountDescending().ToList();
+            allReciperWindow.DataGridOrder.ItemsSource = recipeData.SortByAmountDescending().ToList();
+            allReciperWindow.CheckType.IsChecked = false;
+            allReciperWindow.CheckName.IsChecked = false;
         }
 
         /// <summary>

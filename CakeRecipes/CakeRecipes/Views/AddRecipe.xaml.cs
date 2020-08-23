@@ -28,6 +28,7 @@ namespace CakeRecipes.Views
             this.Name = "AddRecipe";
             this.DataContext = new AddRecipeViewModel(this, recipeEdit);
             this.Language = XmlLanguage.GetLanguage("sr-SR");
+
         }
 
         private void DragMe(object sender, MouseButtonEventArgs e)

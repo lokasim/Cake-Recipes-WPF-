@@ -231,7 +231,7 @@ namespace CakeRecipes.ViewModel
         private void WorkerOnDoWork(object sender, DoWorkEventArgs e)
         {
             ProgressBarVisibility = Visibility.Visible;
-            ButtonVisibility = Visibility.Collapsed;
+            ButtonVisibility  = Visibility.Collapsed;
             Random rng = new Random();
 
             for (int i = 1; i < 22; i++)
@@ -374,6 +374,8 @@ namespace CakeRecipes.ViewModel
             {
                 List<tblShoppingBasket> tempShoppingList = shoppingData.GetAllSelectedShoppingBasketItems(LoggedGuest.ID).ToList();
                 AddIngredientToRecipe addIngredientToBasket = new AddIngredientToRecipe();
+                AddIngredientToRecipeWindow addIngredientToRecipeWindow = new AddIngredientToRecipeWindow();
+                addIngredientToRecipeWindow.ShowDialog();
                // addIngredientToBasket.ShowDialog();
 
                 // Return the list to the initial state
