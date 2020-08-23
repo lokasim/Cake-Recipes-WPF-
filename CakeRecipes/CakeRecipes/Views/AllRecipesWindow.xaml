@@ -170,21 +170,21 @@
                                               Margin="10 5 0 0"
                                               Command="{Binding CheckFilter, UpdateSourceTrigger=PropertyChanged}"
                                               FontSize="16">Sastojci</CheckBox>
-                                    <ComboBox x:Name="cbxRecipeIngredient"
-                                              materialDesign:HintAssist.Hint="Odaberite tip recepta*"
-                                              Width="140"
-                                              Height="40"
-                                              IsEditable="False"
-                                              SelectedValue="{Binding Recipe.RecipeType, UpdateSourceTrigger=PropertyChanged}"
-                                              Margin="10,0,10,6"
-                                              VerticalAlignment="Top"
-                                              Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                                              SelectedValuePath="Content"
-                                              IsEnabled="{Binding Path=IsChecked, ElementName=CheckIngredient}">
-                                        <ComboBoxItem Content="Predjelo"></ComboBoxItem>
-                                        <ComboBoxItem Content="Glavno Jelo"></ComboBoxItem>
-                                        <ComboBoxItem Content="Desert"></ComboBoxItem>
-                                    </ComboBox>
+                                    <Button x:Name="btnChooseIngredinet"
+                                            Style="{StaticResource MaterialDesignRaisedButton}"
+                                            materialDesign:ButtonAssist.CornerRadius="20"
+                                            ToolTip="Dodaj recept"
+                                            Margin="10 10 10 10"
+                                            Width="140"
+                                            Foreground="White"
+                                            IsEnabled="{Binding Path=IsChecked, ElementName=CheckIngredient}"
+                                            Command="{Binding AddRecipe, UpdateSourceTrigger=PropertyChanged}"
+                                            Height="35"
+                                            Background="#FF8BC34A"
+                                            VerticalAlignment="Bottom"
+                                            HorizontalAlignment="Center"
+                                            Content="Izaberi sastojak"
+                                            BorderBrush="{x:Null}"></Button>
                                 </StackPanel>
                             </Grid>
                         </Grid>

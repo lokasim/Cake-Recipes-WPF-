@@ -140,6 +140,7 @@ namespace CakeRecipes.Views
 
         private void TxtRecipeName_TextChanged(object sender, TextChangedEventArgs e)
         {
+        
                 CollectionViewSource.GetDefaultView(DataGridOrder.ItemsSource).Refresh();
                 filteredList = items.Where(i => view.Filter(i)).ToList();
             DataGridOrder.ItemsSource = items.Where(i => view.Filter(i)).ToList();

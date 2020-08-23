@@ -157,6 +157,7 @@ namespace CakeRecipes.ViewModel
         {
             try
             {
+                //if()
                 AddIngredientToRecipeViewModel.IngrediantAmountListCount = 0;
                 addRecipe.Close();
             }

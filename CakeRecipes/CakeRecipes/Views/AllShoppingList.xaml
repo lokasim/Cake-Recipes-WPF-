@@ -98,6 +98,60 @@
                              Value="{Binding CurrentProgress, UpdateSourceTrigger=PropertyChanged}"
                              Visibility="{Binding ProgressBarVisibility, Mode=OneWay}" />
                 </Grid>
+                <materialDesign:Snackbar Grid.Column="0"
+                                         Panel.ZIndex="1"
+                                         IsActive="False"
+                                         x:Name="Error"
+                                         Background="#FFF34A4A"
+                                         VerticalAlignment="Top"
+                                         Margin="5 0"
+                                         FontSize="16"
+                                         FontFamily="{DynamicResource MaterialDesignFont}"
+                                         HorizontalAlignment="Center">
+                    <materialDesign:SnackbarMessage Content="Korisničko ime je zauzeto ili ste uneli pogrešnu lozinku."
+                                                    HorizontalContentAlignment="Center"
+                                                    Height="40"
+                                                    Width="250"
+                                                    FontWeight="Bold"
+                                                    Foreground="Black"
+                                                    ActionCommand="{Binding SnackError}" />
+                </materialDesign:Snackbar>
+                <materialDesign:Snackbar Grid.Column="0"
+                                         Panel.ZIndex="1"
+                                         IsActive="False"
+                                         x:Name="Successfuly"
+                                         Background="#FF8BC34A"
+                                         VerticalAlignment="Top"
+                                         Margin="5 0"
+                                         FontSize="16"
+                                         FontFamily="{DynamicResource MaterialDesignFont}"
+                                         HorizontalAlignment="Center">
+                    <materialDesign:SnackbarMessage Content="Korisničko ime je zauzeto ili ste uneli pogrešnu lozinku."
+                                                    HorizontalContentAlignment="Center"
+                                                    Height="40"
+                                                    Width="250"
+                                                    FontWeight="Bold"
+                                                    Foreground="Black"
+                                                    ActionCommand="{Binding SnackError}" />
+                </materialDesign:Snackbar>
+                <materialDesign:Snackbar Grid.Column="0"
+                                         Panel.ZIndex="1"
+                                         IsActive="False"
+                                         x:Name="Running"
+                                         Background="{StaticResource PrimaryHueMidBrush}"
+                                         VerticalAlignment="Top"
+                                         Margin="5 0"
+                                         FontSize="16"
+                                         FontFamily="{DynamicResource MaterialDesignFont}"
+                                         HorizontalAlignment="Center">
+                    <materialDesign:SnackbarMessage Content="Korisničko ime je zauzeto ili ste uneli pogrešnu lozinku."
+                                                    HorizontalContentAlignment="Center"
+                                                    Height="40"
+                                                    Width="250"
+                                                    FontWeight="Bold"
+                                                    Foreground="Black"
+                                                    ActionCommand="{Binding SnackError}" />
+                </materialDesign:Snackbar>
                 <Label Content="{Binding ProgressBarInfoLabel, Mode=OneWay}"
                        HorizontalAlignment="Center"
                        Visibility="{Binding ProgressBarVisibility, Mode=OneWay}"

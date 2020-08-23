@@ -284,13 +284,32 @@ namespace CakeRecipes.ViewModel
             else
             {
                 tblIngredient ing = ingredientData.FindIngredient(ShoppingBasket.IngredientID);
-                InfoLabel = "Uspesno izvrsena porudzbina sastojka " + ing.IngredientName;
-                InfoLabelBG = "#28a745";
+                allShoppingListWindow.Successfuly.Message.Content = "Uspesno izvrsena porudzbina sastojka " + ing.IngredientName.ToString();
+                SnackSuccessfuly();
                 ProgressBarVisibility = Visibility.Collapsed;
                 ButtonVisibility = Visibility.Visible;
+
             }
         }
         #endregion
+        public async void SnackSuccessfuly()
+        {
+            allShoppingListWindow.Successfuly.IsActive = true;
+            await Task.Delay(2000);
+            allShoppingListWindow.Successfuly.IsActive = false;
+        }
+        public async void SnackError()
+        {
+            allShoppingListWindow.Error.IsActive = true;
+            await Task.Delay(2000);
+            allShoppingListWindow.Error.IsActive = false;
+        }
+        public async void SnackRunning()
+        {
+            allShoppingListWindow.Running.IsActive = true;
+            await Task.Delay(2000);
+            allShoppingListWindow.Running.IsActive = false;
+        }
 
         #region Commands
         /// <summary>
@@ -439,16 +458,16 @@ namespace CakeRecipes.ViewModel
             {
                 if (!bgWorker.IsBusy && ShoppingBasket != null)
                 {
-                    InfoLabelBG = "#17a2b8";
-                    InfoLabel = "Kupovina u toku...";
+                    allShoppingListWindow.Running.Message.Content = InfoLabel = "Kupovina u toku...";
+                    SnackRunning();
                     // This method will start the execution asynchronously in the background
                     bgWorker.RunWorkerAsync();
                     _isRunning = true;
                 }
                 else if (bgWorker.IsBusy)
                 {
-                    InfoLabelBG = "#ffc107";
-                    InfoLabel = "Proces kupovine je u toku, molim Vas sacekajte.";
+                    allShoppingListWindow.Running.Message.Content = InfoLabel = "Proces kupovine je u toku, molim Vas sacekajte.";
+                    SnackRunning();
                 }
             }
             catch (Exception)
