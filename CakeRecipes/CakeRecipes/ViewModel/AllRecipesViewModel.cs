@@ -571,6 +571,12 @@ namespace CakeRecipes.ViewModel
                             }
                             isRecipeNotUpdated = false;
                         }
+                        else
+                        {
+                            // Save recipe changes
+                            recipeData.AddRecipe(Recipe);
+                        }
+
                         RecipeList = recipeData.GetAllRecipes().ToList();
                     }
                 }

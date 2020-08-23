@@ -1,5 +1,6 @@
 ﻿using CakeRecipes.Models;
 using CakeRecipes.ViewModel;
+using CakeRecipes.Views;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -410,17 +411,17 @@ namespace CakeRecipes.Services
         {
             int totalAmount = 0;
             Dictionary<int, int> dict = new Dictionary<int, int>();
-            for (int i = 0; i < GetAllRecipes().Count; i++)
+            for (int i = 0; i < AllRecipesWindow.filteredList.Count; i++)
             {
                 totalAmount = 0;
                 for (int j = 0; j < GetAllRecipeIngrediant().Count; j++)
                 {                 
-                    if (GetAllRecipes()[i].RecipeID == GetAllRecipeIngrediant()[j].RecipeID)
+                    if (AllRecipesWindow.filteredList[i].RecipeID == GetAllRecipeIngrediant()[j].RecipeID)
                     {
                         totalAmount++;
                     }
                 }
-                dict[GetAllRecipes()[i].RecipeID] = totalAmount;
+                dict[AllRecipesWindow.filteredList[i].RecipeID] = totalAmount;
             }
 
             // Sort the order of the dictionary depending on the value
