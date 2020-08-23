@@ -146,16 +146,23 @@ namespace CakeRecipes.ViewModel
 
                 
 
-                s.AddUser(User);
-                IsUpdateUser = true;
-                usersLogin = true;
-                LoggedGuest.NameSurname = login.nameSurnameUser.Text.ToString();
-                LoggedGuest.Username = login.NameTextBox.Text.ToString();
-                LoggedGuest.ID = User.UserID;
-                login.pnlRegistrationUser.Visibility = Visibility.Collapsed;
-                login.pnlSuccessfulRegistration.Visibility = Visibility.Visible;
+                if(s.AddUser(User) != null)
+                {
+                    IsUpdateUser = true;
+                    usersLogin = true;
+                    LoggedGuest.NameSurname = login.nameSurnameUser.Text.ToString();
+                    LoggedGuest.Username = login.NameTextBox.Text.ToString();
+                    LoggedGuest.ID = User.UserID;
+                    login.pnlRegistrationUser.Visibility = Visibility.Collapsed;
+                    login.pnlSuccessfulRegistration.Visibility = Visibility.Visible;
+                    OpenMainMenu();
 
-                OpenMainMenu();
+                }
+                else
+                {
+                    return;
+                }
+
             }
             catch (Exception ex)
             {
@@ -225,7 +232,7 @@ namespace CakeRecipes.ViewModel
                     adminLogin = true;
                     OpenMainMenu();
                 }
-                else if (login.NameTextBox.Text == "Admin" || login.NameTextBox.Text == "admin")
+                else if (login.NameTextBox.Text.ToLower() == "admin")
                 {
                     login.SnackError();
                     //Xceed.Wpf.Toolkit.MessageBox.Show("Korisničko ime je rezervisano, pokušajte sa nekim drugim.", "Korisničko ime");
@@ -250,6 +257,12 @@ namespace CakeRecipes.ViewModel
                     //Xceed.Wpf.Toolkit.MessageBox.Show("Korisničko ime je zauzeto, pokušajte neko drugo.", "Korisničko ime");
                     return;
                 }
+                //else if (userLogin == null)
+                //{
+                //    login.SnackError();
+                //    Xceed.Wpf.Toolkit.MessageBox.Show("Korisničko ime je zauzeto, pokušajte neko drugo.", "Korisničko ime");
+                //    return;
+                //}
                 else
                 {
                     login.pnlLoginUser.Visibility = Visibility.Collapsed;

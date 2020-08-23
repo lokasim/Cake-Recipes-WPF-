@@ -34,6 +34,24 @@ namespace CakeRecipes.Services
             }
         }
 
+        public List<vwRecipe> GetAllRecipesVW()
+        {
+            try
+            {
+                using (CakeRecipesDBEntities context = new CakeRecipesDBEntities())
+                {
+                    List<vwRecipe> list = new List<vwRecipe>();
+                    list = (from x in context.vwRecipes select x).ToList();
+                    return list;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception" + ex.Message.ToString());
+                return null;
+            }
+        }
+
         /// <summary>
         /// Get all data about recipes from the current user
         /// </summary>

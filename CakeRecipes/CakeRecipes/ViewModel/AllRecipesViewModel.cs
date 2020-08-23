@@ -174,37 +174,35 @@ namespace CakeRecipes.ViewModel
         /// <summary>
         /// Sort Recipe button
         /// </summary>
-        private ICommand sortByName;
-        public ICommand SortByName
+        private ICommand sortByNameAsc;
+        public ICommand SortByNameAsc
         {
             get
             {
-                if (sortByName == null)
+                if (sortByNameAsc == null)
                 {
-                    sortByName = new RelayCommand(param => SortByNameExecute(), param => CanSortByNameExecute());
+                    sortByNameAsc = new RelayCommand(param => SortByNameAscExecute(), param => CanSortByNameAscExecute());
                 }
-                return sortByName;
+                return sortByNameAsc;
             }
         }
 
-        private static bool orderNameAsc = false;
         /// <summary>
-        /// Method for sorting by name
+        /// Method for sorting by name ascending
         /// </summary>
-        public void SortByNameExecute()
+        public void SortByNameAscExecute()
         {
-         
-            if (orderNameAsc == true)
+
+            if (AllRecipesWindow.filteredList.Count != 0)
             {
-                orderNameAsc = false;
-                RecipeList = recipeData.GetAllRecipes().OrderByDescending(x => x.RecipeName).ToList();
-                SortByNameBtn = "Naziv desc";
+                allReciperWindow.DataGridOrder.ItemsSource = AllRecipesWindow.filteredList.OrderBy(x => x.RecipeName).ToList();
+
             }
             else
             {
-                orderNameAsc = true;
-                RecipeList = recipeData.GetAllRecipes().OrderBy(x => x.RecipeName).ToList();
-                SortByNameBtn = "Naziv asc";
+                allReciperWindow.DataGridOrder.ItemsSource = recipeData.GetAllRecipes().OrderBy(x => x.RecipeName).ToList();
+
+
             }
         }
 
@@ -212,7 +210,7 @@ namespace CakeRecipes.ViewModel
         /// Checks if its possible to press the sort button
         /// </summary>
         /// <returns></returns>
-        public bool CanSortByNameExecute()
+        public bool CanSortByNameAscExecute()
         {
             if (RecipeList.Count == 0)
             {
@@ -227,45 +225,44 @@ namespace CakeRecipes.ViewModel
         /// <summary>
         /// Sort Recipe button
         /// </summary>
-        private ICommand sortByDate;
-        public ICommand SortByDate
+        private ICommand sortByNameDesc;
+        public ICommand SortByNameDesc
         {
             get
             {
-                if (sortByDate == null)
+                if (sortByNameDesc == null)
                 {
-                    sortByDate = new RelayCommand(param => SortByDateExecute(), param => CanSortByDateExecute());
+                    sortByNameDesc = new RelayCommand(param => SortByNameDescExecute(), param => CanSortByNameDescExecute());
                 }
-                return sortByDate;
+                return sortByNameDesc;
             }
         }
 
-        private static bool orderDateAsc = false;
         /// <summary>
-        /// Method for sorting by name
+        /// Method for sorting by name descending
         /// </summary>
-        public void SortByDateExecute()
+        public void SortByNameDescExecute()
         {
-
-            if (orderDateAsc == true)
+            //RecipeList = AllRecipesWindow.filteredList.OrderByDescending(x => x.RecipeName).ToList();
+            if(AllRecipesWindow.filteredList.Count != 0)
             {
-                orderDateAsc = false;
-                RecipeList = recipeData.GetAllRecipes().OrderByDescending(x => x.CreationDate).ToList();
-                SortByDateBtn = "Datum desc";
+                allReciperWindow.DataGridOrder.ItemsSource = AllRecipesWindow.filteredList.OrderByDescending(x => x.RecipeName).ToList();
             }
             else
             {
-                orderDateAsc = true;
-                RecipeList = recipeData.GetAllRecipes().OrderBy(x => x.CreationDate).ToList();
-                SortByDateBtn = "Datum asc";
+                allReciperWindow.DataGridOrder.ItemsSource = recipeData.GetAllRecipes().OrderByDescending(x => x.RecipeName).ToList();
+
             }
+
+            //allReciperWindow.DataGridOrder.ItemsSource = RecipeList;
+            //AllRecipesWindow.filteredList = RecipeList;
         }
 
         /// <summary>
         /// Checks if its possible to press the sort button
         /// </summary>
         /// <returns></returns>
-        public bool CanSortByDateExecute()
+        public bool CanSortByNameDescExecute()
         {
             if (RecipeList.Count == 0)
             {
@@ -280,45 +277,41 @@ namespace CakeRecipes.ViewModel
         /// <summary>
         /// Sort Recipe button
         /// </summary>
-        private ICommand sortByIngredientAmount;
-        public ICommand SortByIngredientAmount
+        private ICommand sortByDateAsc;
+        public ICommand SortByDateAsc
         {
             get
             {
-                if (sortByIngredientAmount == null)
+                if (sortByDateAsc == null)
                 {
-                    sortByIngredientAmount = new RelayCommand(param => SortByIngredientAmountExecute(), param => CanSortByIngredientAmountExecute());
+                    sortByDateAsc = new RelayCommand(param => SortByDateAscExecute(), param => CanSortByDateAscExecute());
                 }
-                return sortByIngredientAmount;
+                return sortByDateAsc;
             }
         }
 
-        public static bool orderAmountAsc = false;
         /// <summary>
-        /// Method for sorting by ingredient amount
+        /// Method for sorting by date ascending
         /// </summary>
-        public void SortByIngredientAmountExecute()
+        public void SortByDateAscExecute()
         {
-
-            if (orderAmountAsc == true)
+            if (AllRecipesWindow.filteredList.Count != 0)
             {
-                orderAmountAsc = false;
-                RecipeList = recipeData.SortByAmountAsecnding().ToList();
-                SortByAmountBtn = "Broj desc";
+                allReciperWindow.DataGridOrder.ItemsSource = AllRecipesWindow.filteredList.OrderBy(x => x.CreationDate).ToList();
+
             }
             else
             {
-                orderAmountAsc = true;
-                RecipeList = recipeData.SortByAmountDescending().ToList();
-                SortByAmountBtn = "Broj asc";
+                allReciperWindow.DataGridOrder.ItemsSource = recipeData.GetAllRecipes().OrderBy(x => x.CreationDate).ToList();
             }
+            
         }
 
         /// <summary>
         /// Checks if its possible to press the sort button
         /// </summary>
         /// <returns></returns>
-        public bool CanSortByIngredientAmountExecute()
+        public bool CanSortByDateAscExecute()
         {
             if (RecipeList.Count == 0)
             {
@@ -330,6 +323,139 @@ namespace CakeRecipes.ViewModel
             }
         }
 
+        /// <summary>
+        /// Sort Recipe button
+        /// </summary>
+        private ICommand sortByDateDesc;
+        public ICommand SortByDateDesc
+        {
+            get
+            {
+                if (sortByDateDesc == null)
+                {
+                    sortByDateDesc = new RelayCommand(param => SortByDateDescExecute(), param => CanSortByDateDescExecute());
+                }
+                return sortByDateDesc;
+            }
+        }
+
+        /// <summary>
+        /// Method for sorting by date descending
+        /// </summary>
+        public void SortByDateDescExecute()
+        {
+            if (AllRecipesWindow.filteredList.Count != 0)
+            {
+                allReciperWindow.DataGridOrder.ItemsSource = AllRecipesWindow.filteredList.OrderByDescending(x => x.CreationDate).ToList();
+
+            }
+            else
+            {
+                allReciperWindow.DataGridOrder.ItemsSource = recipeData.GetAllRecipes().OrderByDescending(x => x.CreationDate).ToList();
+
+            }
+        }
+
+        /// <summary>
+        /// Checks if its possible to press the sort button
+        /// </summary>
+        /// <returns></returns>
+        public bool CanSortByDateDescExecute()
+        {
+            if (RecipeList.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Sort Recipe button
+        /// </summary>
+        private ICommand sortByIngredientAmountAsc;
+        public ICommand SortByIngredientAmountAsc
+        {
+            get
+            {
+                if (sortByIngredientAmountAsc == null)
+                {
+                    sortByIngredientAmountAsc = new RelayCommand(param => SortByIngredientAmountAscExecute(), param => CanSortByIngredientAmountAscExecute());
+                }
+                return sortByIngredientAmountAsc;
+            }
+        }
+
+        /// <summary>
+        /// Method for sorting by ingredient amount ascending
+        /// </summary>
+        public void SortByIngredientAmountAscExecute()
+        {
+            allReciperWindow.DataGridOrder.ItemsSource = recipeData.SortByAmountAsecnding().ToList();
+            allReciperWindow.CheckType.IsChecked = false;
+            allReciperWindow.CheckName.IsChecked = false;
+
+        }
+
+        /// <summary>
+        /// Checks if its possible to press the sort button
+        /// </summary>
+        /// <returns></returns>
+        public bool CanSortByIngredientAmountAscExecute()
+        {
+            if (RecipeList.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Sort Recipe button
+        /// </summary>
+        private ICommand sortByIngredientAmountDesc;
+        public ICommand SortByIngredientAmountDesc
+        {
+            get
+            {
+                if (sortByIngredientAmountDesc == null)
+                {
+                    sortByIngredientAmountDesc = new RelayCommand(param => SortByIngredientAmountDescExecute(), param => CanSortByIngredientAmountDescExecute());
+                }
+                return sortByIngredientAmountDesc;
+            }
+        }
+
+        /// <summary>
+        /// Method for sorting by ingredient amount descending
+        /// </summary>
+        public void SortByIngredientAmountDescExecute()
+        {
+            allReciperWindow.DataGridOrder.ItemsSource = recipeData.SortByAmountDescending().ToList();
+            allReciperWindow.CheckType.IsChecked = false;
+            allReciperWindow.CheckName.IsChecked = false;
+        }
+
+        /// <summary>
+        /// Checks if its possible to press the sort button
+        /// </summary>
+        /// <returns></returns>
+        public bool CanSortByIngredientAmountDescExecute()
+        {
+            if (RecipeList.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
         /// <summary>
         /// Delete Recipe button

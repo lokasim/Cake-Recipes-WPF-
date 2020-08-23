@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="89a33779b1254355966ec424a833ae94" Name="Diagram1">
+      <Diagram DiagramId="3b083a5c07034051a29353a98cf1f2ec" Name="Diagram1">
         <EntityTypeShape EntityType="CookDBModel.tblIngredient" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CookDBModel.tblIngredientAmount" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CookDBModel.tblIngredientStorage" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />

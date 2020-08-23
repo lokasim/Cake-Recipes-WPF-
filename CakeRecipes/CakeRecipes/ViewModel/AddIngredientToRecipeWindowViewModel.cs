@@ -1,73 +1,41 @@
-﻿using CakeRecipes.Command;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
+using CakeRecipes.Command;
 using CakeRecipes.Models;
 using CakeRecipes.Services;
 using CakeRecipes.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Input;
 
 namespace CakeRecipes.ViewModel
 {
-    class AddIngredientToRecipeViewModel : ViewModelBase
+    class AddIngredientToRecipeWindowViewModel : ViewModelBase
     {
+        private AddIngredientToRecipeWindow addIngredientToRecipeWindow;
+
+        
+
         readonly AddIngredientToRecipe addIngredientToRecipe;
-        readonly AddIngredientAmountToRecipe addIngredientAmountToRecipe;
+        readonly AddIngredientAmountToRecipe addIngredientAmountToShoppingBasket;
         IngredientService ingrediantsData = new IngredientService();
-        RecipeService recipeData = new RecipeService();
-        public static int IngrediantAmountListCount = 0;
+        ShoppingService shoppingData = new ShoppingService();
+
         #region Constructor
-        /// <summary>
-        /// Opens the Add ingredient to recipe window
-        /// </summary>
-        /// <param name="addIngredientOpen">Window that we open</param>
-        public AddIngredientToRecipeViewModel(AddIngredientToRecipe addIngredientOpen, int recipeIDEdit)
+        public AddIngredientToRecipeWindowViewModel(AddIngredientToRecipeWindow addIngredientToRecipeWindow)
         {
+            this.addIngredientToRecipeWindow = addIngredientToRecipeWindow;
             ingredient = new tblIngredient();
-            addIngredientToRecipe = addIngredientOpen;
+            ItemAmount = new tblShoppingBasket();
             IngredientList = ingrediantsData.GetAllIngredients().ToList();
-            RecipeID = recipeIDEdit;
-            IngrediantAmountList = recipeData.GetAllSelectedRecipeIngrediantAmount(recipeIDEdit).ToList();
-
+            IngrediantAmountList = shoppingData.GetAllSelectedShoppingBasketItems(LoggedGuest.ID).ToList();
         }
 
-        /// <summary>
-        /// Opens the Add ingredient amount to recipe window
-        /// </summary>
-        /// <param name="addIngrediwntOpen">Window that we open</param>
-        /// <param name="ingredientEdit">ingredient that we are showing</param>
-        /// <param name="recipeIDEdit">recipe that we are showing</param>
-        public AddIngredientToRecipeViewModel(AddIngredientAmountToRecipe addIngredientAmountOpen, tblIngredient ingredientEdit, int recipeIDEdit)
-        {
-            ItemAmount = new tblIngredientAmount();
-            addIngredientAmountToRecipe = addIngredientAmountOpen;
-            IngredientList = ingrediantsData.GetAllIngredients().ToList();
-            Ingredient = ingredientEdit;
-            RecipeID = recipeIDEdit;
-            IngrediantAmountList = recipeData.GetAllSelectedRecipeIngrediantAmount(recipeIDEdit).ToList();
-
-        }
         #endregion
 
         #region Property
-        /// <summary>
-        /// Specific Recipe
-        /// </summary>
-        private int recipeID;
-        public int RecipeID
-        {
-            get
-            {
-                return recipeID;
-            }
-            set
-            {
-                recipeID = value;
-                OnPropertyChanged("RecipeID");
-            }
-        }
-
         /// <summary>
         /// List of ingredients
         /// </summary>
@@ -86,10 +54,10 @@ namespace CakeRecipes.ViewModel
         }
 
         /// <summary>
-        /// List of ingredients amount
+        /// List of shopping basket
         /// </summary>
-        private List<tblIngredientAmount> ingrediantAmountList;
-        public List<tblIngredientAmount> IngrediantAmountList
+        private List<tblShoppingBasket> ingrediantAmountList;
+        public List<tblShoppingBasket> IngrediantAmountList
         {
             get
             {
@@ -120,10 +88,10 @@ namespace CakeRecipes.ViewModel
         }
 
         /// <summary>
-        /// Specific Ingredient Amount table row
+        /// Specific Shopping Basket table row
         /// </summary>
-        private tblIngredientAmount itemAmount;
-        public tblIngredientAmount ItemAmount
+        private tblShoppingBasket itemAmount;
+        public tblShoppingBasket ItemAmount
         {
             get
             {
@@ -156,7 +124,7 @@ namespace CakeRecipes.ViewModel
 
         #region Commands
         /// <summary>
-        /// Add new ingredient amount button
+        /// Add new shopping button
         /// </summary>
         private ICommand addItem;
         public ICommand AddItem
@@ -172,22 +140,16 @@ namespace CakeRecipes.ViewModel
         }
 
         /// <summary>
-        /// Executes the add ingredient amount command
+        /// Executes the add shopping basket command
         /// </summary>
         private void AddItemExecute()
         {
             try
             {
-                AddIngredientAmountToRecipe addIngredientWindow = new AddIngredientAmountToRecipe(Ingredient, recipeID);
+                AddIngredientAmountToRecipe addIngredientWindow = new AddIngredientAmountToRecipe(Ingredient);
                 addIngredientWindow.ShowDialog();
                 // Refresh the list
-                IngrediantAmountList = recipeData.GetAllSelectedRecipeIngrediantAmount(RecipeID);
-                IngrediantAmountListCount = IngrediantAmountList.Count();
-                if (IngrediantAmountList.Count > 0)
-                {
-                    addIngredientToRecipe.gridIngredientItem.Visibility = Visibility.Visible;
-                    addIngredientToRecipe.msgNoItems.Visibility = Visibility.Collapsed;
-                }
+                IngrediantAmountList = shoppingData.GetAllSelectedShoppingBasketItems(LoggedGuest.ID);
             }
             catch (Exception ex)
             {
@@ -196,7 +158,7 @@ namespace CakeRecipes.ViewModel
         }
 
         /// <summary>
-        /// Checks if its possible to add the new ingredient
+        /// Checks if its possible to add the new shopping basket
         /// </summary>
         /// <returns>true</returns>
         private bool CanAddItemExecute()
@@ -234,22 +196,22 @@ namespace CakeRecipes.ViewModel
         {
             try
             {
-                if (addIngredientAmountToRecipe.txtQuantity.Text.Length < 1)
+                if (addIngredientAmountToShoppingBasket.txtQuantity.Text.Length < 1)
                 {
                     Xceed.Wpf.Toolkit.MessageBox.Show("Unesite broj.", "Pogresan unos", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                if (addIngredientAmountToRecipe.txtQuantity.Text.ToString() == "0" || addIngredientAmountToRecipe.txtQuantity.Text.ToString() == "00")
+                if (addIngredientAmountToShoppingBasket.txtQuantity.Text.ToString() == "0" || addIngredientAmountToShoppingBasket.txtQuantity.Text.ToString() == "00")
                 {
                     Xceed.Wpf.Toolkit.MessageBox.Show("Kolicina mora biti veca od nule.", "Pogresan unos", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                ItemAmount.RecipeID = RecipeID;
+                ItemAmount.UserID = LoggedGuest.ID;
                 ItemAmount.IngredientID = Ingredient.IngredientID;
                 ItemAmount.Amount = Amount;
-                recipeData.AddIngredientAmount(ItemAmount);
-                addIngredientAmountToRecipe.Close();
+                shoppingData.AddShoppingList(ItemAmount);
+                addIngredientAmountToShoppingBasket.Close();
             }
             catch (Exception)
             {
@@ -263,8 +225,8 @@ namespace CakeRecipes.ViewModel
         /// <returns></returns>
         private bool CanSaveExecute()
         {
-            if (addIngredientAmountToRecipe.txtQuantity.Text.Trim() == "" ||
-                addIngredientAmountToRecipe.txtQuantity.Text.Trim() == "0")
+            if (addIngredientAmountToShoppingBasket.txtQuantity.Text.Trim() == "" ||
+                addIngredientAmountToShoppingBasket.txtQuantity.Text.Trim() == "0")
             {
                 return false;
             }
@@ -297,7 +259,7 @@ namespace CakeRecipes.ViewModel
         {
             try
             {
-                addIngredientAmountToRecipe.Close();
+                addIngredientAmountToShoppingBasket.Close();
             }
             catch (Exception ex)
             {
@@ -344,15 +306,14 @@ namespace CakeRecipes.ViewModel
                 {
                     if (ItemAmount != null)
                     {
-                        recipeData.DeleteIngredientAmount(ItemAmount.IngredientAmountID);
-                        IngrediantAmountList = recipeData.GetAllSelectedRecipeIngrediantAmount(RecipeID);
-                        IngrediantAmountListCount = IngrediantAmountList.Count();
+                        shoppingData.DeleteShoppingBasket(ItemAmount.ShoppingBasketID);
+                        IngrediantAmountList = shoppingData.GetAllSelectedShoppingBasketItems(LoggedGuest.ID);
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Trenutno je nemoguce obrisati sastojak...", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Trenutno je nemoguce obrisati sastojak..." + ex, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -394,13 +355,20 @@ namespace CakeRecipes.ViewModel
         /// </summary>
         private void ExitExecute()
         {
-            MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Da li odustajete od dodavanja sastojaka\nCeo proces kreiranja recepta ce vam biti ignorisan", "Odustani", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Da li odustajete od dodavanja sastojaka\nCeo proces dodavanja u korpu ce vam biti ignorisan", "Odustani", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (dialog == MessageBoxResult.Yes)
             {
-                recipeData.DeleteRecipe(RecipeID);
+                int counter = IngrediantAmountList.Count;
+                for (int i = 0; i < counter; i++)
+                {
+                    shoppingData.DeleteShoppingBasket(IngrediantAmountList[i].ShoppingBasketID);
+                }
+
+                AllShoppingListViewModel.isShoppingListNotUpdated = true;
+                addIngredientToRecipeWindow.Close();
+
                 //addIngredientToRecipe.Close();
-                AllRecipesViewModel.isRecipeNotUpdated = true;
             }
         }
 
@@ -434,16 +402,18 @@ namespace CakeRecipes.ViewModel
         /// </summary>
         private void AddToRecipeExecute()
         {
-            MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Da li zelite da sacuvate recept?", "Zavrsetak", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Da li želite da dodate proizvode u korpu?", "Zavrsetak", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (dialog == MessageBoxResult.Yes)
             {
-                //addIngredientToRecipe.Close();
+                AddIngredientToRecipeWindow addIngredientToRecipeWindow1 = new AddIngredientToRecipeWindow();
+                addIngredientToRecipeWindow.Close();
+
             }
-            else
-            {
-                recipeData.DeleteRecipe(RecipeID);
-            }
+            //else
+            //{
+            //    shoppingData.DeleteShoppingBasket(ItemAmount.ShoppingBasketID);
+            //}
         }
 
         /// <summary>

@@ -71,7 +71,7 @@
                         HorizontalAlignment="Right"
                                     Content="Dodaj"
                                     Foreground="White"
-                                    Background="Orange"
+                        Background="#FF8BC34A"
                                     BorderBrush="{x:Null}"></Button>
                 <TextBlock FontSize="18"
                                        FontWeight="Bold"
@@ -117,12 +117,12 @@
                 </DataGrid>
             </Grid>
             <Grid x:Name="msgNoItems" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1">
-                <TextBlock Foreground="Orange" Visibility="Visible"
+                <!--<TextBlock Foreground="Orange" Visibility="Visible"
                                        HorizontalAlignment="Center"
                                        FontWeight="Bold"
                                        FontSize="18"
                                        FontStyle="Italic"
-                                       Margin="0 0 0 0 ">Izaberite sastojak za recept</TextBlock>
+                                       Margin="0 0 0 0 ">Izaberite sastojak za recept</TextBlock>-->
 
             </Grid>
             <Grid Visibility="Visible" Grid.Column="1"
@@ -161,7 +161,7 @@
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Right"
                                     Content="Obriši"
-                                    Background="#FFC34A4A"
+                                    Background="#FFF34A4A"
                                     BorderBrush="{x:Null}"></Button>
                 <DataGrid Name="DataGridOrder"
                                       Grid.Row="1"

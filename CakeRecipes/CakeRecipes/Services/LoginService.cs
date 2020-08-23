@@ -71,7 +71,7 @@ namespace CakeRecipes.Services
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Nešto je pošlo po zlu prilikom registracije", "Greška");
+                Xceed.Wpf.Toolkit.MessageBox.Show("Korisničko ime je već zauzeto, vratite se na prethodnu stranu i pokušajte sa drugim ili proverite da li ste dobro uneli korisničko ime.\nObratite pažnjuna velika i mala slova!", "Greška");
                 System.Diagnostics.Debug.WriteLine("Exception: " + ex.Message.ToString());
                 return null;
             }
