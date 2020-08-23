@@ -656,6 +656,49 @@ namespace CakeRecipes.ViewModel
             }
         }
 
+        
+        /// <summary>
+        /// Add Recipe button
+        /// </summary>
+        private ICommand addIngredientBtn;
+        public ICommand AddIngredientBtn
+        {
+            get
+            {
+                if (addIngredientBtn == null)
+                {
+                    addIngredientBtn = new RelayCommand(param => AddIngredientBtnExecute(), param => CanAddIngredientBtnExecute());
+                }
+                return addIngredientBtn;
+            }
+        }
+
+        /// <summary>
+        /// Method for adding the selected item from the list
+        /// </summary>
+        public void AddIngredientBtnExecute()
+        {
+            try
+            {
+                //AddRecipe addRecipeWindow = new AddRecipe();
+                //addRecipeWindow.ShowDialog();
+                //RecipeList = recipeData.GetAllRecipes().ToList();
+            }
+            catch (Exception)
+            {
+                MessageBoxResult dialog = Xceed.Wpf.Toolkit.MessageBox.Show("Desilo se nešto nepredviđeno...", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Checks if its possible to press the add button
+        /// </summary>
+        /// <returns></returns>
+        public bool CanAddIngredientBtnExecute()
+        {
+                return true;
+        }
+
         /// <summary>
         /// Preview Recipe button
         /// </summary>
@@ -683,13 +726,13 @@ namespace CakeRecipes.ViewModel
             {
                 ingredientText += item.Key + ": " + item.Value.ToString() + Environment.NewLine;
             }
-
-            RecipeText =
-                "Naziv recepta: " + Recipe.RecipeName + "\t\tAutor: " + Recipe.Changed + Environment.NewLine +
-                "Tip recepta: " + Recipe.RecipeType + "\t\tDatum: " + Recipe.CreationDate.ToString("dd.MM.yyyy") + Environment.NewLine +
-                "Opis: " + Recipe.RecipeDescription + Environment.NewLine + Environment.NewLine +
-                "Sastojci: " + Environment.NewLine +
-                ingredientText;
+            allReciperWindow.NazivRecepta.Text = Recipe.RecipeName.ToString();
+            allReciperWindow.Autor.Text = Recipe.Changed.ToString();
+            allReciperWindow.Datum.Text = Recipe.CreationDate.ToString("dd.MM.yyyy").ToString();
+            allReciperWindow.Tip.Text = Recipe.RecipeType.ToString();
+            allReciperWindow.Opis.Text = Recipe.RecipeDescription.ToString();
+            allReciperWindow.Sastojci.Text = ingredientText.ToString() + Environment.NewLine;
+                
         }
 
         /// <summary>
