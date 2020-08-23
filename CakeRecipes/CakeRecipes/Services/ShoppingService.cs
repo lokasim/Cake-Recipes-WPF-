@@ -45,13 +45,13 @@ namespace CakeRecipes.Services
                 for (int i = 0; i < GetAllShoppingBasketItems().Count; i++)
                 {
                     // admin
-                    if (GetAllShoppingBasketItems()[i].UserID == null)
+                    if (LoggedGuest.ID == 0 && GetAllShoppingBasketItems()[i].UserID == null)
                     {
                         GetAllShoppingBasketItems()[i].UserID = 0;
                         list.Add(GetAllShoppingBasketItems()[i]);
                     }
 
-                    if (GetAllShoppingBasketItems()[i].UserID == userID)
+                    else if (GetAllShoppingBasketItems()[i].UserID == userID)
                     {
                         list.Add(GetAllShoppingBasketItems()[i]);
                     }

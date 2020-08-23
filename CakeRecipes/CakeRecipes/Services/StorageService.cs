@@ -58,13 +58,13 @@ namespace CakeRecipes.Services
                 for (int i = 0; i < GetAllIngredientStorageItems().Count; i++)
                 {
                     // admin
-                    if (GetAllIngredientStorageItems()[i].UserID == null)
+                    if (LoggedGuest.ID == 0 && GetAllIngredientStorageItems()[i].UserID == null)
                     {
                         GetAllIngredientStorageItems()[i].UserID = 0;
                         list.Add(GetAllIngredientStorageItems()[i]);
                     }
 
-                    if (GetAllIngredientStorageItems()[i].UserID == userID)
+                    else if (GetAllIngredientStorageItems()[i].UserID == userID)
                     {
                         list.Add(GetAllIngredientStorageItems()[i]);
                     }
