@@ -479,6 +479,8 @@ namespace CakeRecipes.ViewModel
                         recipeData.DeleteRecipe(Recipe.RecipeID);
                         RecipeList = recipeData.GetAllRecipes().ToList();
                         allReciperWindow.DataGridOrder.ItemsSource = RecipeList;
+                        AllRecipesWindow.filteredList = new List<tblRecipe>();
+                        allReciperWindow.filteredRecipes = new List<tblRecipe>();
                     }
                 }
             }
@@ -570,6 +572,9 @@ namespace CakeRecipes.ViewModel
 
                         RecipeList = recipeData.GetAllRecipes().ToList();
                         allReciperWindow.DataGridOrder.ItemsSource = RecipeList;
+                        AllRecipesWindow.filteredList = new List<tblRecipe>();
+                        allReciperWindow.filteredRecipes = new List<tblRecipe>();
+
                     }
                 }
             }
@@ -626,6 +631,8 @@ namespace CakeRecipes.ViewModel
                 addRecipeWindow.ShowDialog();
                 RecipeList = recipeData.GetAllRecipes().ToList();
                 allReciperWindow.DataGridOrder.ItemsSource = RecipeList;
+                AllRecipesWindow.filteredList = new List<tblRecipe>();
+                allReciperWindow.filteredRecipes = new List<tblRecipe>();
             }
             catch (Exception)
             {

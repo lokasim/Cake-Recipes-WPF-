@@ -20,6 +20,20 @@ namespace CakeRecipes.ViewModel
         public static bool adminLogin = false;
         public static bool usersLogin = false;
 
+        private List<tblIngredient> ingredientList;
+        public List<tblIngredient> IngredientList
+        {
+            get
+            {
+                return ingredientList;
+            }
+            set
+            {
+                ingredientList = value;
+                OnPropertyChanged("IngredientList");
+            }
+        }
+
         private List<tblUser> userList;
         public List<tblUser> UserList
         {
@@ -117,24 +131,25 @@ namespace CakeRecipes.ViewModel
             }
         }
 
+        public async void MessageIngredient()
+        {
+
+            await Task.Delay(3000);
+            IngredientService ingrediantsData = new IngredientService();
+
+            IngredientList = ingrediantsData.GetAllIngredients();
+
+            if (IngredientList.Count < 1)
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show("Kako bi sve funkcionalnosti aplikacije radile ispravno, potrebno je da unesete barem jedan sastojak.\nTrenutno je baza sa sastojima prazna.\nIdite na karticu sastojci", "Napomena");
+            }
+        }
+
         private void LoginRegisterExecute()
-        {          
+        {
             try
             {
                 LoginService s = new LoginService();
-
-                //string user = User.Username;
-                
-
-                ////uniqueness check username
-                //tblPatient employeeUserPatient = s.GetPatientUsername(user);
-
-                //if (employeeUserPatient != null)
-                //{
-                //    Xceed.Wpf.Toolkit.MessageBox.Show("Korisničko ime je zauzeto, pokušajte neko drugo.", "Korisničko ime");
-                //    return;
-                //}
-
                 // Hash Password
                 var hasher = new SHA256Managed();
                 var unhashed = Encoding.Unicode.GetBytes(login.passwordBox.Password.ToString());
@@ -144,9 +159,7 @@ namespace CakeRecipes.ViewModel
                 this.User.UserPassword = hashedPassword;
                 this.User.FirstLastName = login.nameSurnameUser.Text.ToString();
 
-                
-
-                if(s.AddUser(User) != null)
+                if (s.AddUser(User) != null)
                 {
                     IsUpdateUser = true;
                     usersLogin = true;
@@ -156,7 +169,7 @@ namespace CakeRecipes.ViewModel
                     login.pnlRegistrationUser.Visibility = Visibility.Collapsed;
                     login.pnlSuccessfulRegistration.Visibility = Visibility.Visible;
                     OpenMainMenu();
-
+                    MessageIngredient();
                 }
                 else
                 {
@@ -202,13 +215,11 @@ namespace CakeRecipes.ViewModel
             try
             {
                 LoginService s = new LoginService();
-                
+
                 string username = login.NameTextBox.Text;
-                
+
                 //uniqueness check username
                 tblUser usertUsername = s.GetUserUsername(username);
-
-                
 
                 // Hash password
                 var hasher = new SHA256Managed();
@@ -218,10 +229,9 @@ namespace CakeRecipes.ViewModel
 
                 string password = hashedPassword;
 
-
                 //Checks if there is a username and password in the database
                 tblUser userLogin = s.GetUsernamePassword(username, password);
-                
+
                 if (login.NameTextBox.Text == "Admin" && login.passwordBox.Password == "Admin123")
                 {
                     login.pnlLoginUser.Visibility = Visibility.Collapsed;
@@ -231,17 +241,15 @@ namespace CakeRecipes.ViewModel
                     LoggedGuest.ID = 0;
                     adminLogin = true;
                     OpenMainMenu();
+                    MessageIngredient();
                 }
                 else if (login.NameTextBox.Text.ToLower() == "admin")
                 {
                     login.SnackError();
-                    //Xceed.Wpf.Toolkit.MessageBox.Show("Korisničko ime je rezervisano, pokušajte sa nekim drugim.", "Korisničko ime");
                     return;
                 }
                 else if (userLogin != null)
                 {
-                    
-
                     LoggedGuest.NameSurname = userLogin.FirstLastName;
                     LoggedGuest.Username = userLogin.Username;
                     LoggedGuest.ID = userLogin.UserID;
@@ -249,20 +257,13 @@ namespace CakeRecipes.ViewModel
                     login.pnlLoginUser.Visibility = Visibility.Collapsed;
                     login.pnlSuccessfulLogin.Visibility = Visibility.Visible;
                     OpenMainMenu();
-                    //Xceed.Wpf.Toolkit.MessageBox.Show($"{LoggedGuest.NameSurname}, dobrodošli.", "Recepti");
+                    MessageIngredient();
                 }
                 else if (usertUsername != null)
                 {
                     login.SnackError();
-                    //Xceed.Wpf.Toolkit.MessageBox.Show("Korisničko ime je zauzeto, pokušajte neko drugo.", "Korisničko ime");
                     return;
                 }
-                //else if (userLogin == null)
-                //{
-                //    login.SnackError();
-                //    Xceed.Wpf.Toolkit.MessageBox.Show("Korisničko ime je zauzeto, pokušajte neko drugo.", "Korisničko ime");
-                //    return;
-                //}
                 else
                 {
                     login.pnlLoginUser.Visibility = Visibility.Collapsed;
@@ -272,22 +273,13 @@ namespace CakeRecipes.ViewModel
             }
             catch (Exception)
             {
-                
+
             }
         }
 
         private bool CanLoginUserExecute()
         {
-            //if (login.JMBG.Text.Length != 13)
-            //{
-            //    login.jmbgHint.Foreground = new SolidColorBrush(Colors.Red);
-            //    return false;
-            //}
-            //else
-            //{
-            //    login.jmbgHint.Foreground = new SolidColorBrush(Colors.Green);
             return true;
-            //}
         }
 
         public async void VisibleLoginFail()
@@ -295,114 +287,6 @@ namespace CakeRecipes.ViewModel
             login.loginFail.Visibility = Visibility.Visible;
             await Task.Delay(2000);
             login.loginFail.Visibility = Visibility.Collapsed;
-        }
-
-        /// <summary>
-        /// View guest login form
-        /// </summary>
-        private ICommand loginGuest;
-        public ICommand LoginGuest
-        {
-            get
-            {
-                if (loginGuest == null)
-                {
-                    loginGuest = new RelayCommand(param => LoginGuestExecute(), param => CanLoginGuestExecute());
-                }
-                return loginGuest;
-            }
-        }
-
-        private void LoginGuestExecute()
-        {
-            //login.pnlLoginEmployee.Visibility = Visibility.Collapsed;
-            //login.pnlLoginGuest.Visibility = Visibility.Visible;
-            //login.pnlSignUpGuest.Visibility = Visibility.Collapsed;
-            //login.loginFail.Visibility = Visibility.Collapsed;
-        }
-
-        private bool CanLoginGuestExecute()
-        {
-            //if (login.pnlLoginGuest.Visibility == Visibility.Visible)
-            //{
-            //    return false;
-            //}
-            //else
-            //{
-                return true;
-            //}
-        }
-
-        /// <summary>
-        /// View Guest login form
-        /// </summary>
-        private ICommand loginEmployee;
-        public ICommand LoginEmployee
-        {
-            get
-            {
-                if (loginEmployee == null)
-                {
-                    loginEmployee = new RelayCommand(param => LoginEmployeeExecute(), param => CanLoginEmployeeExecute());
-                }
-                return loginEmployee;
-            }
-        }
-
-        private void LoginEmployeeExecute()
-        {
-            //login.pnlLoginGuest.Visibility = Visibility.Collapsed;
-            //login.pnlLoginEmployee.Visibility = Visibility.Visible;
-            //login.pnlSignUpGuest.Visibility = Visibility.Collapsed;
-            //login.loginFail.Visibility = Visibility.Collapsed;
-        }
-
-        private bool CanLoginEmployeeExecute()
-        {
-            //if (login.pnlLoginEmployee.Visibility == Visibility.Visible)
-            //{
-            //    return false;
-            //}
-            //else
-            //{
-                return true;
-           // }
-        }
-
-        /// <summary>
-        /// View guest registration form
-        /// </summary>
-        private ICommand signUpGuest;
-        public ICommand SignUpGuest
-        {
-            get
-            {
-                if (signUpGuest == null)
-                {
-                    signUpGuest = new RelayCommand(param => SignUpGuestExecute(), param => CanSignUpGuestExecute());
-                }
-                return signUpGuest;
-            }
-        }
-
-        private void SignUpGuestExecute()
-        {
-            //login.pnlLoginGuest.Visibility = Visibility.Collapsed;
-            //login.pnlLoginEmployee.Visibility = Visibility.Collapsed;
-            //login.pnlSignUpGuest.Visibility = Visibility.Visible;
-            //login.error.Visibility = Visibility.Collapsed;
-            //login.txtName.Text = "";
-            //login.txtSurname.Text = "";
-            //login.txtJMBG.Text = "";
-            //login.txtEmail.Text = "";
-            //login.JMBG.Text = "";
-            //login.passwordBox.Password = "";
-            //login.loginFail.Visibility = Visibility.Collapsed;
-        }
-
-        private bool CanSignUpGuestExecute()
-        {
-            return true;
         }
 
         private ICommand backToLogin;
@@ -432,100 +316,6 @@ namespace CakeRecipes.ViewModel
         private bool CanBackLoginExecute()
         {
             return true;
-        }
-
-        private ICommand signUp;
-        public ICommand SignUp
-        {
-            get
-            {
-                if (signUp == null)
-                {
-                    signUp = new RelayCommand(param => SignUpExecute(), param => CanSignUpExecute());
-                }
-                return signUp;
-            }
-        }
-
-        /// <summary>
-        /// A method for registering new guests
-        /// </summary>
-        private void SignUpExecute()
-        {
-            //try
-            //{
-            //    Service s = new Service();
-
-            //    string name = User.GuestName;
-            //    string surname = User.GuestSurname;
-            //    string jmbg = User.JMBG;
-            //    string email = User.EMail;
-
-            //    //JMBG validation
-            //    if (!ValidationJMBG.CheckJMBG(jmbg))
-            //    {
-            //        return;
-            //    }
-
-            //    //Check if the JMBG exists in the database
-            //    tblGuest employee = s.GetGuestJMBG(jmbg);
-
-            //    if (employee != null)
-            //    {
-            //        Xceed.Wpf.Toolkit.MessageBox.Show("JMBG already exists in the database, try another.", "JMBG");
-            //        return;
-            //    }
-
-            //    //Check if the email exists in the database
-            //    tblGuest employeeEmail = s.GetGuestEmail(email);
-
-            //    if (employeeEmail != null)
-            //    {
-            //        Xceed.Wpf.Toolkit.MessageBox.Show("E-mail already exists in the database, try another.", "E-mail");
-            //        return;
-            //    }
-
-            //    s.AddGuest(User);
-
-            //    IsUpdateUser = true;
-
-            //    string poruka = "Guest: " + User.GuestName + " " + User.GuestSurname;
-            //    Xceed.Wpf.Toolkit.MessageBox.Show(poruka, "Successfully added Guest", MessageBoxButton.OK);
-            //    login.txtName.Text = "";
-            //    login.txtSurname.Text = "";
-            //    login.txtJMBG.Text = "";
-            //    login.txtEmail.Text = "";
-            //    login.pnlLoginGuest.Visibility = Visibility.Visible;
-            //    login.pnlLoginEmployee.Visibility = Visibility.Collapsed;
-            //    login.pnlSignUpGuest.Visibility = Visibility.Collapsed;
-            //}
-            //catch (Exception ex)
-            //{
-            //    Xceed.Wpf.Toolkit.MessageBox.Show(ex.ToString());
-            //}
-        }
-
-        private bool CanSignUpExecute()
-        {
-            //if (String.IsNullOrEmpty(user.GuestName) || String.IsNullOrWhiteSpace(user.GuestName) ||
-            //    String.IsNullOrEmpty(user.GuestSurname) || String.IsNullOrWhiteSpace(user.GuestSurname) ||
-            //    String.IsNullOrEmpty(user.JMBG) ||
-            //    String.IsNullOrEmpty(user.EMail))
-            //{
-            //    return false;
-            //}
-            //else if (user.JMBG.Length != 13)
-            //{
-            //    return false;
-            //}
-            //else if (!Regex.IsMatch(login.txtEmail.Text, @"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"))
-            //{
-            //    return false;
-            //}
-            //else
-            //{
-            return true;
-            //}
         }
         #endregion
     }
