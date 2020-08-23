@@ -156,6 +156,12 @@ namespace CakeRecipes
                     StackPanelMain.Children.Clear();
                     StackPanelMain.Children.Add(storageList);
                 }
+                else if (screen.Name == "AllShoppingList")
+                {
+                    AllShoppingList shoppingList = new AllShoppingList();
+                    StackPanelMain.Children.Clear();
+                    StackPanelMain.Children.Add(shoppingList);
+                }
                 else
                 {
                     StackPanelMain.Children.Clear();

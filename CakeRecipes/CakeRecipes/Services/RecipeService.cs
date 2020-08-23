@@ -481,5 +481,94 @@ namespace CakeRecipes.Services
 
             return ingredientDict;
         }
+
+        /// <summary>
+        /// Adds an ingredient to the shopping list
+        /// </summary>
+        /// <param name="item">the item we are adding to</param>
+        /// <param name="amount">amount in storage</param>
+        public void AddIngredientShopping(tblIngredientAmount item, int amount)
+        {
+            try
+            {
+                using (CakeRecipesDBEntities context = new CakeRecipesDBEntities())
+                {
+                    if (IngredientExistInShopping(item.IngredientID, LoggedGuest.ID) == false)
+                    {
+                        tblShoppingBasket newShopping = new tblShoppingBasket
+                        {
+                            UserID = LoggedGuest.ID,
+                            IngredientID = item.IngredientID,
+                            Amount = item.Amount
+                        };
+
+                        if (LoggedGuest.ID == 0)
+                        {
+                            newShopping.UserID = null;
+                        }
+
+                        if (item.Amount > amount || item.Amount == amount)
+                        {
+                            newShopping.Amount = 0;
+                        }
+                        else
+                        {
+                            newShopping.Amount = amount - item.Amount;
+                        }
+
+                        context.tblShoppingBaskets.Add(newShopping);
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        tblShoppingBasket shoppingEdit = (from ss in context.tblShoppingBaskets where ss.IngredientID == item.IngredientID where ss.UserID == LoggedGuest.ID select ss).First();
+
+                        if (LoggedGuest.ID == 0)
+                        {
+                            shoppingEdit.UserID = 0;
+                        }
+                        else
+                        {
+                            shoppingEdit.UserID = LoggedGuest.ID;
+                        }
+
+                        if (item.Amount > amount || item.Amount == amount)
+                        {
+                            shoppingEdit.Amount = 0;
+                        }
+                        else
+                        {
+                            shoppingEdit.Amount = amount - item.Amount;
+                        }
+
+                        shoppingEdit.IngredientID = item.IngredientID;
+
+                        context.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception" + ex.Message.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Checks if Ingrediant already exists
+        /// </summary>
+        /// <param name="item">ingredient id</param>
+        /// <param name="id">user id</param>
+        /// <returns>true if it exists</returns>
+        public bool IngredientExistInShopping(int item, int id)
+        {
+            for (int i = 0; i < GetAllSelectedRecipeIngrediantAmount(id).Count; i++)
+            {
+                if (GetAllSelectedRecipeIngrediantAmount(id)[i].IngredientID == item)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

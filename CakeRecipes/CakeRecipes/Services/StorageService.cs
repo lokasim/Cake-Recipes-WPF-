@@ -78,6 +78,10 @@ namespace CakeRecipes.Services
             }
         }
 
+        /// <summary>
+        /// Adds an ingredient to the storage
+        /// </summary>
+        /// <param name="item">the item we are adding to</param>
         public void AddIngredientStorage(tblShoppingBasket item)
         {
             try
@@ -127,6 +131,13 @@ namespace CakeRecipes.Services
             }
         }
 
+
+        /// <summary>
+        /// Checks if Ingrediant already exists
+        /// </summary>
+        /// <param name="item">ingredient id</param>
+        /// <param name="id">user id</param>
+        /// <returns>true if it exists</returns>
         public bool IngredientExistInStorage(int item, int id)
         {
             for (int i = 0; i < GetAllSelectedIngredientStorageItems(id).Count; i++)

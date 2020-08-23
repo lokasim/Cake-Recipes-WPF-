@@ -13,6 +13,7 @@ namespace CakeRecipes.ViewModel
     class AllRecipesViewModel : ViewModelBase
     {
         RecipeService recipeData = new RecipeService();
+        ShoppingService shopData = new ShoppingService();
         IngredientService ingredientData = new IngredientService();
         readonly AllRecipesWindow allReciperWindow;
         public static bool isRecipeNotUpdated = false;
@@ -26,10 +27,28 @@ namespace CakeRecipes.ViewModel
         {
             allReciperWindow = allRecipesWindowOpen;
             RecipeList = recipeData.GetAllRecipes().ToList();
+            ShoppingBasketList = shopData.GetAllSelectedShoppingBasketItems(LoggedGuest.ID).ToList();
         }
         #endregion
 
         #region Property
+        /// <summary>
+        /// List of shopping items
+        /// </summary>
+        private List<tblShoppingBasket> shoppingBasketList;
+        public List<tblShoppingBasket> ShoppingBasketList
+        {
+            get
+            {
+                return shoppingBasketList;
+            }
+            set
+            {
+                shoppingBasketList = value;
+                OnPropertyChanged("ShoppingBasketList");
+            }
+        }
+
         /// <summary>
         /// List of recipes
         /// </summary>
@@ -165,9 +184,87 @@ namespace CakeRecipes.ViewModel
                 OnPropertyChanged("InfoText");
             }
         }
+
+        /// <summary>
+        /// Show Button
+        /// </summary>
+        private Visibility showAddBasket;
+        public Visibility ShowAddBasket
+        {
+            get
+            {
+                return showAddBasket;
+            }
+            set
+            {
+                showAddBasket = value;
+                OnPropertyChanged("ShowAddBasket");
+            }
+        }
         #endregion
 
         #region Commands
+        /// <summary>
+        /// Add to Basket button
+        /// </summary>
+        private ICommand addToBasket;
+        public ICommand AddToBasket
+        {
+            get
+            {
+                if (addToBasket == null)
+                {
+                    addToBasket = new RelayCommand(param => AddToBasketExecute(), param => CanAddToBasketAscExecute());
+                }
+                return addToBasket;
+            }
+        }
+
+        /// <summary>
+        /// Method for adding to basket
+        /// </summary>
+        public void AddToBasketExecute()
+        {
+            ShoppingBasketList = shopData.GetAllSelectedShoppingBasketItems(LoggedGuest.ID).ToList();
+            for (int i = 0; i < recipeData.GetAllSelectedRecipeIngrediantAmount(Recipe.RecipeID).Count; i++)
+            {
+                for (int j = 0; j < ShoppingBasketList.Count; j++)
+                {
+                    if (ShoppingBasketList[i].IngredientID == recipeData.GetAllSelectedRecipeIngrediantAmount(Recipe.RecipeID)[i].IngredientID)
+                    {
+                        recipeData.AddIngredientShopping(recipeData.GetAllSelectedRecipeIngrediantAmount(Recipe.RecipeID)[i], ShoppingBasketList[i].Amount);
+                    }
+                    else
+                    {
+                        recipeData.AddIngredientShopping(recipeData.GetAllSelectedRecipeIngrediantAmount(Recipe.RecipeID)[i], 0);
+                    }
+                }
+
+                if (ShoppingBasketList.Count == 0)
+                {
+                    recipeData.AddIngredientShopping(recipeData.GetAllSelectedRecipeIngrediantAmount(Recipe.RecipeID)[i], 0);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Checks if its possible to press the sort button
+        /// </summary>
+        /// <returns></returns>
+        public bool CanAddToBasketAscExecute()
+        {
+            if (Recipe == null)
+            {
+                ShowAddBasket = Visibility.Collapsed;
+                return false;
+            }
+            else
+            {
+                ShowAddBasket = Visibility.Visible;
+                return true;
+            }
+        }
+
         /// <summary>
         /// Sort Recipe button
         /// </summary>
