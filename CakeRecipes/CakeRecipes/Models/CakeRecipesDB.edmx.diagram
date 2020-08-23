@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="62063643631a4c5e8b8a7e30761e8d21" Name="Diagram1">
+      <Diagram DiagramId="9c34d41fd9444b8b826eeae12fac7291" Name="Diagram1">
         <EntityTypeShape EntityType="CookDBModel.tblIngredient" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CookDBModel.tblIngredientAmount" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CookDBModel.tblIngredientStorage" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
@@ -14,13 +14,13 @@
         <EntityTypeShape EntityType="CookDBModel.vwIngredientStorage" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CookDBModel.vwRecipe" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CookDBModel.vwShoppingBasket" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="CookDBModel.FK__tblIngred__Ingre__67C95AEA" ManuallyRouted="false" />
-        <AssociationConnector Association="CookDBModel.FK__tblIngred__Ingre__6B99EBCE" ManuallyRouted="false" />
-        <AssociationConnector Association="CookDBModel.FK__tblShoppi__Ingre__6F6A7CB2" ManuallyRouted="false" />
-        <AssociationConnector Association="CookDBModel.FK__tblIngred__Recip__66D536B1" ManuallyRouted="false" />
-        <AssociationConnector Association="CookDBModel.FK__tblIngred__UserI__6AA5C795" ManuallyRouted="false" />
-        <AssociationConnector Association="CookDBModel.FK__tblRecipe__UserI__63F8CA06" ManuallyRouted="false" />
-        <AssociationConnector Association="CookDBModel.FK__tblShoppi__UserI__6E765879" ManuallyRouted="false" />
+        <AssociationConnector Association="CookDBModel.FK__tblIngred__Ingre__08162EEB" ManuallyRouted="false" />
+        <AssociationConnector Association="CookDBModel.FK__tblIngred__Ingre__0BE6BFCF" ManuallyRouted="false" />
+        <AssociationConnector Association="CookDBModel.FK__tblShoppi__Ingre__0FB750B3" ManuallyRouted="false" />
+        <AssociationConnector Association="CookDBModel.FK__tblIngred__Recip__07220AB2" ManuallyRouted="false" />
+        <AssociationConnector Association="CookDBModel.FK__tblIngred__UserI__0AF29B96" ManuallyRouted="false" />
+        <AssociationConnector Association="CookDBModel.FK__tblRecipe__UserI__04459E07" ManuallyRouted="false" />
+        <AssociationConnector Association="CookDBModel.FK__tblShoppi__UserI__0EC32C7A" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

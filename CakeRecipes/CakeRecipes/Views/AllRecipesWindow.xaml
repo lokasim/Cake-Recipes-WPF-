@@ -78,34 +78,41 @@
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition Width="220"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="400"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition Width="30"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
+                    <Grid Grid.Column="0"
+                          Margin="0 72 0 0">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="70"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
                                 <RowDefinition Height="80"></RowDefinition>
                                 <RowDefinition Height="80"></RowDefinition>
                                 <RowDefinition Height="*"></RowDefinition>
                             </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" Background="LightGray">
-                                <StackPanel>
+                            <Grid Grid.Row="0"
+                                  Background="LightGray">
+                                <Grid VerticalAlignment="Top"
+                                      Background="{StaticResource PrimaryHueMidBrush}"
+                                      Height="3"></Grid>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Filter"
+                                                             Width="30"
+                                                             VerticalAlignment="Center"
+                                                             Margin="10 0"
+                                                             Height="30"
+                                                             Background="{StaticResource PrimaryHueMidBrush}" />
                                     <TextBlock FontSize="20"
                                                FontWeight="Bold"
                                                Foreground="#505050"
-                                               FontStyle="Italic" Margin="30 5 0 0">Filtriraj</TextBlock>
-                                    <TextBlock FontSize="20"
-                                               FontWeight="Bold"
-                                               Foreground="#505050"
+                                               VerticalAlignment="Center"
                                                FontStyle="Italic"
-                                               Margin="30 5 0 0">Rezultate</TextBlock>
+                                               Margin="5 0 0 0">Filtriraj recepte</TextBlock>
                                 </StackPanel>
                             </Grid>
                             <Grid Grid.Row="1">
@@ -128,7 +135,8 @@
                                              TextChanged="TxtRecipeName_TextChanged"
                                              SelectionBrush="#FF8BC34A"
                                              IsEnabled="{Binding Path=IsChecked, ElementName=CheckName}" />
-                                    <Grid Background="{StaticResource PrimaryHueMidBrush}" Height="3"></Grid>
+                                    <Grid Background="{StaticResource PrimaryHueMidBrush}"
+                                          Height="3"></Grid>
                                 </StackPanel>
                             </Grid>
                             <Grid Grid.Row="2">
@@ -143,7 +151,7 @@
                                     <ComboBox x:Name="cbxRecipeTypes"
                                               materialDesign:HintAssist.Hint="Odaberite tip recepta*"
                                               Width="140"
-                                              Height="40"                                              
+                                              Height="40"
                                               IsEditable="False"
                                               SelectionChanged="CbxRecipeTypes_SelectionChanged"
                                               Margin="10,0,10,6"
@@ -174,8 +182,8 @@
                                             Margin="10 10 10 10"
                                             Width="140"
                                             Foreground="White"
+                                            Command="{Binding AddIngredientBtn, UpdateSourceTrigger=PropertyChanged}"
                                             IsEnabled="{Binding Path=IsChecked, ElementName=CheckIngredient}"
-                                            Command="{Binding AddRecipe, UpdateSourceTrigger=PropertyChanged}"
                                             Height="35"
                                             Background="#FF8BC34A"
                                             VerticalAlignment="Bottom"
@@ -186,32 +194,25 @@
                             </Grid>
                         </Grid>
                     </Grid>
-                    
-                    <Grid Grid.Column="1"></Grid>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <StackPanel Width="120"
-                                Margin="30 15 0 0"
-                                Height="40"
+                    <StackPanel Width="222"
+                                Background="LightGray"
+                                Margin="-220 22 0 0"
+                                Height="50"
                                 VerticalAlignment="Top"
                                 Orientation="Horizontal"
                                 HorizontalAlignment="Left">
-                        <TextBlock Panel.ZIndex="1"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   FontSize="18"
-                                   FontWeight="Bold"
-                                   FontStyle="Italic">Sortiraj</TextBlock>
                         <materialDesign:PopupBox Grid.Column="1"
                                                  Width="30"
                                                  Margin="10 0"
-                                                 PlacementMode="BottomAndAlignRightEdges"
+                                                 PlacementMode="BottomAndAlignLeftEdges"
                                                  HorizontalAlignment="Center"
                                                  VerticalAlignment="Center">
                             <materialDesign:PopupBox.ToggleContent>
                                 <materialDesign:PackIcon Kind="SortVariant"
-                                                         Width="24"
-                                                         Height="24"
+                                                         Width="30"
+                                                         Height="30"
                                                          Background="{StaticResource PrimaryHueMidBrush}" />
                             </materialDesign:PopupBox.ToggleContent>
                             <StackPanel>
@@ -280,6 +281,14 @@
                                 </Grid>
                             </StackPanel>
                         </materialDesign:PopupBox>
+                        <TextBlock Panel.ZIndex="1"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="20"
+                                   Foreground="#505050"
+                                   Margin="5 0 0 0"
+                                   FontWeight="Bold"
+                                   FontStyle="Italic">Sortiraj</TextBlock>
                     </StackPanel>
                     <DataGrid x:Name="DataGridOrder"
                               Grid.Row="1"
@@ -291,7 +300,7 @@
                               MinWidth="300"
                               MinColumnWidth="50"
                               Width="auto"
-                              Margin="30 70 10 0"
+                              Margin="0 22 10 0"
                               Background="White"
                               AlternatingRowBackground="LightYellow"
                               HorizontalContentAlignment="Center"
@@ -387,21 +396,69 @@
                             VerticalAlignment="Top"
                             MinWidth="350"
                             CornerRadius="5">
-                        <StackPanel>
-                            <TextBlock Text="{Binding RecipeText, UpdateSourceTrigger=PropertyChanged}"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Top"
-                               Margin="10,10,10,10"
-                               TextWrapping="Wrap"
-                               Height="auto"
-                                ScrollViewer.VerticalScrollBarVisibility="Auto"
-                               Width="325"
-                               FontSize="13px" />
-                        </StackPanel>
+                        <ScrollViewer HorizontalAlignment="Stretch"
+                                      HorizontalScrollBarVisibility="Disabled"
+                                      VerticalScrollBarVisibility="Auto"
+                                      Background="LightGray"
+                                      Grid.Column="0"
+                                      Grid.Row="1">
+                            <StackPanel>
+                                <TextBlock HorizontalAlignment="Center"
+                                           FontSize="18"
+                                           Margin="10"
+                                           x:Name="NazivRecepta"
+                                           Foreground="#505050"
+                                           FontWeight="Bold"
+                                           FontStyle="Italic">Naziv recepta</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="15 5 0 0">Autor:</TextBlock>
+                                    <TextBlock Margin="5"
+                                               x:Name="Autor"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="15 5 0 0"
+                                               HorizontalAlignment="Right">Datum:</TextBlock>
+                                    <TextBlock Margin="5"
+                                               x:Name="Datum"
+                                               HorizontalAlignment="Right"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="15 5 0 0"
+                                               HorizontalAlignment="Right">Tip recepta:</TextBlock>
+                                    <TextBlock Margin="5"
+                                               x:Name="Tip"
+                                               HorizontalAlignment="Right"></TextBlock>
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBox x:Name="Opis"
+                                             materialDesign:HintAssist.Hint="Opis recepta*"
+                                             Width="310"
+                                             Height="auto"
+                                             MaxHeight="500"
+                                             MaxLength="1000"
+                                             TextWrapping="Wrap"
+                                             IsEnabled="False"
+                                             AcceptsReturn="True"
+                                             VerticalScrollBarVisibility="Auto"
+                                             Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                                             Padding="0,-2,0,0"
+                                             Margin="0,5,0,5"
+                                             VerticalAlignment="Top" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="15 5 0 0"
+                                               HorizontalAlignment="Right">Sastojci:</TextBlock>
+                                    <StackPanel>
+                                        <TextBlock Margin="5"
+                                                   x:Name="Sastojci"
+                                                   HorizontalAlignment="Right"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </ScrollViewer>
                     </Border>
                 </Grid>
             </Grid>
-            
         </Grid>
     </Grid>
 </UserControl>
