@@ -150,6 +150,7 @@ namespace CakeRecipes.ViewModel
                 return save;
             }
         }
+        readonly AllRecipesWindow allRecipesWindow = new AllRecipesWindow();
         /// <summary>
         /// Method for adding new Recipe
         /// </summary>
@@ -159,6 +160,10 @@ namespace CakeRecipes.ViewModel
             {
                 //if()
                 AddIngredientToRecipeViewModel.IngrediantAmountListCount = 0;
+                allRecipesWindow.filteredRecipes = new List<tblRecipe>();
+                AllRecipesWindow.filteredList = new List<tblRecipe>();
+                allRecipesWindow.DataGridOrder.ItemsSource = new List<tblRecipe>();
+
                 addRecipe.Close();
             }
             catch (Exception ex)
@@ -326,10 +331,7 @@ namespace CakeRecipes.ViewModel
                         addRecipe.Close();
                         AddIngredientToRecipeViewModel.IngrediantAmountListCount = 0;
                     }
-                    
                 }
-
-
             }
             catch (Exception ex)
             {

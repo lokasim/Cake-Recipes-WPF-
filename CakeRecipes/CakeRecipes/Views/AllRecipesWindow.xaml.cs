@@ -28,8 +28,8 @@ namespace CakeRecipes.Views
             InitializeComponent();
             this.DataContext = new AllRecipesViewModel(this);
 
-
             RecipeService recipeService = new RecipeService();
+
             items = recipeService.GetAllRecipes();
             DataGridOrder.ItemsSource = items;
             view = (CollectionView)CollectionViewSource.GetDefaultView(DataGridOrder.ItemsSource);
@@ -140,8 +140,11 @@ namespace CakeRecipes.Views
 
         private void TxtRecipeName_TextChanged(object sender, TextChangedEventArgs e)
         {
-        
-                CollectionViewSource.GetDefaultView(DataGridOrder.ItemsSource).Refresh();
+            RecipeService recipeService = new RecipeService();
+
+            items = recipeService.GetAllRecipes();
+
+            CollectionViewSource.GetDefaultView(DataGridOrder.ItemsSource).Refresh();
                 filteredList = items.Where(i => view.Filter(i)).ToList();
             DataGridOrder.ItemsSource = items.Where(i => view.Filter(i)).ToList();
 
@@ -150,6 +153,9 @@ namespace CakeRecipes.Views
 
         private void CheckName_Click(object sender, RoutedEventArgs e)
         {
+            RecipeService recipeService = new RecipeService();
+
+            items = recipeService.GetAllRecipes();
             view.Filter = UserFilter;
             CollectionViewSource.GetDefaultView(DataGridOrder.ItemsSource).Refresh();
             filteredList = items.Where(i => view.Filter(i)).ToList();
@@ -158,6 +164,9 @@ namespace CakeRecipes.Views
 
         private void CbxRecipeTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            RecipeService recipeService = new RecipeService();
+
+            items = recipeService.GetAllRecipes();
             ComboBox cbx = (ComboBox)sender;
             string val = String.Empty;
             if(cbx.SelectedValue == null)
@@ -182,7 +191,9 @@ namespace CakeRecipes.Views
 
         private void CheckType_Click(object sender, RoutedEventArgs e)
         {
+            RecipeService recipeService = new RecipeService();
 
+            items = recipeService.GetAllRecipes();
             if (cbxRecipeTypes.Text.ToString() != "")
             {
                 view.Filter = UserFilter;
